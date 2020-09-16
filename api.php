@@ -20,11 +20,7 @@
         header('Location: ' . $authUrl);
         exit;
     
-    // Check given state against previously stored one to mitigate CSRF attack
-    } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
-        unset($_SESSION['oauth2state']);
-        echo 'Invalid state.';
-        exit;
+        // Check given state against previously stored one to mitigate CSRF attack
     }
 
     $token = $provider->getAccessToken('authorization_code', [
@@ -33,14 +29,12 @@
     
     // Optional: Now you have a token you can look up a users profile data
     try {
-    
-        // We got an access token, let's now get the user's details
-        /** @var \Kerox\OAuth2\Client\Provider\SpotifyResourceOwner $user */
         $user = $provider->getResourceOwner($token);
-    
-        // Use these details to create a new profile
         printf('Hello %s!', $user->getDisplayName());
-        
+        echo "normal var";
+        print_r($token);
+        echo "method token";
+        print_r($token->getToken());
         echo '<pre>';
         var_dump($user);
         echo '</pre>';
@@ -49,101 +43,3 @@
         // Failed to get user details
         exit('Damned...');
     }
-    
-    // echo '<pre>';
-    // // Use this to interact with an API on the users behalf
-    // var_dump($token->getToken());
-    // # string(217) "CAADAppfn3msBAI7tZBLWg...
-    
-    // // The time (in epoch time) when an access token will expire
-    // var_dump($token->getExpires());
-    // # int(1436825866)
-    // echo '</pre>';
-
-    $api = new \Audeio\Spotify\API();
-    $api->setAccessToken($token->getToken());
-
-
-    print_r($api->getuserPlaylists("37i9dQZF1DWSqmBTGDYngZ"));
-
-    // function callAPI($method, $url, $data, $auth)
-
-    // {
-
-    //     $curl = curl_init();
-
-    //     switch ($method) {
-
-    //         case "POST":
-
-    //            curl_setopt($curl, CURLOPT_POST, 1);
-
-    //            if ($data) {
-
-    //                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
-    //            }
-
-    //            break;
-
-    //         case "PUT":
-
-    //            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-
-    //            if ($data) {
-
-    //                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
-    //            }
-
-    //            break;
-
-    //         default:
-
-    //            if ($data) {
-
-    //                $url = sprintf("%s?%s", $url, http_build_query($data));
-
-    //            }
-
-    //      }
-
-    //     curl_setopt($curl, CURLOPT_URL, $url);
-
-    //     curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-
-    //         "Authorization: Bearer $auth",
-
-    //         "Content-Type: application/json" ,
-
-    //         "Accept: application/json",
-
-    //      ));
-
-    //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-
-    //     curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-
-    //     // EXECUTE:
-
-    //     $result = curl_exec($curl);
-
-    //     if (!$result) {
-
-    //         die("Connection Failure");
-
-    //     }
-
-    //     curl_close($curl);
-
-    //     return $result;
-
-    // }
-
-    // $response =  callAPI("GET", "https://api.spotify.com/v1/tracks/0VjIjW4GlUZAMYd2vXMi3b?market=us", false);
-
-    // if ($response["error"] != null) {
-
-    // }
-
-    // printf($response);

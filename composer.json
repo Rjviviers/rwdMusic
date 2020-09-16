@@ -1,6 +1,5 @@
 {
     "require": {
-        "kerox/oauth2-spotify": "^1.1",
-        "audeio/spotify-web-api": "0.*"
+        "kerox/oauth2-spotify": "^1.1"
     }
 }
