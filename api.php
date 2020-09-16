@@ -9,8 +9,6 @@
 
     // use League\OAuth2\Client\Grant\RefreshToken;
 
-    $api= new API();
-    $accessToken;
     $provider = new Audeio\Spotify\Oauth2\Client\Provider\Spotify([
         'clientId' => '15eb0efcd4b64909a462e68c8a34ff66',
         'clientSecret' => '9729a66cde744abaa4ba190d6424b3ee',
