@@ -1,7 +1,6 @@
 <?php
-// //  namespace Audeio\Spotify;
-//
     require('vendor/autoload.php');
+
     $provider = new Kerox\OAuth2\Client\Provider\Spotify([
         'clientId' => '15eb0efcd4b64909a462e68c8a34ff66',
         'clientSecret' => '9729a66cde744abaa4ba190d6424b3ee',
@@ -21,15 +20,13 @@
         header('Location: ' . $authUrl);
         exit;
     
-        // Check given state against previously stored one to mitigate CSRF attack
+    // Check given state against previously stored one to mitigate CSRF attack
+    } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
+        unset($_SESSION['oauth2state']);
+        echo 'Invalid state.';
+        exit;
     }
-    //  elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
-    //     unset($_SESSION['oauth2state']);
-    //     echo 'Invalid state.';
-    //     exit;
-    // }
-    
-    // Try to get an access token (using the authorization code grant)
+
     $token = $provider->getAccessToken('authorization_code', [
         'code' => $_GET['code']
     ]);
@@ -53,18 +50,21 @@
         exit('Damned...');
     }
     
-    echo '<pre>';
-    // Use this to interact with an API on the users behalf
-    var_dump($token->getToken());
-    # string(217) "CAADAppfn3msBAI7tZBLWg...
+    // echo '<pre>';
+    // // Use this to interact with an API on the users behalf
+    // var_dump($token->getToken());
+    // # string(217) "CAADAppfn3msBAI7tZBLWg...
     
-    // The time (in epoch time) when an access token will expire
-    var_dump($token->getExpires());
-    # int(1436825866)
-    echo '</pre>';
+    // // The time (in epoch time) when an access token will expire
+    // var_dump($token->getExpires());
+    // # int(1436825866)
+    // echo '</pre>';
 
-   
+    $api = new \Audeio\Spotify\API();
+    $api->setAccessToken($token->getToken());
 
+
+    print_r($api->getuserPlaylists("37i9dQZF1DWSqmBTGDYngZ"));
 
     // function callAPI($method, $url, $data, $auth)
 
