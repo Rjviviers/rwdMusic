@@ -73,15 +73,16 @@ if (isset($_POST["GO"])) {
 
             <lable for="username"> User Name</lable>
 
-            <input type="text" class="form-control" placeholder="Username"  autocomplete="username" name="username">
+            <input type="text" class="form-control" placeholder="Username" autocomplete="username" name="username">
 
         </div>
 
         <div class="form-group">
 
-            <lable for="pwd"> User Name</lable>
+            <lable for="pwd"> Password </lable>
 
-            <input type="password" class="form-control" autocomplete="current-password" placeholder="Password" name="pwd">
+            <input type="password" class="form-control" autocomplete="current-password" placeholder="Password"
+                name="pwd">
 
         </div>
 
