@@ -21,12 +21,13 @@
         header('Location: ' . $authUrl);
         exit;
     
-    // Check given state against previously stored one to mitigate CSRF attack
-    } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
-        unset($_SESSION['oauth2state']);
-        echo 'Invalid state.';
-        exit;
+        // Check given state against previously stored one to mitigate CSRF attack
     }
+    //  elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
+    //     unset($_SESSION['oauth2state']);
+    //     echo 'Invalid state.';
+    //     exit;
+    // }
     
     // Try to get an access token (using the authorization code grant)
     $token = $provider->getAccessToken('authorization_code', [
