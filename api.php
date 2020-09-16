@@ -8,29 +8,19 @@
     use Audeio\Spotify\Oauth2\Client\Provider\Spotify;
     use League\OAuth2\Client\Grant\RefreshToken;
 
-class API
-{
-    private $api;
-    private $accessToken;
+    $api= new API();
+    $accessToken;
 
-    public static function setupAuth()
-    {
-        $oauthP = new Spotify(array(
-            'clientId' => getenv('15eb0efcd4b64909a462e68c8a34ff66'),
-            'clientSecret' => getenv('9729a66cde744abaa4ba190d6424b3ee'),
-            'redirectUri' => 'https://www.rwdmusic.co.za/api.php'
-        ));
+    $oauthP = new Spotify(array(
+        'clientId' => getenv('15eb0efcd4b64909a462e68c8a34ff66'),
+        'clientSecret' => getenv('9729a66cde744abaa4ba190d6424b3ee'),
+        'redirectUri' => 'https://www.rwdmusic.co.za/api.php?test=helo'
+    ));
 
-        self::$accessToken = $oauthP->getAccessToken(new RefreshToken(), array(
-            'refresh_token'=> getenv("SPOTIFY_REFRESH_TOKEN")
-            ))->accessToken;
-    }
-    public function setup()
-    {
-        $this->api = new API();
-        $this->api->setAccessToken(self::$accessToken);
-    }
-}
+    self::$accessToken = $oauthP->getAccessToken(new RefreshToken(), array('refresh_token'=> getenv("SPOTIFY_REFRESH_TOKEN")))->accessToken;
+
+    $api->setAccessToken(self::$accessToken);
+
 
 
     // $api->getCurrentUser();
