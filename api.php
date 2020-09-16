@@ -31,13 +31,12 @@
     try {
         $user = $provider->getResourceOwner($token);
         printf('Hello %s!', $user->getDisplayName());
-        echo "normal var";
-        print_r($token);
-        echo "method token";
-        print_r($token->getToken());
-        echo '<pre>';
-        var_dump($user);
-        echo '</pre>';
+        
+        $response = $provider->playlists()->me([
+            QueryParametersInterface::PARAMETER_LIMIT => 10,
+            QueryParametersInterface::PARAMETER_OFFSET => 5,
+        ]);
+        var_dump($response);
     } catch (Exception $e) {
     
         // Failed to get user details
