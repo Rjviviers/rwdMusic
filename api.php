@@ -3,9 +3,9 @@
     require('vendor/autoload.php');
 
     $api = new \Audeio\Spotify\API();
-    $api->setAccessToken('BAWSDOJWEO984yt34y35YgdsnhlreGERH56u45htrH54y');
+    $api->setAccessToken('');
 
-    $api->getCurrentUser();
+    // $api->getCurrentUser();
 
 
 
