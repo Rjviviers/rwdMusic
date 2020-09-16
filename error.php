@@ -1,2 +1,5 @@
-<?php
-echo "error page";
+<?php
+
+$error = $_GET['error'];
+
+echo $error;

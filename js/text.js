@@ -1,4 +1,4 @@
-function toggle() {
-    var element = document.getElementById("myDIV");
-    element.classList.toggle("mystyle");
+function toggle() {
+    var element = document.getElementById("myDIV");
+    element.classList.toggle("mystyle");
 }

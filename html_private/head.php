@@ -1,7 +1,7 @@
-<?php
-require_once 'DBCon.php';
-session_start();
-global $errorMessages;
-$errorMessages = array();
-$myConn = new DBCon(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
+<?php
+require_once 'DBCon.php';
+session_start();
+global $errorMessages;
+$errorMessages = array();
+$myConn = new DBCon(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
 $myConn->Connect();

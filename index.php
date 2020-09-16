@@ -1,24 +1,25 @@
 <?php
+
 include __DIR__ . '/html_private/head.php';
+
 if (!isset($_SESSION['User'])) {
     $myConn->redirect("login.php");
 }
+
 if (isset($_GET['t'])) {
     $addSongTest = $_GET['t'];
+
     if ($addSongTest =='Succsess') {
         echo "song Added successfully";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music App</title>
-
     <?php
     include __DIR__ . '/partials/header.php';
     ?>
@@ -33,7 +34,6 @@ if (isset($_GET['t'])) {
                     ?>
                     </table>
                 </div>
-
             </div>
             <div class="col-xl">
                 <div class="card bg-dark text-light neo neo-card">
@@ -51,7 +51,6 @@ if (isset($_GET['t'])) {
                     </table>
                 </div>
             </div>
-
             <div class="col-xl">
                 <div class="card bg-dark text-light neo neo-card">
                     <h1 class="cent">Hall Of Fame</h1>
@@ -84,15 +83,10 @@ if (isset($_GET['t'])) {
                         }
                         ?>
                         </tbody>
-
                 </div>
                 </table>
             </div>
         </div>
-
-
     </div>
-
     </body>
-
 </html>

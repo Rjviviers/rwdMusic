@@ -1,0 +1,5 @@
+{
+    "require": {
+        "audeio/spotify-web-api": "0.*"
+    }
+}

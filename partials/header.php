@@ -1,13 +1,23 @@
-<link rel="stylesheet" href="/css/style.css">
+<?php
+// if (isset($_POST["go"])) {
+//     $val = $_POST["quantity"];
+//     $myConn->redirect("addsong.php?NoOfSongs=$val");
+// }
+?>
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet" />
+<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
 <script src="js/bootstrap.min.js"></script>
-
-
 <script>
 function addsong() {
     var noofsongs = document.getElementById('nu').value;
-    var url = "https://rwdmusic.000webhostapp.com/addsong.php?NoOfSongs=".concat(noofsongs);
+    var url = "https://www.rwdmusic.co.za/addsong.php?NoOfSongs=".concat(noofsongs);
     window.location.href = url;
 }
 
@@ -21,7 +31,7 @@ function toggle() {
 </head>
 
 <body class="bg-dark text-white">
-    <nav class="navbar nav-fill navbar-expand-lg navbarer navbar-light bg-warning">
+    <nav class="navbar nav-fill navbar-expand-lg navbar-light bg-warning">
         <a class="navbar-brand capt"
             href="userprofile.php"><?php echo "Welcome, " . $_SESSION['User']->GetUsername()?></a>
         <div class=" navbar" id="navbarNav">
@@ -38,13 +48,17 @@ function toggle() {
             </ul>
         </div>
     </nav>
+    <div class="row">
+        <div class="col-md-auto">
+            <div id="songfrm" class="hide">
 
-    <div class="col-sm pdd">
-        <div id="songfrm" class="hide">
-            <div class="form-group">
-                <label for="nu">Number of songs to add</label>
-                <input id="nu" class="form-control" type="number" name="quantity" min="1" max="15" value="1">
-                <button class='btn btn-warning' onclick='addsong()'>Add Songs</button>
+                <div class="form-group">
+                    <label for="nu">Number of songs to add</label>
+                    <input id="nu" class="form-control" type="number" name="quantity" min="1" max="15" value="1">
+                    <button onclick='addsong()'>Go test</button>
+                    <!-- <input type="submit" class="btn btn-secondary form-control" name="go" value="go"> -->
+                </div>
+
             </div>
         </div>
     </div>
