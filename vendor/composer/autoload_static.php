@@ -6,99 +6,63 @@ namespace Composer\Autoload;
 
 class ComposerStaticInita0cba90389635c47c38f4f904039e43e
 {
+    public static $files = array (
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'Z' => 
-        array (
-            'Zend\\Stdlib\\' => 12,
-            'Zend\\ServiceManager\\' => 20,
-            'Zend\\Hydrator\\' => 14,
-            'Zend\\Filter\\' => 12,
-            'Zend\\EventManager\\' => 18,
-        ),
-        'S' => 
-        array (
-            'Symfony\\Component\\EventDispatcher\\' => 34,
-        ),
         'P' => 
         array (
-            'Psr\\Container\\' => 14,
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
         ),
         'L' => 
         array (
             'League\\OAuth2\\Client\\' => 21,
         ),
-        'I' => 
+        'K' => 
         array (
-            'Interop\\Container\\' => 18,
+            'Kerox\\OAuth2\\Client\\' => 20,
         ),
-        'D' => 
+        'G' => 
         array (
-            'Doctrine\\Common\\Collections\\' => 28,
-        ),
-        'A' => 
-        array (
-            'Audeio\\Spotify\\' => 15,
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Zend\\Stdlib\\' => 
+        'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-stdlib/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Zend\\ServiceManager\\' => 
+        'Psr\\Http\\Client\\' => 
         array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-servicemanager/src',
-        ),
-        'Zend\\Hydrator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-hydrator/src',
-        ),
-        'Zend\\Filter\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-filter/src',
-        ),
-        'Zend\\EventManager\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-eventmanager/src',
-        ),
-        'Symfony\\Component\\EventDispatcher\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
-        ),
-        'Psr\\Container\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/container/src',
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
         'League\\OAuth2\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth2-client/src',
         ),
-        'Interop\\Container\\' => 
+        'Kerox\\OAuth2\\Client\\' => 
         array (
-            0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
+            0 => __DIR__ . '/..' . '/kerox/oauth2-spotify/src',
         ),
-        'Doctrine\\Common\\Collections\\' => 
+        'GuzzleHttp\\Psr7\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'Audeio\\Spotify\\' => 
+        'GuzzleHttp\\Promise\\' => 
         array (
-            0 => __DIR__ . '/..' . '/audeio/spotify-web-api/src',
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
         ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'G' => 
+        'GuzzleHttp\\' => 
         array (
-            'Guzzle\\Tests' => 
-            array (
-                0 => __DIR__ . '/..' . '/guzzle/guzzle/tests',
-            ),
-            'Guzzle' => 
-            array (
-                0 => __DIR__ . '/..' . '/guzzle/guzzle/src',
-            ),
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
     );
 
@@ -107,7 +71,6 @@ class ComposerStaticInita0cba90389635c47c38f4f904039e43e
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita0cba90389635c47c38f4f904039e43e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita0cba90389635c47c38f4f904039e43e::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita0cba90389635c47c38f4f904039e43e::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

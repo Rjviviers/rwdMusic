@@ -1,24 +1,20 @@
 <?php
-//  namespace Audeio\Spotify;
-
+// //  namespace Audeio\Spotify;
+//
     require('vendor/autoload.php');
-    
-   
-
-    use Audeio\Spotify\Oauth2\Client\Provider\Spotify;
-
-    // use League\OAuth2\Client\Grant\RefreshToken;
-
-    $provider = new Audeio\Spotify\Oauth2\Client\Provider\Spotify([
+    $provider = new Kerox\OAuth2\Client\Provider\Spotify([
         'clientId' => '15eb0efcd4b64909a462e68c8a34ff66',
         'clientSecret' => '9729a66cde744abaa4ba190d6424b3ee',
         'redirectUri' => 'https://www.rwdmusic.co.za/api.php',
-        
     ]);
     
     if (!isset($_GET['code'])) {
         // If we don't have an authorization code then get one
-        $authUrl = $provider->getAuthorizationUrl();
+        $authUrl = $provider->getAuthorizationUrl([
+            'scope' => [
+                Kerox\OAuth2\Client\Provider\Spotify::SCOPE_USER_READ_EMAIL,
+            ]
+        ]);
         
         $_SESSION['oauth2state'] = $provider->getState();
         
@@ -66,9 +62,7 @@
     # int(1436825866)
     echo '</pre>';
 
-
-    // $api->getCurrentUser();
-
+   
 
 
     // function callAPI($method, $url, $data, $auth)

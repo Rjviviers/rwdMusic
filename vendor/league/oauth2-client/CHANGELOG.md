@@ -1,5 +1,186 @@
 # OAuth 2.0 Client Changelog
 
+## 2.5.0
+
+_Released: 2020-07-18_
+
+* Allow Guzzle 7.x to be used [#847](https://github.com/thephpleague/oauth2-client/pull/847)
+
+## 2.4.1
+
+_Released: 2018-11-22_
+
+* Revert to use of `AccessToken` in type hints to preserve backwards
+  compatibility; this fixes the issue reported in [#752](https://github.com/thephpleague/oauth2-client/issues/752)
+  and [#753](https://github.com/thephpleague/oauth2-client/issues/753)
+
+## 2.4.0
+
+_Released: 2018-11-21_
+
+* Add `HttpBasicAuthOptionProvider` to ease implementation for providers
+  requiring HTTP basic auth
+* Add `GuardedPropertyTrait` to allow providers the ability to specify
+  properties that may not be overridden by user-defined values passed to the
+  provider constructor
+* Add `AccessTokenInterface` and `ResourceOwnerAccessTokenInterface` to allow
+  providers the ability to override the default `AccessToken`
+
+## 2.3.1
+
+_Released: 2018-11-19_
+
+* Allow paragonie/random_compat's empty 9.99.99 placeholder
+* Throw an `UnexpectedValueException` on non-JSON responses from access token
+  request (when calling `AbstractProvider::getAccessToken()`)
+
+## 2.3.0
+
+_Released: 2018-01-13_
+
+* Add `ProviderRedirectTrait` tool for 3rd-party provider libraries to use when
+  handling provider redirections
+* Fix TypeError thrown because `getResourceOwner()` receives a non-JSON Response
+* Gracefully handle non-standard errors received from providers
+* Update README to reflect official support of PHP 7.2
+
+## 2.2.1
+
+_Released: 2017-04-25_
+
+* Fix potential type error when HTTP 500 errors are encountered
+* Allow broader range of `random_compat` versions
+
+## 2.2.0
+
+_Released: 2017-02-01_
+
+* Allow base URLs to contain query parameters
+* Protect against `+` being improperly encoded in URL parameters
+* Remove misleading `state` option from authorization parameters
+* Stop generating more random bytes than necessary
+
+## 2.1.0
+
+_Released: 2017-01-24_
+
+* Allow `expires_in` with a value of `0`
+
+## 2.0.0
+
+_Released: 2017-01-12_
+
+* Rename `getResponse()` to `getParsedResponse()`
+* Add `getResponse()` method that returns the unparsed PSR-7 `Response` instance
+* Removed `RandomFactory`, switched to native random functions
+
+## 1.4.1
+
+_Released: 2016-04-29_
+
+* Add `QueryBuilderTrait` to standardize query string generation.
+
+## 1.4.0
+
+_Released: 2016-04-19_
+
+* Add `AccessToken::getValues()` to access additional vendor data provided with tokens.
+
+## 1.3.0
+
+_Released: 2016-02-13_
+
+* Enable dynamic parameters being passed into the authorization URL.
+* Minor documentation updates.
+
+## 1.2.0
+
+_Released: 2016-01-23_
+
+* Add `resource_owner_id` to the JSON-serialized representation of the access token.
+* Minor documentation updates and improved test coverage.
+
+## 1.1.0
+
+_Released: 2015-11-13_
+
+* Add `ArrayAccessorTrait`, update `AbstractProvider` to utilize.
+* Use `expires` to serialize access tokens.
+* Documentation updates.
+
+## 1.0.2
+
+_Released: 2015-09-22_
+
+* Allow access tokens to be created from storage (see #431).
+* Minor fixes and documentation updates.
+
+## 1.0.1
+
+_Released: 2015-08-26_
+
+* Allow required parameters checked using the `RequiredParameterTrait` to be set as `false`, `null`, `"0"`, etc.
+
+## 1.0.0
+
+_Released: 2015-08-19_
+
+* We are running code-quality builds through Scrutinizer, and we are running unit test builds on the new Travis CI container-based infrastructure.
+* Cleaned up code, as recommended by Scrutinizer.
+* Documentation updates.
+
+## 1.0.0-beta2
+
+_Released: 2015-08-12_
+
+* BREAK: Add toArray() to ResourceOwnerInterface.
+* Always attempt to parse responses as JSON and fallback on failure.
+* Add dot notation support to access token resource owner ID.
+* Use the Bearer authorization header for the generic provider.
+* Documentation updates.
+
+## 1.0.0-beta1
+
+_Released: 2015-07-16_
+
+* API for 1.0 is now frozen!
+* BREAK: Convert all uses of "User" to "ResourceOwner" to more closely match the OAuth 2.0 specification.
+* BREAK: Rename `StandardProvider` to `GenericProvider`.
+* BREAK: Move access token creation to the `AbstractProvider`. It was previously handled in the `AbstractGrant`.
+* FIX: Add `Content-Type` header with value of `application/x-www-form-urlencoded` to the request header when retrieving access tokens. This adheres to the OAuth 2.0 specification and fixes issues where certain OAuth servers expect this header.
+* Enhanced `json_encode()` serialization of AccessToken; when using `json_encode()` on an AccessToken, it will return a JSON object with these properties: `access_token`, `refresh_token`, and `expires_in`.
+
+## 1.0.0-alpha2
+
+_Released: 2015-07-04_
+
+* BREAK: Renamed `AbstractProvider::ACCESS_TOKEN_METHOD_GET` to `AbstractProvider::METHOD_GET`.
+* BREAK: Renamed `AbstractProvider::ACCESS_TOKEN_METHOD_POST` to `AbstractProvider::METHOD_POST`.
+* BREAK: Renamed `AbstractProvider::prepareUserDetails()` to `AbstractProvider::createUser()`.
+* BREAK: Renamed `AbstractProvider::getUserDetails()` to `AbstractProvider::getUser()`.
+* BREAK: Removed `$token` parameter from `AbstractProvider::getDefaultHeaders()`.
+* BREAK: Modify `AbstractProvider::getBaseAccessTokenUrl()` to accept a required array of parameters, allowing providers the ability to vary the access token URL, based on the parameters.
+* Removed newline characters from MAC Authorization header.
+* Documentation updates, notably:
+  - Moved list of providers to `README.PROVIDERS.md`.
+  - Moved provider creation notes to `README.PROVIDER-GUIDE.md`.
+
+## 1.0.0-alpha1
+
+_Released: 2015-06-25_
+
+This release contains numerous BC breaks from the 0.x series. Please note these breaks and refer to the [upgrade guide](GUIDE-UPGRADING.md).
+
+* BREAK: Requires PHP 5.5.0 and greater.
+* BREAK: All providers have been moved to separate repositories, one for each provider.
+* BREAK: All `public` properties have been set as `protected` or `private` and getters/setters have been introduced for access to these properties.
+* BREAK: The `Provider\ProviderInterface` has been removed. Please extend from and override `Provider\AbstractProvider`.
+* BREAK: The `Entity\User` has been removed. Providers should implement the `Provider\UserInterface` and provide user functionality instead of expecting it in this base library.
+* BREAK: The `Grant\GrantInterface` has been removed. Providers needing to provide a new grant type should extend from and override `Grant\AbstractGrant`.
+* A generic `Provider\StandardProvider` has been introduced, which may be used as a client to integrate with most OAuth 2.0 compatible servers.
+* A `Grant\GrantFactory` has been introduced as a means to register and retrieve singleton grants from a registry.
+* Introduced traits for bearer and MAC authorization (`Tool\BearerAuthorizationTrait` and `Tool\MacAuthorizationTrait`), which providers may use to enable these header authorization types.
+
 ## 0.12.1
 
 _Released: 2015-06-20_
