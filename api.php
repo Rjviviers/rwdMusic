@@ -18,11 +18,7 @@
     
     if (!isset($_GET['code'])) {
         // If we don't have an authorization code then get one
-        $authUrl = $provider->getAuthorizationUrl([
-            'scope' => [
-                Audeio\Spotify\Oauth2\Client\Provider\Spotify::SCOPE_USER_READ_EMAIL,
-            ]
-        ]);
+        $authUrl = $provider->getAuthorizationUrl();
         
         $_SESSION['oauth2state'] = $provider->getState();
         
