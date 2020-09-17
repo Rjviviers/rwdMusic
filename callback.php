@@ -19,5 +19,5 @@ $_SESSION['accessToken'] = $accessToken;
 $_SESSION['refreshToken'] = $refreshToken;
 var_dump($_SESSION);
 // Send the user along and fetch some data!
-header('Location: app.php');
+redirect('app.php');
 die();
