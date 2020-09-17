@@ -1,6 +1,7 @@
 <?php
     require('vendor/autoload.php');
     require('html_private/conf.php');
+    require('html_private/head.php');
 
     $session = new Kerox\OAuth2\Client\Provider\Spotify([
         'clientId' => CLIENT_ID,
@@ -16,6 +17,8 @@
     $refreshToken = $session->getRefreshToken();
     
     // Store the access and refresh tokens somewhere. In a database for example.
+    $_SESSION['AccessToken'] = $accessToken;
+    $_SESSION['RefreshToken'] = $refreshToken;
     
     // Send the user along and fetch some data!
     header('Location: app.php');
