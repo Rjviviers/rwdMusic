@@ -8,34 +8,15 @@ class ComposerStaticInita0cba90389635c47c38f4f904039e43e
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
-        '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        'cf97c57bfe0f23854afd2f3818abb7a0' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/create_uploaded_file.php',
-        '9bf37a3d0dad93e29cb4e1b1bfab04e9' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php',
-        'ce70dccb4bcc2efc6e94d2ee526e6972' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_method_from_sapi.php',
-        'f86420df471f14d568bfcb71e271b523' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_protocol_version_from_sapi.php',
-        'b87481e008a3700344428ae089e7f9e5' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_uri_from_sapi.php',
-        '0b0974a5566a1077e4f2e111341112c1' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_server.php',
-        '1ca3bc274755662169f9629d5412a1da' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_uploaded_files.php',
-        '40360c0b9b437e69bcbb7f1349ce029e' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/parse_cookie_header.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'Z' => 
-        array (
-            'Zend\\Diactoros\\' => 15,
-        ),
         'S' => 
         array (
-            'Symfony\\Polyfill\\Php72\\' => 23,
-            'Symfony\\Polyfill\\Php70\\' => 23,
-            'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
-            'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
+            'SpotifyWebAPI\\' => 14,
         ),
         'P' => 
         array (
@@ -48,7 +29,6 @@ class ComposerStaticInita0cba90389635c47c38f4f904039e43e
         ),
         'K' => 
         array (
-            'Kerox\\Spotify\\' => 14,
             'Kerox\\OAuth2\\Client\\' => 20,
         ),
         'G' => 
@@ -57,37 +37,16 @@ class ComposerStaticInita0cba90389635c47c38f4f904039e43e
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
-        'F' => 
-        array (
-            'Fig\\Http\\Message\\' => 17,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Zend\\Diactoros\\' => 
+        'SpotifyWebAPI\\' => 
         array (
-            0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
-        ),
-        'Symfony\\Polyfill\\Php72\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
-        ),
-        'Symfony\\Polyfill\\Php70\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php70',
-        ),
-        'Symfony\\Polyfill\\Intl\\Normalizer\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer',
-        ),
-        'Symfony\\Polyfill\\Intl\\Idn\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-idn',
+            0 => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -96,10 +55,6 @@ class ComposerStaticInita0cba90389635c47c38f4f904039e43e
         'League\\OAuth2\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth2-client/src',
-        ),
-        'Kerox\\Spotify\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kerox/spotify/src',
         ),
         'Kerox\\OAuth2\\Client\\' => 
         array (
@@ -117,21 +72,6 @@ class ComposerStaticInita0cba90389635c47c38f4f904039e43e
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'Fig\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fig/http-message-util/src',
-        ),
-    );
-
-    public static $classMap = array (
-        'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
-        'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
-        'DivisionByZeroError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/DivisionByZeroError.php',
-        'Error' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/Error.php',
-        'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
-        'ParseError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ParseError.php',
-        'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
-        'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -139,7 +79,6 @@ class ComposerStaticInita0cba90389635c47c38f4f904039e43e
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita0cba90389635c47c38f4f904039e43e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita0cba90389635c47c38f4f904039e43e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita0cba90389635c47c38f4f904039e43e::$classMap;
 
         }, null, ClassLoader::class);
     }

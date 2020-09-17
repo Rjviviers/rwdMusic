@@ -16,7 +16,7 @@
         ]);
         
         $_SESSION['oauth2state'] = $provider->getState();
-        
+        $_SESSION['auth'] = $_GET['code'];
         header('Location: ' . $authUrl);
         exit;
     
@@ -31,8 +31,8 @@
     try {
         $user = $provider->getResourceOwner($token);
         printf('Hello %s!', $user->getDisplayName());
-        
-        $response = $provider->me()->get();
+        $spotify = new \Kerox\Spotify\Spotify($token);
+        $response = $spotify->me()->get();
         var_dump($response);
     } catch (Exception $e) {
     
