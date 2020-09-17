@@ -17,6 +17,7 @@ $refreshToken = $session->getRefreshToken();
 // Store the access and refresh tokens somewhere. In a database for example.
 $_SESSION['accessToken'] = $accessToken;
 $_SESSION['refreshToken'] = $refreshToken;
+var_dump($_SESSION);
 // Send the user along and fetch some data!
-header('Location: app.php');
-die();
+// header('Location: app.php');
+// die();
