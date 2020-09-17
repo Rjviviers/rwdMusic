@@ -2,12 +2,13 @@
     require('vendor/autoload.php');
     require('html_private/conf.php');
 
-    $session = new SpotifyWebAPI\Session(
-        CLIENT_ID,
-        CLIENT_SECRET,
-        REDIRECT_URI
-    );
+    $session = new Kerox\OAuth2\Client\Provider\Spotify([
+        'clientId' => CLIENT_ID,
+        'clientSecret' => CLIENT_SECRET,
+        'redirectUri' => REDIRECT_URI,
+    ]);
     
+      
     // Request a access token using the code from Spotify
     $session->requestAccessToken($_GET['code']);
     
