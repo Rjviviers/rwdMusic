@@ -32,10 +32,7 @@
         $user = $provider->getResourceOwner($token);
         printf('Hello %s!', $user->getDisplayName());
         
-        $response = $provider->playlists()->me([
-            QueryParametersInterface::PARAMETER_LIMIT => 10,
-            QueryParametersInterface::PARAMETER_OFFSET => 5,
-        ]);
+        $response = $provider->me()->get();
         var_dump($response);
     } catch (Exception $e) {
     
