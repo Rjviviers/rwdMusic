@@ -1,6 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-require('html-private/head.php');
+require('html_private/head.php');
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 
 // Fetch the saved access token from somewhere. A database for example.
