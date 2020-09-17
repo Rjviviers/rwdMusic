@@ -19,5 +19,5 @@ $_SESSION['accessToken'] = $accessToken;
 $_SESSION['refreshToken'] = $refreshToken;
 var_dump($_SESSION);
 // Send the user along and fetch some data!
-$myConn->redirect('app.php');
+$myConn->redirect("app.php");
 die();
