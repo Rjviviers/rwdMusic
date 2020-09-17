@@ -1,41 +1,21 @@
 <?php
     require('vendor/autoload.php');
+    require 'conf.php';
 
-    $provider = new Kerox\OAuth2\Client\Provider\Spotify([
-        'clientId' => '15eb0efcd4b64909a462e68c8a34ff66',
-        'clientSecret' => '9729a66cde744abaa4ba190d6424b3ee',
-        'redirectUri' => 'https://www.rwdmusic.co.za/api.php',
-    ]);
+    $session = new SpotifyWebAPI\Session(
+        CLIENT_ID,
+        CLIENT_SECRET,
+        REDIRECT_URI
+    );
     
-    if (!isset($_GET['code'])) {
-        // If we don't have an authorization code then get one
-        $authUrl = $provider->getAuthorizationUrl([
-            'scope' => [
-                Kerox\OAuth2\Client\Provider\Spotify::SCOPE_USER_READ_EMAIL,
-            ]
-        ]);
-        
-        $_SESSION['oauth2state'] = $provider->getState();
-        $_SESSION['auth'] = $_GET['code'];
-        header('Location: ' . $authUrl);
-        exit;
+    // Request a access token using the code from Spotify
+    $session->requestAccessToken($_GET['code']);
     
-        // Check given state against previously stored one to mitigate CSRF attack
-    }
-
-    $token = $provider->getAccessToken('authorization_code', [
-        'code' => $_GET['code']
-    ]);
+    $accessToken = $session->getAccessToken();
+    $refreshToken = $session->getRefreshToken();
     
-    // Optional: Now you have a token you can look up a users profile data
-    try {
-        $user = $provider->getResourceOwner($token);
-        printf('Hello %s!', $user->getDisplayName());
-        $spotify = new \Kerox\Spotify\Spotify($token);
-        $response = $spotify->me()->get();
-        var_dump($response);
-    } catch (Exception $e) {
+    // Store the access and refresh tokens somewhere. In a database for example.
     
-        // Failed to get user details
-        exit('Damned...');
-    }
+    // Send the user along and fetch some data!
+    header('Location: app.php');
+    die();
