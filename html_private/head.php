@@ -14,8 +14,3 @@ $errorMessages = array();
 $myConn = new DBCon(DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD);
 
 $myConn->Connect();
-
-
-if (!isset($_SESSION['User'])) {
-    $myConn->redirect("login.php");
-}
