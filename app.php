@@ -10,11 +10,9 @@ $api->setAccessToken($_SESSION['accessToken']);
 $track = $api->getTrack('4wkNbCituY2LtDKRbgoqH5');
 
 echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
-var_dump($track->artists);
+var_dump($track->artists[0]);
 
-foreach ($track->artists as $key => $result) {
-    echo $key." = " . $result, '<br>';
-}
+
 // foreach ($api->me() as $key => $value) {
 //     echo $key . " : " . print_r($value) ."</br>";
 // }
