@@ -8,8 +8,9 @@ $api = new SpotifyWebAPI\SpotifyWebAPI();
 
 // Fetch the saved access token from somewhere. A database for example.
 $api->setAccessToken($_SESSION['accessToken']);
-if (isset($_GET['go'])) {
-    $track = $api->getTrack($_GET['song']);
+if (isset($_GET['song'])) {
+    $song = $api->uriToId($_GET['song']);
+    $track = $api->getTrack($song);
     echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b><br>';
     $imgsrc = $track->album->images[0]->url;
     echo "<img src= '$imgsrc' >  ";
