@@ -2,6 +2,7 @@
 
 require 'vendor/autoload.php';
 require('html_private/head.php');
+
 $session = new SpotifyWebAPI\Session(
     CLIENT_ID,
     CLIENT_SECRET,
