@@ -12,7 +12,7 @@ $api->setAccessToken($_SESSION['accessToken']);
 // );
 
 foreach ($api->me() as $key => $value) {
-    echo $key . " : " . $value ."</br>";
+    echo $key . " : " . print_r($value) ."</br>";
 }
 // Getting Spotify catalog data is of course also possible
 print_r(
