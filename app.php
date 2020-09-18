@@ -2,9 +2,9 @@
 require 'vendor/autoload.php';
 require('html_private/head.php');
 $api = new SpotifyWebAPI\SpotifyWebAPI();
-var_dump($_SESSION);
+
 // Fetch the saved access token from somewhere. A database for example.
-//$api->setAccessToken($_SESSION['accessToken']);
+$api->setAccessToken($_SESSION['accessToken']);
 
 // It's now possible to request data about the currently authenticated user
 print_r(
