@@ -2,6 +2,7 @@
 require 'vendor/autoload.php';
 require('html_private/head.php');
 include __DIR__ . '/partials/header.php';
+include __DIR__ . '/html_private/lgc.php';
 
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 
