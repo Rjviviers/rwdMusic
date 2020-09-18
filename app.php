@@ -9,8 +9,14 @@ $api->setAccessToken($_SESSION['accessToken']);
 // It's now possible to request data about the currently authenticated user
 $track = $api->getTrack('4wkNbCituY2LtDKRbgoqH5');
 
-echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
-var_dump($track->artists[0]);
+// echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
+
+echo "</br> album atr";
+foreach ($track->album as $key => $value) {
+    echo "<br> ". $key . "</br>";
+}
+
+echo "</br> trac atr";
 foreach ($track as $key => $value) {
     echo "<br> ". $key . "</br>";
 }
