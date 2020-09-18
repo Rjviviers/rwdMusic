@@ -10,7 +10,7 @@ $api->setAccessToken($_SESSION['accessToken']);
 $track = $api->getTrack('4wkNbCituY2LtDKRbgoqH5');
 
 echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
-var_dump($track->external_url);
+var_dump($track->artists);
 
 // foreach ($api->me() as $key => $value) {
 //     echo $key . " : " . print_r($value) ."</br>";
