@@ -37,5 +37,9 @@ print_r(
 
 
 // Send the user along and fetch some data!
-$myConn->redirect("app.php");
-die();
+// $myConn->redirect("app.php");
+// die();
+
+
+    echo "<script>window.location.href='app.php';</script>";
+    exit;
