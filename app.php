@@ -11,15 +11,15 @@ $track = $api->getTrack('4wkNbCituY2LtDKRbgoqH5');
 
 // echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
 
-echo "</br> album atr";
+echo "</br> images atr";
 foreach ($track->album->images as $key => $value) {
     echo "<br> ". $key . "</br>";
 }
 
-echo "</br> trac atr";
-foreach ($track as $key => $value) {
-    echo "<br> ". $key . "</br>";
-}
+// echo "</br> trac atr";
+// foreach ($track as $key => $value) {
+//     echo "<br> ". $key . "</br>";
+// }
 
 // foreach ($api->me() as $key => $value) {
 //     echo $key . " : " . print_r($value) ."</br>";
