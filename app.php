@@ -12,7 +12,7 @@ $track = $api->getTrack('4wkNbCituY2LtDKRbgoqH5');
 echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
 var_dump($track->artists[0]);
 foreach ($track as $key => $value) {
-    echo $key;
+    echo "<br> ". $key . "</br>";
 }
 
 // foreach ($api->me() as $key => $value) {
