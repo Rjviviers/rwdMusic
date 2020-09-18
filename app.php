@@ -7,9 +7,13 @@ $api = new SpotifyWebAPI\SpotifyWebAPI();
 $api->setAccessToken($_SESSION['accessToken']);
 
 // It's now possible to request data about the currently authenticated user
-$track = $api->getTrack('TRACK_ID');
+$track = $api->getTrack('4wkNbCituY2LtDKRbgoqH5');
 
 echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
+
+$analysis = $api->getAudioAnalysis('4wkNbCituY2LtDKRbgoqH5');
+
+print_r($analysis);
 
 // foreach ($api->me() as $key => $value) {
 //     echo $key . " : " . print_r($value) ."</br>";
