@@ -13,7 +13,7 @@ $track = $api->getTrack('4wkNbCituY2LtDKRbgoqH5');
 
 echo "</br> images atr";
 foreach ($track->album->images as $key => $value) {
-    echo "<br> ". $key . "</br>";
+    echo "<br> ". $key . " : " .$value. "</br>";
 }
 
 // echo "</br> trac atr";
