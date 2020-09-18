@@ -2,9 +2,7 @@
 
 include __DIR__ . '/html_private/head.php';
 
-if (!isset($_SESSION['User'])) {
-    $myConn->redirect("login.php");
-}
+
 
 if (isset($_GET['t'])) {
     $addSongTest = $_GET['t'];
@@ -16,6 +14,7 @@ if (isset($_GET['t'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,4 +88,5 @@ if (isset($_GET['t'])) {
         </div>
     </div>
     </body>
+
 </html>

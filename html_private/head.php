@@ -5,6 +5,10 @@ require_once 'DBCon.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+if (!isset($_SESSION['User'])) {
+    $myConn->redirect("login.php");
+}
+
 global $errorMessages;
 
 $errorMessages = array();
