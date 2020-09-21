@@ -11,9 +11,9 @@ $api->setAccessToken($_SESSION['accessToken']);
 if (isset($_GET['song']) && $_GET['song'] != "") {
     $song = $_GET['song'];
     $track = $api->getTrack($song);
-    echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b><br>';
+    echo '<b>' . $track->name . '</b> - <b>' . $track->artists[0]->name . '</b><br>';
     $imgsrc = $track->album->images[0]->url;
-    echo "<img src= '$imgsrc' >  ";
+    echo "<img src= '$imgsrc' height='150'>  ";
 }
 // It's now possible to request data about the currently authenticated user
 
