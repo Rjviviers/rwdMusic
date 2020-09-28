@@ -21,5 +21,6 @@ $access["accessToken"] =  $accessToken;
 $access["refreshToken"] = $refreshToken;
 setcookie("spotify", $access, $expiring);
 
+die();
 echo "<script>window.location.href='index.php';</script>";
 exit;
