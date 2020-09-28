@@ -14,12 +14,12 @@ $session->requestAccessToken($_GET['code']);
 
 $accessToken = $session->getAccessToken();
 $refreshToken = $session->getRefreshToken();
-
+$expiring = $session->getTokenExpiration();
 // Store the access and refresh tokens somewhere. In a database for example.
-$_SESSION['accessToken'] = $accessToken;
-$_SESSION['refreshToken'] = $refreshToken;
-var_dump($session->expirationTime);
-die();
-setcookie("accessToken", $accessToken);
+$access = array();
+$access["accessToken"] =  $accessToken;
+$access["refreshToken"] = $refreshToken;
+setcookie("spotify", $access, $expiring);
+
 echo "<script>window.location.href='index.php';</script>";
 exit;
