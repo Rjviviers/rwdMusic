@@ -23,7 +23,7 @@ if (isset($_POST["GO"])) {
             // var_dump(hash("sha512", trim($_POST["pwd"])));
 
             $obj = $myConn->Login(trim($_POST["username"]), hash("sha512", trim($_POST["pwd"])));
-
+            setcookie("User", $obj, time() + (86400 * 30));
             $_SESSION['User'] = $obj;
         } catch (ErrorException $th) {
             $thm = $th->getMessage();
