@@ -48,8 +48,8 @@ function toggle() {
             </ul>
         </div>
     </nav>
-    <div class="row">
-        <div class="col-md-auto">
+    <div class="row row-cols-2">
+        <div class="col pl-2">
             <div id="songfrm" class="hide">
 
                 <div class="form-group">
@@ -60,5 +60,8 @@ function toggle() {
                 </div>
 
             </div>
+        </div>
+        <div class="col pl-3">
+            <a href="">spotify song add</a>
         </div>
     </div>

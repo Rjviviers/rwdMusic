@@ -6,17 +6,9 @@ include __DIR__ . '/html_private/lgc.php';
 
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 
-$data2 = " asdasdfaf-sda's/ ";
 
-function valid2($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    $data = preg_replace('/[^a-zA-Z0-9_ -]/s', '', $data);
-    return $data;
-}
-echo valid2($data2);
+
+
 // Fetch the saved access token from somewhere. A database for example.
 $api->setAccessToken($_SESSION['accessToken']);
 if (isset($_GET['song']) && $_GET['song'] != "") {
