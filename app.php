@@ -10,7 +10,7 @@ $api = new SpotifyWebAPI\SpotifyWebAPI();
 var_dump($_COOKIE["spotify"]);
 
 // Fetch the saved access token from somewhere. A database for example.
-$api->setAccessToken($_COOKIE['spotify']['accessToken']);
+$api->setAccessToken($_COOKIE['spotify']);
 if (isset($_GET['song']) && $_GET['song'] != "") {
     $song = $_GET['song'];
     $track = $api->getTrack($song);

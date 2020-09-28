@@ -19,7 +19,7 @@ $expiring = $session->getTokenExpiration();
 $access = array();
 $access["accessToken"] =  $accessToken;
 $access["refreshToken"] = $refreshToken;
-setcookie("spotify", $access, $expiring);
+setcookie("spotify", $accessToken, $expiring);
 
 die();
 echo "<script>window.location.href='index.php';</script>";
