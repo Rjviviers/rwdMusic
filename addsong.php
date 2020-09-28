@@ -3,7 +3,13 @@
 include __DIR__ . '/html_private/head.php';
 include __DIR__ . '/html_private/lgc.php';
 
-$noofsongs = $_GET["NoOfSongs"];
+
+if (!empty($_GET["NoOfSongs"])) {
+    $noofsongs = $_GET["NoOfSongs"];
+} else {
+    $noofsongs = 1;
+}
+
 
 $_SESSION['song'] = array();
 
@@ -52,37 +58,21 @@ if (isset($_POST["Add"])) {
     $(function() {
 
         $('#band').autocomplete({
-
             source: function(request, response) {
-
                 $.ajax({
-
                     type: "POST",
-
                     url: "do_search.php",
-
                     data: {
-
                         term: request.term,
-
                         type: "user"
-
                     },
-
                     success: response,
-
                     dataType: 'json',
-
                     minLength: 2,
-
                     delay: 100
-
                 });
-
             }
-
         });
-
     });
     </script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -105,7 +95,6 @@ if (isset($_POST["Add"])) {
                 <label for="songname <?php echo $i?>">Song Name</label>
 
                 <input type="text" class="form-control" name="song,<?php echo $i?>"
-
                     placeholder="songname <?php echo $i?>" name="song,<?php echo $i?>" id="">
 
             </div>
@@ -117,7 +106,6 @@ if (isset($_POST["Add"])) {
                 <label for="band,<?php echo $i?>" name="band,<?php echo $i?>">Band Name</label>
 
                 <input id="band" type="text" class="form-control" placeholder="bandname <?php echo $i?>"
-
                     name="band,<?php echo $i?>" id="">
 
             </div>
