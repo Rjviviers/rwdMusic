@@ -46,7 +46,7 @@ function toggle() {
                 </li>
                 <?php if (!empty($_COOKIE['spotify'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Spotify loged in</a>
+                    <a class="nav-link " href="#">Spotify logged in</a>
                 </li>
                 <?php } else {?>
                 <li class="nav-item">
@@ -70,7 +70,7 @@ function toggle() {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body pb-5">
                     <div class="form-group">
                         <label for="nu">Number of songs to add</label>
                         <div class="row m-3">

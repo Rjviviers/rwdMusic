@@ -6,9 +6,6 @@ include __DIR__ . '/html_private/lgc.php';
 
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 
-
-
-
 // Fetch the saved access token from somewhere. A database for example.
 $api->setAccessToken($_COOKIE['spotify']);
 if (isset($_GET['song']) && $_GET['song'] != "") {

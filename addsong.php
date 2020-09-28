@@ -37,7 +37,19 @@ if (isset($_POST["Add"])) {
 
     $myConn->redirect("display.php");
 }
+if (isset($_POST["okspot"])) {
+    $api = new SpotifyWebAPI\SpotifyWebAPI();
 
+    // Fetch the saved access token from somewhere. A database for example.
+    $api->setAccessToken($_COOKIE['spotify']);
+    if (isset($_POST['uri']) && $_POST['uri'] != "") {
+        $song = $_POST['uri'];
+        $track = $api->getTrack($song);
+        echo '<b>' . $track->name . '</b> - <b>' . $track->artists[0]->name . '</b><br>';
+        $imgsrc = $track->album->images[0]->url;
+        echo "<img src= '$imgsrc' height='150'>  ";
+    }
+}
 function valid($data)
 {
     $data = stripslashes($data);
@@ -86,7 +98,29 @@ function valid($data)
     <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
     <?php if ($_GET['s']=="yes") {
-        echo "nice";
+        if (!empty($_COOKIE['spotify'])) {
+            ?>
+    <div class="container">
+        <div class="row-rows-col-1">
+            <form action="" method="post">
+                <label for="uri">right-click song on spotify->share->copy sotify uri</label>
+                <input type="text" name="uri" placeholder="Spotify URI">
+                <input type="button" value="okspot">
+            </form>
+        </div>
+    </div>
+
+    <?php
+        } else {
+            ?>
+    <div class="container">
+        <div class="row-rows-col-1">
+            <h2>log in with spotify first</h2>
+            <a href="api.php">login</a>
+        </div>
+    </div>
+    <?php
+        }
     } else {
         ?>
 
