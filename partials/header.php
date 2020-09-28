@@ -61,7 +61,7 @@ function toggle() {
 
             </div>
             <div class="col pt-2 pl-3">
-                <?php if ($_COOKIE['spotify']['accessToken']) { ?>
+                <?php if (!empty($_COOKIE['spotify'])) { ?>
                 <a class="pt-1 btn btn-warning" href="api.php">spotify song add</a>
 
                 <?php } ?>
