@@ -4,6 +4,7 @@ include __DIR__ . '/html_private/head.php';
 include __DIR__ . '/html_private/lgc.php';
 
 
+
 if (!empty($_GET["NoOfSongs"])) {
     $noofsongs = $_GET["NoOfSongs"];
 } else {
@@ -48,10 +49,7 @@ function valid($data)
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
-
-
 
 <head>
     <meta charset="UTF-8">
@@ -86,16 +84,21 @@ function valid($data)
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet" />
     <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+    <?php if ($_GET['s']=="yes") {
+        echo "nice";
+    } else {
+        ?>
+
+
     <div class="container">
         <div class="row  justify-content-md-center">
             <h2 class="capt">Add songs</h2>
         </div>
-
         <form action="" method="post">
             <?php
                 for ($i=0; $i < $noofsongs ; $i++) {
                     ?>
-
             <div class="form-group">
 
                 <label for="songname <?php echo $i?>">Song Name</label>
@@ -104,9 +107,6 @@ function valid($data)
                     placeholder="songname <?php echo $i?>" name="song,<?php echo $i?>" id="">
 
             </div>
-
-
-
             <div class="form-group">
 
                 <label for="band,<?php echo $i?>" name="band,<?php echo $i?>">Band Name</label>
@@ -115,9 +115,6 @@ function valid($data)
                     name="band,<?php echo $i?>" id="">
 
             </div>
-
-
-
             <div>
 
                 <label for="user">Submited by</label> <br>
@@ -129,24 +126,14 @@ function valid($data)
                 <input type="radio" name="user,<?php echo $i?>" value="4"> Danie
 
             </div>
-
             <br>
-
             <?php
-                }
-
-            ?>
-
+                } ?>
             <input class="btn btn-warning form-control" type="submit" name="Add" value="Add">
-
         </form>
-
-
-
     </div>
-
+    <?php
+    }?>
     </body>
-
-
 
 </html>
