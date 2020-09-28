@@ -232,8 +232,12 @@ class DBCon
     {
 
         //sanitise
-
-        mysqli_query($this->link, $query);
+        try {
+            mysqli_query($this->link, $query);
+        } catch (exception $th) {
+            echo $th;
+            die();
+        }
     }
 
     public function GetUser($id)
