@@ -13,7 +13,7 @@ function valid2($data)
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    preg_replace('/[^A-Za-z0-9\-]/', '', $data);
+    preg_replace('/[^a-zA-Z0-9_ -]/s', '', $data);
     return $data;
 }
 echo valid2($data2);
