@@ -11,7 +11,6 @@ $session = new SpotifyWebAPI\Session(
 
 $options = [
     'scope' => [
-        'auto_refresh' => true,
         'playlist-read-private',
         'user-read-private',
     ],
