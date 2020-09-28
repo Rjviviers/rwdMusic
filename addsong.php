@@ -16,9 +16,9 @@ $_SESSION['song'] = array();
 if (isset($_POST["Add"])) {
     for ($i=0; $i < $noofsongs; $i++) {
         $songname = $_POST["song,$i"];
-
+        $songname = valid($songname);
         $bandname = $_POST["band,$i"];
-
+        $bandname = valid($bandname);
         $_SESSION['song'][] = array($songname,$bandname);
 
         $user = $_POST["user,$i"];
@@ -37,7 +37,13 @@ if (isset($_POST["Add"])) {
     $myConn->redirect("display.php");
 }
 
-
+function valid($data)
+{
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    $data = preg_replace('/[^a-zA-Z0-9_ -]/s', '', $data);
+    return $data;
+}
 
 ?>
 
