@@ -44,6 +44,14 @@ function toggle() {
                     <button type="button" class="nav-link btn" data-toggle="modal" data-target="#sngForm">Add
                         Song</button>
                 </li>
+                <?php if (!empty($_COOKIE['spotify'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">Spotify loged in</a>
+                </li>
+                <?php } else {?>
+                <li class="nav-item">
+                    <a class="nav-link " href="api.php">Get Spotify Access</a>
+                </li><?php }?>
                 <li class="nav-item">
                     <a class="nav-link " href="logout.php">Log out</a>
                 </li>
