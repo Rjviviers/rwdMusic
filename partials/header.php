@@ -51,16 +51,16 @@ function toggle() {
 
     <div id="songfrm" class="hide">
         <div class="row row-cols-2">
-            <div class="col pl-2">
+            <div class="col pt-2 pl-4">
                 <div class="form-group">
                     <label for="nu">Number of songs to add</label>
                     <input id="nu" class="form-control" type="number" name="quantity" min="1" max="15" value="1">
-                    <button onclick='addsong()'>Go test</button>
+                    <button onclick='addsong()'>GO</button>
                     <!-- <input type="submit" class="btn btn-secondary form-control" name="go" value="go"> -->
                 </div>
 
             </div>
-            <div class="col pl-3">
+            <div class="col pt-2 pl-3">
                 <a href="">spotify song add</a>
             </div>
         </div>
