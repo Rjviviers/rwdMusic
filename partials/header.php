@@ -55,7 +55,7 @@ function toggle() {
                 <div class="form-group">
                     <label for="nu">Number of songs to add</label>
                     <input id="nu" class="form-control" type="number" name="quantity" min="1" max="15" value="1">
-                    <button onclick='addsong()'>GO</button>
+                    <button class="btn btn-warning" onclick='addsong()'>GO</button>
                     <!-- <input type="submit" class="btn btn-secondary form-control" name="go" value="go"> -->
                 </div>
 
