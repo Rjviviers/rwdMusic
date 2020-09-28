@@ -54,17 +54,28 @@ function toggle() {
             <div class="col pt-2 pl-4">
                 <div class="form-group">
                     <label for="nu">Number of songs to add</label>
-                    <input id="nu" class="form-control" type="number" name="quantity" min="1" max="15" value="1">
-                    <button class="pt-1 btn btn-warning" onclick='addsong()'>GO</button>
+                    <div class="row pl-3 row-cols-4">
+                        <input id="nu" class="form-control col-xl" type="number" name="quantity" min="1" max="15"
+                            value="1">
+                        <button class="pt-1 pl-2 btn btn-warning col" onclick="addsong()">GO</button>
+                    </div>
                     <!-- <input type="submit" class="btn btn-secondary form-control" name="go" value="go"> -->
                 </div>
+                <!-- <div class="form-group">
+                    <label for="nu">Number of songs to add</label>
+                    <input id="nu" class="form-control" type="number" name="quantity" min="1" max="15" value="1">
+                    <button class="pt-1 btn btn-warning" onclick='addsong()'>GO</button>
+                     <input type="submit" class="btn btn-secondary form-control" name="go" value="go"> 
+                </div> -->
 
             </div>
-            <div class="col pt-2 pl-3">
+            <div class="col pt-2 pl-3 row-cols-1">
 
                 <?php if (!empty($_COOKIE['spotify'])) { ?>
-                <label for="">mag dalk nogi werki lel</label>
-                <a class="pt-1 btn btn-warning" href="addsong.php?s=yes">spotify song add</a>
+                <label class="col">mag dalk nogi werki lel</label>
+                <a class="btn col btn-warning" href="addsong.php?s=yes">
+                    spotify song add
+                </a>
                 <?php } ?>
             </div>
         </div>
