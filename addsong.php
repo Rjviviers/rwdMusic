@@ -58,8 +58,9 @@ if (isset($_POST["okspot"])) {
 
         $query = "INSERT INTO `song` (`SongID`, `SongName`, `BandName`, `Submited_by`, `WeekGroup`, `DatePosted`) VALUES (NULL, '$songname', '$artistname', '$user', '$weekgroup', '$outputDate')";
         $myConn->InsertQuery($query);
+        $myConn->redirect("display.php");
     }
-    // $myConn->redirect("display.php");
+    //
 }
 function valid($data)
 {
@@ -112,11 +113,11 @@ function valid($data)
         if (!empty($_COOKIE['spotify'])) {
             ?>
     <div class="container">
-        <div class="row-rows-col-1">
+        <div class="row row-cols-1">
             <form action="" method="post">
-                <label for="uri">right-click song on spotify->share->copy sotify uri</label>
-                <input type="text" name="uri" placeholder="Spotify URI">
-                <input type="submit" name="okspot" value="okspot">
+                <label class="col" for="uri">right-click song on spotify->share->copy sotify uri</label>
+                <input class="col" type="text" name="uri" placeholder="Spotify URI">
+                <input class="col" type="submit" name="okspot" value="Go">
             </form>
         </div>
     </div>
@@ -125,9 +126,9 @@ function valid($data)
         } else {
             ?>
     <div class="container">
-        <div class="row-rows-col-1">
-            <h2>log in with spotify first</h2>
-            <a href="api.php">login</a>
+        <div class="row row-cols-1">
+            <h2 class="col">log in with spotify first</h2>
+            <a class="col" href="api.php">login</a>
         </div>
     </div>
     <?php
