@@ -105,7 +105,7 @@ function valid($data)
             <form action="" method="post">
                 <label for="uri">right-click song on spotify->share->copy sotify uri</label>
                 <input type="text" name="uri" placeholder="Spotify URI">
-                <input type="button" value="okspot">
+                <input type="button" name="okspot" value="okspot">
             </form>
         </div>
     </div>
