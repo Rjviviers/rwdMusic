@@ -6,6 +6,16 @@ include __DIR__ . '/html_private/lgc.php';
 
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 
+$data = " asdasdfaf-sda's/ ";
+
+function valid($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 // Fetch the saved access token from somewhere. A database for example.
 $api->setAccessToken($_SESSION['accessToken']);
 if (isset($_GET['song']) && $_GET['song'] != "") {
