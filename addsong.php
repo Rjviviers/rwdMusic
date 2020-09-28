@@ -38,17 +38,28 @@ if (isset($_POST["Add"])) {
     $myConn->redirect("display.php");
 }
 if (isset($_POST["okspot"])) {
-    $api = new SpotifyWebAPI\SpotifyWebAPI();
-
-    // Fetch the saved access token from somewhere. A database for example.
-    $api->setAccessToken($_COOKIE['spotify']);
     if (isset($_POST['uri']) && $_POST['uri'] != "") {
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($_COOKIE['spotify']);
         $song = $_POST['uri'];
         $track = $api->getTrack($song);
-        echo '<b>' . $track->name . '</b> - <b>' . $track->artists[0]->name . '</b><br>';
+        $songname = $track->name ;
+        $songname = valid($songname);
+        $artistname = $track->artists[0]->name;
+        $artistname = valid($artistname);
         $imgsrc = $track->album->images[0]->url;
-        echo "<img src= '$imgsrc' height='150'>  ";
+        $_SESSION['song'][] = array($songname,$artistname,$imgsrc);
+        
+        $userID = $_SESSION['User']->GetID();
+
+        $weekgroup = "week.".date('m.y');
+        $timestamp = getdate();
+        $outputDate = $timestamp["year"] .'-'. $timestamp["mon"] .'-'. $timestamp["mday"];
+
+        $query = "INSERT INTO `song` (`SongID`, `SongName`, `BandName`, `Submited_by`, `WeekGroup`, `DatePosted`) VALUES (NULL, '$songname', '$artistname', '$user', '$weekgroup', '$outputDate')";
+        $myConn->InsertQuery($query);
     }
+    $myConn->redirect("display.php");
 }
 function valid($data)
 {
