@@ -18,6 +18,7 @@ $refreshToken = $session->getRefreshToken();
 // Store the access and refresh tokens somewhere. In a database for example.
 $_SESSION['accessToken'] = $accessToken;
 $_SESSION['refreshToken'] = $refreshToken;
-
-echo "<script>window.location.href='app.php';</script>";
+var_dump($session);
+setcookie("accessToken", $accessToken);
+echo "<script>window.location.href='index.php';</script>";
 exit;
