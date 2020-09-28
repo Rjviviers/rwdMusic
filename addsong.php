@@ -50,7 +50,7 @@ if (isset($_POST["okspot"])) {
         $imgsrc = $track->album->images[0]->url;
         $_SESSION['song'][] = array($songname,$artistname,$imgsrc);
         
-        $userID = $_SESSION['User']->GetID();
+        $user = $_SESSION['User']->GetID();
 
         $weekgroup = "week.".date('m.y');
         $timestamp = getdate();
@@ -59,7 +59,7 @@ if (isset($_POST["okspot"])) {
         $query = "INSERT INTO `song` (`SongID`, `SongName`, `BandName`, `Submited_by`, `WeekGroup`, `DatePosted`) VALUES (NULL, '$songname', '$artistname', '$user', '$weekgroup', '$outputDate')";
         $myConn->InsertQuery($query);
     }
-    $myConn->redirect("display.php");
+    // $myConn->redirect("display.php");
 }
 function valid($data)
 {
