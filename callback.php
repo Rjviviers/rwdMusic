@@ -19,6 +19,7 @@ $refreshToken = $session->getRefreshToken();
 $_SESSION['accessToken'] = $accessToken;
 $_SESSION['refreshToken'] = $refreshToken;
 var_dump($session);
+die();
 setcookie("accessToken", $accessToken);
 echo "<script>window.location.href='index.php';</script>";
 exit;
