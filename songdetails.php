@@ -63,9 +63,8 @@ if (isset($_POST["submitChange"])) {
             <a style=" margin-left:10px;" class="btn btn-secondary" href="<?php echo 'month.php?month='.$month ?>">
             </a>
             <h1 class='capt'><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h1>
-            <div class="container row row-cols-2">
+            <div class="container row row-cols-2 ">
                 <div class="col">
-
                     <h2 class='capt'> Submited By : <?= $myConn->GetUser($song["Submited_by"])?> </h2>
                     <h2 class='capt'> Posted On Date : <?=  $song["DatePosted"]?> </h2>
                 </div>
