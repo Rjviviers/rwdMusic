@@ -4,7 +4,7 @@ include __DIR__ . '/html_private/lgc.php';
 
 
 $id = $_GET["ID"];
-$userID = $_SESSION["User"]->GetID();
+$userID = $_COOKIE["User"];
 $song = $myConn->SelectQuery("SELECT * FROM `song` WHERE `SongID` = $id");
 //$month = $song['WeekGroup'];
 $tempStor =  explode('.', $song['WeekGroup']);

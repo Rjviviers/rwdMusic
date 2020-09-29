@@ -24,7 +24,7 @@ if (isset($_GET['r'])) {
             <h1>Your Stats</h1>
             <table class="table table-dark">
                 <?php
-        $stats = $myConn->getUserStats($_SESSION["User"]->GetID());
+        $stats = $myConn->getUserStats($_COOKIE["User"]);
             if ($stats != 0) {
                 foreach ($stats as $key => $value) {
                     echo "<tr>";

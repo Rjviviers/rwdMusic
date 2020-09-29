@@ -2,7 +2,9 @@
 
 include __DIR__ . '/html_private/head.php';
 
-
+if (!empty($_COOKIE['User'])) {
+    $myConn->redirect('index.php');
+}
 
 if (isset($_POST["GO"])) {
     include __DIR__ .  '/html_private/Validation.php';
