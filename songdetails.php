@@ -58,20 +58,19 @@ if (isset($_POST["submitChange"])) {
         }
     }
     </script>
-    <div class="container-fluid"><a style=" margin-left:10px;" class="btn btn-secondary"
-            href="<?php echo 'month.php?month='.$month ?>">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+    <div class="container-fluid">
         <div class="card bg-dark text-light neo neo-card">
-            <br>
+            <a style=" margin-left:10px;" class="btn btn-secondary" href="<?php echo 'month.php?month='.$month ?>">
+            </a>
+            <h1 class='capt'><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h1>
             <div class="container row row-cols-2">
                 <div class="col">
-                    <h2 class='capt'> Song Name : "<?= $song["SongName"] ?></h2>
-                    <h2 class='capt'> Band Name : "<?= $song["BandName"] ?></h2>
-                    <h2 class='capt'> Submited By :<?= $myConn->GetUser($song["Submited_by"])?> </h2>
-                    <h2 class='capt'> Posted By Date : <?=  $song["DatePosted"]?> </h2>
+
+                    <h2 class='capt'> Submited By : <?= $myConn->GetUser($song["Submited_by"])?> </h2>
+                    <h2 class='capt'> Posted On Date : <?=  $song["DatePosted"]?> </h2>
                 </div>
                 <div class="justify-center col">
-                    <iframe
+                    <iframe width="100%" height="100%"
                         src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
                         frameborder="0" allowfullscreen></iframe>
                 </div>
@@ -97,17 +96,17 @@ if (isset($_POST["submitChange"])) {
                             $needtovote = $myConn->NeedToVote($id);
 
                             if (count($needtovote) > 0) {
-                                echo "song still needs to be voted on by: ";
+                                echo "<h4 class='capt'> song still needs to be voted on by: ";
 
                                 foreach ($needtovote as  $value) {
                                     echo $value . ",";
                                 }
 
-                                echo "<br>";
+                                echo "</h4>";
                             }
                     
                             if ($myConn->UserVotedOnSong($id, $userID)) {
-                                echo "you have already voted on this song <br>"; ?>
+                                echo "<h5> you have already voted on this song </h5>"; ?>
                     <input type="button" class="btn btn-warning form-control" id="btnChang" onclick='ChangeVote()'
                         value="Change Vote">
 
