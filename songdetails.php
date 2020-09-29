@@ -10,6 +10,8 @@ $song = $myConn->SelectQuery("SELECT * FROM `song` WHERE `SongID` = $id");
 $tempStor =  explode('.', $song['WeekGroup']);
 $month =$tempStor[2].".". $tempStor[1];
 
+$dateArr = explode("-", $song["DatePosted"]);
+
 if (isset($_POST["submit"])) {
     $score = ($_POST["sc1"] * 20) / 100;
     $myConn->RateSong($id, $userID, $score);
@@ -36,6 +38,7 @@ if (isset($_POST["submitChange"])) {
     <?php
     include __DIR__ . '/partials/header.php';
     ?>
+    <link rel="stylesheet" href="css\card.css">
     <style>
     .mt-3 label {
         margin-bottom: 0px !important;
@@ -58,6 +61,43 @@ if (isset($_POST["submitChange"])) {
         }
     }
     </script>
+
+
+
+    <!-- <div class="fond"> <span class="s1">blog </span><span class="s2">card</span></div> -->
+    <div class="card">
+        <div class="thumbnail">
+            <iframe width="100%" height="100%"
+                src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
+                frameborder="0" allowfullscreen></iframe>
+            <!-- <img class="left"
+                src="https://cdn2.hubspot.net/hubfs/322787/Mychefcom/images/BLOG/Header-Blog/photo-culinaire-pexels.jpg" /> -->
+        </div>
+        <div class="right">
+            <h1><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h1>
+            <div class="author"><img src="https://randomuser.me/api/portraits/men/95.jpg" />
+                <h2><?= $myConn->GetUser($song["Submited_by"])?></h2>
+            </div>
+            <div class="separator"></div>
+            <p>
+            <h3></h3>
+            </p>
+        </div>
+        <h5><?= $dateArr[2] ?></h5>
+        <h6><?= $dateArr[1] ?></h6>
+        <ul>
+            <li><i class="fa fa-eye fa-2x"></i></li>
+            <li><i class="fa fa-heart-o fa-2x"></i></li>
+            <li><i class="fa fa-envelope-o fa-2x"></i></li>
+            <li><i class="fa fa-share-alt fa-2x"></i></li>
+        </ul>
+        <div class="fab"><i class="fa fa-arrow-down fa-3x"> </i></div>
+    </div>
+
+
+
+
+
     <div class="container-fluid">
         <div class="card bg-dark text-light neo neo-card">
             <a style=" margin-left:10px;" class="btn btn-secondary" href="<?php echo 'month.php?month='.$month ?>">
@@ -78,13 +118,6 @@ if (isset($_POST["submitChange"])) {
             <div class="container">
 
                 <div class="">
-                    <?php
-                    if ($userID == 2) {
-                        ?>
-                    <!-- <a class="btn btn-danger"  href="delete.php?id=<?php //echo $id?>"> DELETE </a> -->
-                    <?php
-                    }
-                    ?>
                     <?php
                         $hasScore = $myConn->HasScore($id);
                         if ($hasScore) {
@@ -128,11 +161,6 @@ if (isset($_POST["submitChange"])) {
                         }
                         ?>
                 </div>
-                <?php
-                        // if ($userID == 2) {
-                        //     include __DIR__ . "/text.html";
-                        // }
-                        ?>
             </div>
         </div>
     </div>
