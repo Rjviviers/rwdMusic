@@ -1,5 +1,5 @@
 <?php
 
-if (!isset($_SESSION['User'])) {
+if (!isset($_COOKIE['User'])) {
     $myConn->redirect("login.php");
 }

@@ -2,9 +2,7 @@
 include __DIR__ . '/html_private/head.php';
 include __DIR__ . '/html_private/lgc.php';
 
-if (!isset($_SESSION['User'])) {
-    $myConn->redirect("login.php");
-}
+
 $id = $_GET["ID"];
 $userID = $_SESSION["User"]->GetID();
 $song = $myConn->SelectQuery("SELECT * FROM `song` WHERE `SongID` = $id");

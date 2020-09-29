@@ -19,7 +19,7 @@ function addsong() {
 <body class="bg-dark text-white">
     <nav class="navbar nav-fill navbar-expand-lg navbar-light bg-warning">
         <a class="navbar-brand capt"
-            href="userprofile.php"><?php echo "Welcome, " . $_SESSION['User']->GetUsername()?></a>
+            href="userprofile.php"><?php echo "Welcome, " . $_COOKIE['Uname']->GetUsername()?></a>
         <div class=" navbar" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">

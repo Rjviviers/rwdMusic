@@ -7,7 +7,7 @@ include __DIR__ . '/html_private/lgc.php';
 //html_private\head.php
 
 
-$userID = $_SESSION['User']->GetID();
+$userID = $_COOKIE['User'];
 
 
 $pwd = $_POST['pwd'];

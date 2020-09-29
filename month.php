@@ -4,11 +4,7 @@ include __DIR__ . '/html_private/head.php';
 include __DIR__ . '/html_private/lgc.php';
 
 
-if (!isset($_SESSION['User'])) {
-    $myConn->redirect("login.php");
-}
-
-$userIDnew = $_SESSION["User"]->GetID();
+$userIDnew = $_COOKIE["User"];
 
 $rank = 1;
 

@@ -50,7 +50,7 @@ if (isset($_POST["okspot"])) {
         $imgsrc = $track->album->images[0]->url;
         $_SESSION['song'][] = array($songname,$artistname,$imgsrc);
         
-        $user = $_SESSION['User']->GetID();
+        $user = $_COOKIE['User'];
 
         $weekgroup = "week.".date('m.y');
         $timestamp = getdate();
