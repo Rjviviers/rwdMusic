@@ -52,11 +52,11 @@ if (isset($_GET['r'])) {
                 <input type="submit" class="form-control btn btn-warning" name="Go" value="Go">
             </form>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-4"><img src="https://via.placeholder.com/250" alt="" class="w-100 h-100"></div>
             <div class="col-4"><img src="https://via.placeholder.com/250" alt="" class="w-100"></div>
             <div class="col-4"><img src="https://via.placeholder.com/250" alt="" class="w-100"></div>
-        </div>
+        </div> -->
     </div>
 
 
