@@ -80,7 +80,7 @@ if (isset($_POST["submitChange"])) {
             </div>
             <div class="separator"></div>
             <p>
-            <div class="">
+            <div style="color:black;">
                 <?php
                         $hasScore = $myConn->HasScore($id);
                         if ($hasScore) {
