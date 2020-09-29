@@ -63,27 +63,22 @@ if (isset($_POST["submitChange"])) {
             <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <div class="card bg-dark text-light neo neo-card">
             <br>
-            <div class="container">
-                <div class="">
-                    <?php
-                        echo "<h2 class='capt'> Song Name : ". $song["SongName"] ."</h2>";
-                        echo "<h2 class='capt'> Band Name : ". $song["BandName"] ."</h2>";
-                    ?>
+            <div class="container row row-cols-2">
+                <div class="col">
+                    <h2 class='capt'> Song Name : "<?= $song["SongName"] ?></h2>
+                    <h2 class='capt'> Band Name : "<?= $song["BandName"] ?></h2>
+                    <h2 class='capt'> Submited By :<?= $myConn->GetUser($song["Submited_by"])?> </h2>
+                    <h2 class='capt'> Posted By Date : <?=  $song["DatePosted"]?> </h2>
                 </div>
-                <div class="">
-                    <?php
-                        echo "<h2 class='capt'> Submited By : ". $myConn->GetUser($song["Submited_by"]) ."</h2>";
-                        echo "<h2 class='capt'> Posted By Date : ". $song["DatePosted"] ."</h2>";
-                        ?>
+                <div class="justify-center col">
+                    <iframe
+                        src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
+                        frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
             <div class="container">
-                <div class="justify-center">
-                    <iframe width="100%" height="75%"
-                        src="https://www.youtube.com/embed/?listType=search&list='<?php echo $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
-                        frameborder="0" allowfullscreen></iframe>
-                </div>
+
                 <div class="">
                     <?php
                     if ($userID == 2) {
