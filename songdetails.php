@@ -80,45 +80,8 @@ if (isset($_POST["submitChange"])) {
             </div>
             <div class="separator"></div>
             <p>
-            <h3></h3>
-            </p>
-        </div>
-        <h5><?= $dateArr[2] ?></h5>
-        <h6><?= $dateArr[1] ?></h6>
-        <ul>
-            <li><i class="fa fa-eye fa-2x"></i></li>
-            <li><i class="fa fa-heart-o fa-2x"></i></li>
-            <li><i class="fa fa-envelope-o fa-2x"></i></li>
-            <li><i class="fa fa-share-alt fa-2x"></i></li>
-        </ul>
-        <div class="fab"><i class="fa fa-arrow-down fa-3x"> </i></div>
-    </div>
-
-
-
-
-
-    <div class="container-fluid">
-        <div class="card bg-dark text-light neo neo-card">
-            <a style=" margin-left:10px;" class="btn btn-secondary" href="<?php echo 'month.php?month='.$month ?>">
-            </a>
-            <h1 class='capt'><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h1>
-            <div class="container row row-cols-2 ">
-                <div class="col">
-                    <h2 class='capt'> Submited By : <?= $myConn->GetUser($song["Submited_by"])?> </h2>
-                    <h2 class='capt'> Posted On Date : <?=  $song["DatePosted"]?> </h2>
-                </div>
-                <div class="justify-center col">
-                    <iframe width="100%" height="100%"
-                        src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
-                        frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="container">
-
-                <div class="">
-                    <?php
+            <div class="">
+                <?php
                         $hasScore = $myConn->HasScore($id);
                         if ($hasScore) {
                             $songScore = $myConn->GetSingleSongTotal($id);
@@ -139,30 +102,39 @@ if (isset($_POST["submitChange"])) {
                     
                             if ($myConn->UserVotedOnSong($id, $userID)) {
                                 echo "<h5> you have already voted on this song </h5>"; ?>
-                    <input type="button" class="btn btn-warning form-control" id="btnChang" onclick='ChangeVote()'
-                        value="Change Vote">
+                <input type="button" class="btn btn-warning form-control" id="btnChang" onclick='ChangeVote()'
+                    value="Change Vote">
 
 
-                    <div id="changevote" class="hide">
-                        <form method="post" class="mt-3">
-                            <?php include __DIR__ . "/text.html"; ?>
-                            <input name="submitChange" type="submit" value="rate song" class="btn btn-warning">
-                        </form>
-                    </div>
-                    <?php
-                            } else {
-                                ?>
+                <div id="changevote" class="hide">
                     <form method="post" class="mt-3">
                         <?php include __DIR__ . "/text.html"; ?>
-                        <input name="submit" type="submit" value="rate song" class="btn btn-warning">
+                        <input name="submitChange" type="submit" value="rate song" class="btn btn-warning">
                     </form>
-                    <?php
+                </div>
+                <?php
+                            } else {
+                                ?>
+                <form method="post" class="mt-3">
+                    <?php include __DIR__ . "/text.html"; ?>
+                    <input name="submit" type="submit" value="rate song" class="btn btn-warning">
+                </form>
+                <?php
                             }
                         }
                         ?>
-                </div>
             </div>
+            </p>
         </div>
+        <h5><?= $dateArr[2] ?></h5>
+        <h6><?= $dateArr[1] ?></h6>
+        <ul>
+            <li><i class="fa fa-eye fa-2x"></i></li>
+            <li><i class="fa fa-heart-o fa-2x"></i></li>
+            <li><i class="fa fa-envelope-o fa-2x"></i></li>
+            <li><i class="fa fa-share-alt fa-2x"></i></li>
+        </ul>
+        <div class="fab"><i class="fa fa-arrow-down fa-3x"> </i></div>
     </div>
     <footer class="footer"></footer>
     </body>
