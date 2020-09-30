@@ -62,8 +62,70 @@ if (isset($_POST["submitChange"])) {
     }
     </script>
 
+    <!-- new layout -->
+    <div class="container-fluid pt-5">
+        <div class="row ">
+            <div class="col-md-8">
+                <div class="row" style="height: 400px;">
+                    <div class="col-md-12">
+                        <iframe width="100%" height="100%"
+                            src="https://www.youtube.com/embed/?listType=search&list=hello'&autoplay=1" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h1>09</h1>
+                        <h6>september</h6>
+                    </div>
+                    <div class="col-md-4">
 
+                    </div>
+                    <div class="col-md-4">
+                        SHARE
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>title</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>submited by</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus saepe tempore provident iusto
+                            cum
+                            asperiores non velit quod in, labore expedita, eius error officiis alias delectus,
+                            repudiandae at deleniti
+                            fugit.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary">asdafaasfasfafasfafasf</button>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
 
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary">go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- !new layout -->
     <!-- <div class="fond"> <span class="s1">blog </span><span class="s2">card</span></div> -->
     <div class="card">
         <div class="thumbnail">
