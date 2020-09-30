@@ -76,7 +76,7 @@ if (isset($_POST["submitChange"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <h1><?= $dateArr[2] ?></h1>
+                            <h5><?= $dateArr[2] ?></h5>
                             <h4><?= $myConn->GetMonthText($dateArr[1]) ?></h4>
                         </div>
                         <div class="col-md-4">
