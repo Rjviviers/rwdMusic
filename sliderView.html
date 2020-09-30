@@ -1,0 +1,24 @@
+<div id="slider">
+  <style>
+    *,
+    *:after,
+    *:before {
+      box-sizing: border-box;
+      color: var(--darkGray);
+    }
+  </style>
+  <label id="txt" for="range" :style="{color: getHappinessColor}">Score</label>
+  <input v-model="val" oninput="sliderChange()" name="sc1" id="range" step="0.2" type="range" min="0.2" max="100" />
+  <div class="slider outer" style="background:white">
+    <label :style="{width: `${val}%`, borderRadius: greaterThanFifty, background: getSliderBackground}" for="range"
+      aria-hidden="true" class="slider inner">
+      <span :style="{right: getPlacement}">{{getHappiness}}</span>
+    </label>
+  </div>
+  <script>
+    function sliderChange() {
+      var rangeValue = (document.getElementById("range").value * 20) / 100;
+      document.getElementById("txt").innerHTML = rangeValue;
+    }
+  </script>
+</div>

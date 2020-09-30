@@ -132,7 +132,7 @@ if (isset($_POST["submitChange"])) {
 
                             <div id="changevote" class="hide">
                                 <form method="post" class="mt-3">
-                                    <?php include __DIR__ . "/text.html"; ?>
+                                    <?php include __DIR__ . "/sliderView.html"; ?>
                                     <input name="submitChange" type="submit" value="rate song" class="btn btn-warning">
                                 </form>
                             </div>
@@ -140,7 +140,7 @@ if (isset($_POST["submitChange"])) {
                             } else {
                                 ?>
                             <form method="post" class="mt-3">
-                                <?php include __DIR__ . "/text.html"; ?>
+                                <?php include __DIR__ . "/sliderView.html"; ?>
                                 <input name="submit" type="submit" value="rate song" class="btn btn-warning">
                             </form>
                             <?php
@@ -150,9 +150,11 @@ if (isset($_POST["submitChange"])) {
                             </p>
                         </div>
                     </div>
+
+
                     <div class="row">
                         <div class="col-md-12">
-                            <button class="btn btn-primary">asdafaasfasfafasfafasf</button>
+
                         </div>
                         <div class="col-md-12">
                             <div class="row">
