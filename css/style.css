@@ -263,7 +263,6 @@
 
 #slider {
     --roundness: 50px;
-    /* padding: 4vw; */
     display: grid;
     justify-content: stretch;
     width: 100%;
