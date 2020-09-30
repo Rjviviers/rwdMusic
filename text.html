@@ -1,83 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<div id="slider">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/card.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet" />
-  <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-</head>
 
-<body>
-  <div class="container-fluid pt-5">
-    <div class="row ">
-      <div class="col-md-8">
-        <div class="row" style="height: 400px;">
-          <div class="col-md-12">
-            <iframe width="100%" height="100%"
-              src="https://www.youtube.com/embed/?listType=search&list=hello'&autoplay=1" frameborder="0"
-              allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <h1>09</h1>
-            <h6>september</h6>
-          </div>
-          <div class="col-md-4">
+  <style>
+    *,
+    *:after,
+    *:before {
+      box-sizing: border-box;
+      color: var(--darkGray);
+    }
+  </style>
 
-          </div>
-          <div class="col-md-4">
-            SHARE
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row">
-          <div class="col-md-12">
-            <h1>title</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <span>submited by</span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus saepe tempore provident iusto cum
-              asperiores non velit quod in, labore expedita, eius error officiis alias delectus, repudiandae at deleniti
-              fugit.
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <button class="btn btn-primary">asdafaasfasfafasfafasf</button>
-          </div>
-          <div class="col-md-12">
-            <div class="row">
-              <div class="col-md-8">
 
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-primary">go</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <label id="txt" for="range" :style="{color: getHappinessColor}">Score</label>
+
+
+  <!-- Score: {{val}}% -->
+
+
+
+
+
+  <input v-model="val" oninput="sliderChange()" name="sc1" id="range" step="0.2" type="range" min="0.2" max="100" />
+
+
+
+
+
+  <div class="slider outer" style="background:white">
+
+
+    <label :style="{width: `${val}%`, borderRadius: greaterThanFifty, background: getSliderBackground}" for="range"
+      aria-hidden="true" class="slider inner">
+
+
+      <span :style="{right: getPlacement}">{{getHappiness}}</span>
+
+
+    </label>
+
+
   </div>
-</body>
 
-</html>
+
+  <script>
+    function sliderChange() {
+
+
+      var rangeValue = (document.getElementById("range").value * 20) / 100;
+
+
+      document.getElementById("txt").innerHTML = rangeValue;
+
+
+    }
+  </script>
+
+
+</div>
