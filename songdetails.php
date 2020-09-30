@@ -132,8 +132,8 @@ if (isset($_POST["submitChange"])) {
                             <div id="changevote" class="hide">
                                 <form method="post" class="mt-3">
                                     <?php include __DIR__ . "/sliderView.html"; ?>
-                                    <input name="submitChange" type="submit" value="" class="fab"><i
-                                        class="fas fa-check"></i></input>
+                                    <button name="submitChange" type="submit" value="" class="fab"><i
+                                            class="fas fa-check"></i></button>
                                 </form>
                             </div>
                             <?php
@@ -141,8 +141,8 @@ if (isset($_POST["submitChange"])) {
                                 ?>
                             <form method="post" class="mt-3">
                                 <?php include __DIR__ . "/sliderView.html"; ?>
-                                <input name="submit" type="submit" value="" class="fab"><i
-                                    class="fas fa-check"></i></input>
+                                <button name="submit" type="submit" value="" class="fab"><i
+                                        class="fas fa-check"></i></button>
                             </form>
                             <?php
                             }
