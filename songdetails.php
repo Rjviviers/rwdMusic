@@ -64,7 +64,7 @@ if (isset($_POST["submitChange"])) {
 
     <!-- new layout -->
     <div class="container-fluid pt-5">
-        <div class="p-5">
+        <div class="p-sm-0 p-5">
             <div class="row ">
                 <div class="col-md-8">
                     <div class="row" style="height: 400px;">
@@ -133,7 +133,7 @@ if (isset($_POST["submitChange"])) {
                             <div id="changevote" class="hide">
                                 <form method="post" class="mt-3">
                                     <?php include __DIR__ . "/sliderView.html"; ?>
-                                    <input name="submitChange" type="submit" value="rate song" class="btn btn-warning">
+                                    <input name="submitChange" type="submit" value="rate song" class="fab">
                                 </form>
                             </div>
                             <?php
@@ -141,7 +141,7 @@ if (isset($_POST["submitChange"])) {
                                 ?>
                             <form method="post" class="mt-3">
                                 <?php include __DIR__ . "/sliderView.html"; ?>
-                                <input name="submit" type="submit" value="rate song" class="btn btn-warning">
+                                <input name="submit" type="submit" value="rate song" class="fab">
                             </form>
                             <?php
                             }
