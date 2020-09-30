@@ -28,9 +28,7 @@ function addsong() {
     position: fixed;
     bottom: 48px;
     right: 48px;
-    font-size: 2.6667em;
-    display: inline-block;
-    cursor: default;
+    z-index: 10000;
 }
 </style>
 
