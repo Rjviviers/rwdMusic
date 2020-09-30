@@ -125,7 +125,7 @@ if (isset($_POST["submitChange"])) {
                             }
                     
                             if ($myConn->UserVotedOnSong($id, $userID)) {
-                                echo "<h5> you have already voted on this song </h5>"; ?>
+                                echo "<h4> you have already voted on this song </h4>"; ?>
                                 <input type="button" class="btn btn-warning form-control" id="btnChang"
                                     onclick='ChangeVote()' value="Change Vote">
 
