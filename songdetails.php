@@ -8,10 +8,10 @@ $userID = $_COOKIE["User"];
 $song = $myConn->SelectQuery("SELECT * FROM `song` WHERE `SongID` = $id");
 //$month = $song['WeekGroup'];
 $tempStor =  explode('.', $song['WeekGroup']);
-$month =$tempStor[2].".". $tempStor[1];
+$month = $tempStor[2].".". $tempStor[1];
 
 $dateArr = explode("-", $song["DatePosted"]);
-
+$dateVal = "20.".$dateArr[1];
 if (isset($_POST["submit"])) {
     $score = ($_POST["sc1"] * 20) / 100;
     $myConn->RateSong($id, $userID, $score);
@@ -76,7 +76,7 @@ if (isset($_POST["submitChange"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <h5><?= $myConn->GetMonthText($dateArr[2]) ?>,<?= $dateArr[1] ?></h5>
+                            <h5><?= $myConn->GetMonthText($dateVal) ?>, <?= $dateArr[2] ?></h5>
                         </div>
                         <div class="col-md-4">
 
@@ -131,7 +131,7 @@ if (isset($_POST["submitChange"])) {
 
                             <div id="changevote" class="hide">
                                 <form method="post" class="mt-3">
-                                    <?php include __DIR__ . "/sliderView.html"; ?>
+                                    <?php include __DIR__ . "/views/sliderView.html"; ?>
                                     <button name="submitChange" type="submit" value="" class="cardbuttondeets"><i
                                             class="fas fa-check"></i></button>
                                 </form>
@@ -140,7 +140,7 @@ if (isset($_POST["submitChange"])) {
                             } else {
                                 ?>
                             <form method="post" class="mt-3">
-                                <?php include __DIR__ . "/sliderView.html"; ?>
+                                <?php include __DIR__ . "/views/sliderView.html"; ?>
                                 <button name="submit" type="submit" value="" class="cardbuttondeets"><i
                                         class="fas fa-check"></i></button>
                             </form>
