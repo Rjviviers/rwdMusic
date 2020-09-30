@@ -76,8 +76,7 @@ if (isset($_POST["submitChange"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <h5><?= $dateArr[2] ?></h5>
-                            <h4><?= $myConn->GetMonthText($dateArr[1]) ?></h4>
+                            <h5><?= $myConn->GetMonthText($dateArr[2]) ?>,<?= $dateArr[1] ?></h5>
                         </div>
                         <div class="col-md-4">
 
@@ -133,7 +132,8 @@ if (isset($_POST["submitChange"])) {
                             <div id="changevote" class="hide">
                                 <form method="post" class="mt-3">
                                     <?php include __DIR__ . "/sliderView.html"; ?>
-                                    <input name="submitChange" type="submit" value="rate song" class="fab">
+                                    <input name="submitChange" type="submit" value="" class="fab"><i
+                                        class="fas fa-check"></i></input>
                                 </form>
                             </div>
                             <?php
@@ -141,7 +141,8 @@ if (isset($_POST["submitChange"])) {
                                 ?>
                             <form method="post" class="mt-3">
                                 <?php include __DIR__ . "/sliderView.html"; ?>
-                                <input name="submit" type="submit" value="rate song" class="fab">
+                                <input name="submit" type="submit" value="" class="fab"><i
+                                    class="fas fa-check"></i></input>
                             </form>
                             <?php
                             }
