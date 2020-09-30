@@ -61,14 +61,12 @@ if (isset($_POST["submitChange"])) {
         }
     }
     </script>
-
-    <!-- new layout -->
     <div class="container-fluid pt-5">
         <div class="p-sm-0 p-5">
             <div class="row ">
                 <div class="col-md-8">
                     <div class="row" style="height: 400px;">
-                        <div class="col-md-12">
+                        <div class="col-md-12 ">
                             <iframe width="100%" height="100%"
                                 src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
                                 frameborder="0" allowfullscreen></iframe>
@@ -170,19 +168,9 @@ if (isset($_POST["submitChange"])) {
             </div>
         </div>
     </div>
-
-    <!-- !new layout -->
-
-
     <footer class="footer"></footer>
     </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+
     <script src="js/app.js"></script>
 
 </html>
-<!-- // var sliderOld = document.getElementById("myRange");
-    // var output = document.getElementById("demo");
-    // output.innerHTML = sliderOld.value;
-    // sliderOld.oninput = function() {
-    //     output.innerHTML = this.value;
-    // } -->
