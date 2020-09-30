@@ -16,6 +16,23 @@ function addsong() {
 }
 </script>
 </head>
+<style>
+.flotingab {
+    background: #e28101;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    text-align: center;
+    color: #FFF;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5), 3px 3px 3px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    bottom: 48px;
+    right: 48px;
+    font-size: 2.6667em;
+    display: inline-block;
+    cursor: default;
+}
+</style>
 
 <body class="bg-dark text-white">
     <nav class="navbar nav-fill navbar-expand-lg navbar-light bg-warning">
@@ -44,7 +61,8 @@ function addsong() {
             </ul>
         </div>
     </nav>
-
+    <div class="flotingab" id="masterfab"><button type="button" class="nav-link btn" data-toggle="modal"
+            data-target="#sngForm"><i class="fas fa-music"></i></button></div>
 
     <div class="modal fade " id="sngForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
