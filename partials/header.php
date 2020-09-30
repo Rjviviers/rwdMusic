@@ -48,16 +48,16 @@ function addsong() {
     transition: 0.25s all ease-in-out;
     cursor: pointer;
     z-index: 999;
-    color: white;
-    line-height: 60px;
     font-size: 20px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+    text-align: center;
+    vertical-align: bottom;
 }
 
 .fab:hover {
     background: #5a95f5;
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
 }
 </style>
 
