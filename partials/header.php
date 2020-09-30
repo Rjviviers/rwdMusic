@@ -51,6 +51,7 @@ function addsong() {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
     text-align: center;
     vertical-align: bottom;
+    line-height: 60px;
 }
 
 .fab:hover {
