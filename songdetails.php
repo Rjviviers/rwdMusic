@@ -64,86 +64,48 @@ if (isset($_POST["submitChange"])) {
 
     <!-- new layout -->
     <div class="container-fluid pt-5">
-        <div class="row ">
-            <div class="col-md-8">
-                <div class="row" style="height: 400px;">
-                    <div class="col-md-12">
-                        <iframe width="100%" height="100%"
-                            src="https://www.youtube.com/embed/?listType=search&list=hello'&autoplay=1" frameborder="0"
-                            allowfullscreen></iframe>
+        <div class="backk">
+            <div class="row ">
+                <div class="col-md-8">
+                    <div class="row" style="height: 400px;">
+                        <div class="col-md-12">
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
+                                frameborder="0" allowfullscreen></iframe>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h1>09</h1>
-                        <h6>september</h6>
-                    </div>
-                    <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h1><?= $dateArr[2] ?></h1>
+                            <h4><?= $myConn->GetMonthText($dateArr[1]) ?></h4>
+                        </div>
+                        <div class="col-md-4">
 
-                    </div>
-                    <div class="col-md-4">
-                        SHARE
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1>title</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <span>submited by</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus saepe tempore provident iusto
-                            cum
-                            asperiores non velit quod in, labore expedita, eius error officiis alias delectus,
-                            repudiandae at deleniti
-                            fugit.
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <button class="btn btn-primary">asdafaasfasfafasfafasf</button>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-8">
-
-                            </div>
-                            <div class="col-md-4">
-                                <button class="btn btn-primary">go</button>
-                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            SHARE
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- !new layout -->
-    <!-- <div class="fond"> <span class="s1">blog </span><span class="s2">card</span></div> -->
-    <div class="card">
-        <div class="thumbnail">
-            <iframe width="100%" height="100%"
-                src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
-                frameborder="0" allowfullscreen></iframe>
-            <!-- <img class="left"
-                src="https://cdn2.hubspot.net/hubfs/322787/Mychefcom/images/BLOG/Header-Blog/photo-culinaire-pexels.jpg" /> -->
-        </div>
-        <div class="right">
-            <h1><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h1>
-            <div class="author"><img src="https://randomuser.me/api/portraits/men/95.jpg" />
-                <h2><?= $myConn->GetUser($song["Submited_by"])?></h2>
-            </div>
-            <div class="separator"></div>
-            <p>
-            <div style="color:black;">
-                <?php
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>
+                                <h1><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h1>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="author"><img src="https://randomuser.me/api/portraits/men/95.jpg" />
+                                <h2><?= $myConn->GetUser($song["Submited_by"])?></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p><?php
                         $hasScore = $myConn->HasScore($id);
                         if ($hasScore) {
                             $songScore = $myConn->GetSingleSongTotal($id);
@@ -164,40 +126,53 @@ if (isset($_POST["submitChange"])) {
                     
                             if ($myConn->UserVotedOnSong($id, $userID)) {
                                 echo "<h5> you have already voted on this song </h5>"; ?>
-                <input type="button" class="btn btn-warning form-control" id="btnChang" onclick='ChangeVote()'
-                    value="Change Vote">
+                                <input type="button" class="btn btn-warning form-control" id="btnChang"
+                                    onclick='ChangeVote()' value="Change Vote">
 
 
-                <div id="changevote" class="hide">
-                    <form method="post" class="mt-3">
-                        <?php include __DIR__ . "/text.html"; ?>
-                        <input name="submitChange" type="submit" value="rate song" class="btn btn-warning">
-                    </form>
-                </div>
-                <?php
+                            <div id="changevote" class="hide">
+                                <form method="post" class="mt-3">
+                                    <?php include __DIR__ . "/text.html"; ?>
+                                    <input name="submitChange" type="submit" value="rate song" class="btn btn-warning">
+                                </form>
+                            </div>
+                            <?php
                             } else {
                                 ?>
-                <form method="post" class="mt-3">
-                    <?php include __DIR__ . "/text.html"; ?>
-                    <input name="submit" type="submit" value="rate song" class="btn btn-warning">
-                </form>
-                <?php
+                            <form method="post" class="mt-3">
+                                <?php include __DIR__ . "/text.html"; ?>
+                                <input name="submit" type="submit" value="rate song" class="btn btn-warning">
+                            </form>
+                            <?php
                             }
                         }
                         ?>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary">asdafaasfasfafasfafasf</button>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary">go</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </p>
         </div>
-        <h5><?= $myConn->GetMonthText($dateArr[1]) ?></h5>
-        <h6><?= $dateArr[2] ?></h6>
-        <ul>
-            <li><i class="fa fa-eye fa-2x"></i></li>
-            <li><i class="fa fa-heart-o fa-2x"></i></li>
-            <li><i class="fa fa-envelope-o fa-2x"></i></li>
-            <li><i class="fa fa-share-alt fa-2x"></i></li>
-        </ul>
-        <div class="fab"><i class="fa fa-arrow-down fa-3x"> </i></div>
     </div>
+
+    <!-- !new layout -->
+
+
     <footer class="footer"></footer>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
