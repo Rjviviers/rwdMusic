@@ -20,7 +20,7 @@ function addsong() {
 .fab-ctr {
     z-index: 999;
     width: 100%;
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
     -webkit-transform-origin: center center;
@@ -33,7 +33,7 @@ function addsong() {
     -ms-transform: rotate(0) translateX(0) translateY(0);
     -o-transform: rotate(0) translateX(0) translateY(0);
     transform: rotate(0) translateX(0) translateY(0);
-    padding: 50px;
+    padding: 10px;
     will-change: transform;
     transition: 0.25s all ease-in-out;
 }
@@ -47,7 +47,6 @@ function addsong() {
     will-change: transform;
     transition: 0.25s all ease-in-out;
     cursor: pointer;
-    z-index: 999;
     font-size: 20px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
     text-align: center;
