@@ -20,11 +20,11 @@ if (isset($_GET['r'])) {
     include __DIR__ . '/partials/header.php';
     ?>
     <div class="container ">
-        <div class="row">
-            <div class="col-3 p-5">
+        <div class="row pt-sm-5">
+            <div class="col-3 col-sm-1 p-5">
                 <img height="150" src="https://via.placeholder.com/150" alt="" class="rounded-circle">
             </div>
-            <div class="col-9 pt-5">
+            <div class="col-9 col-sm-6 pt-2">
                 <div class="d-flex justify-content-between align-bottom ">
                     <h1><?= $_COOKIE['Uname'] ?></h1>
                 </div>
@@ -42,15 +42,18 @@ if (isset($_GET['r'])) {
 
             </div>
         </div>
-        <div class="row">
-            <form action="change-pw.php" method="post">
-                <h1>Change Password</h1>
-                <div class="form-group">
-                    <label for="new-pw">New Password</label>
-                    <input type="Password" name="pwd" class="form-control">
-                </div>
-                <input type="submit" class="form-control btn btn-warning" name="Go" value="Go">
-            </form>
+        <div class="row pt-5">
+            <div class="col">
+                <form action="change-pw.php" method="post">
+                    <h1>Change Password</h1>
+                    <div class="form-group">
+                        <label for="new-pw">New Password</label>
+                        <input type="Password" name="pwd" class="form-control">
+                    </div>
+                    <input type="submit" class="form-control btn btn-warning" name="Go" value="Go">
+                </form>
+            </div>
+
         </div>
         <!-- <div class="row">
             <div class="col-4"><img src="https://via.placeholder.com/250" alt="" class="w-100 h-100"></div>
