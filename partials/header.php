@@ -57,15 +57,31 @@ function addsong() {
                     </button>
                 </div>
                 <div class="modal-body pb-5">
-                    <div class="form-group">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="nu">Number of songs to add</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <input id="nu" class="form-control col-xl" type="number" name="quantity" min="1"
+                                    max="15" value="1">
+                            </div>
+                            <div class="col-md-4">
+                                <button class="pt-1 pl-2 btn btn-warning col" onclick="addsong()">GO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
                         <label for="nu">Number of songs to add</label>
                         <div class="row m-3">
                             <input id="nu" class="form-control col-xl" type="number" name="quantity" min="1" max="15"
                                 value="1">
                             <button class="pt-1 pl-2 btn btn-warning col" onclick="addsong()">GO</button>
                         </div>
+                    </div> -->
 
-                    </div>
                     <div class="col pt-2 pl-3 row-cols-1">
 
                         <?php if (!empty($_COOKIE['spotify'])) { ?>
