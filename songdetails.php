@@ -64,7 +64,7 @@ if (isset($_POST["submitChange"])) {
 
     <!-- new layout -->
     <div class="container-fluid pt-5">
-        <div class="backk">
+        <div class="p-5">
             <div class="row ">
                 <div class="col-md-8">
                     <div class="row" style="height: 400px;">
@@ -97,8 +97,8 @@ if (isset($_POST["submitChange"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="author"><img src="https://randomuser.me/api/portraits/men/95.jpg" />
-                                <h2><?= $myConn->GetUser($song["Submited_by"])?></h2>
+                            <div class="author"><img src="https://via.placeholder.com/25" />
+                                <?= $myConn->GetUser($song["Submited_by"])?>
                             </div>
                         </div>
                     </div>
