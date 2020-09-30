@@ -17,18 +17,47 @@ function addsong() {
 </script>
 </head>
 <style>
-.flotingab {
-    background: #e28101;
-    width: 64px;
-    height: 64px;
+.fab-ctr {
+    z-index: 999;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    -webkit-transform-origin: center center;
+    -moz-transform-origin: center center;
+    -ms-transform-origin: center center;
+    -o-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-transform: rotate(0) translateX(0) translateY(0);
+    -moz-transform: rotate(0) translateX(0) translateY(0);
+    -ms-transform: rotate(0) translateX(0) translateY(0);
+    -o-transform: rotate(0) translateX(0) translateY(0);
+    transform: rotate(0) translateX(0) translateY(0);
+    padding: 50px;
+    will-change: transform;
+    transition: 0.25s all ease-in-out;
+}
+
+.fab {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    text-align: center;
-    color: #FFF;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5), 3px 3px 3px rgba(0, 0, 0, 0.25);
-    position: fixed;
-    bottom: 48px;
-    right: 48px;
-    z-index: 10000;
+    background: #4285F4;
+    float: right;
+    will-change: transform;
+    transition: 0.25s all ease-in-out;
+    cursor: pointer;
+    z-index: 999;
+    color: white;
+    line-height: 60px;
+    font-size: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+.fab:hover {
+    background: #5a95f5;
+    width: 70px;
+    height: 70px;
 }
 </style>
 
@@ -59,9 +88,13 @@ function addsong() {
             </ul>
         </div>
     </nav>
-    <div class="flotingab" id="masterfab"><button type="button" class="nav-link btn" data-toggle="modal"
+    <!-- <div class="flotingab" id="masterfab"><button type="button" class="nav-link btn" data-toggle="modal"
             data-target="#sngForm"><i class="fas fa-music"></i></button></div>
-
+            <div class="nav"> -->
+    <div class="fab-ctr">
+        <div class="fab fas fa-music" data-toggle="modal" data-target="#sngForm"></div>
+    </div>
+    </div>
     <div class="modal fade " id="sngForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
