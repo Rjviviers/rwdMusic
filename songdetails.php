@@ -126,8 +126,8 @@ if (isset($_POST["submitChange"])) {
             </div>
             </p>
         </div>
-        <h5><?= $dateArr[2] ?></h5>
-        <h6><?= $dateArr[1] ?></h6>
+        <h5><?= $myConn->GetMonthText($dateArr[1]) ?></h5>
+        <h6><?= $dateArr[2] ?></h6>
         <ul>
             <li><i class="fa fa-eye fa-2x"></i></li>
             <li><i class="fa fa-heart-o fa-2x"></i></li>
