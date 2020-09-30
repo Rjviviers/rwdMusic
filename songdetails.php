@@ -90,15 +90,15 @@ if (isset($_POST["submitChange"])) {
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1>
-                                <h1><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h1>
-                            </h1>
+                            <h3><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="author"><img src="https://via.placeholder.com/25" />
-                                <?= $myConn->GetUser($song["Submited_by"])?>
+                                <div style="padding-top: 2px;padding-left: 4em;">
+                                    <?= $myConn->GetUser($song["Submited_by"])?>
+                                </div>
                             </div>
                         </div>
                     </div>
