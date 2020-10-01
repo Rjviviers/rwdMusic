@@ -62,7 +62,7 @@ if (isset($_POST["submitChange"])) {
     }
     </script>
     <div class="container-fluid pt-5">
-        <div class="p-sm-0 p-5">
+        <div class="p-sm-0">
             <div class="row ">
                 <div class="col-md-8">
                     <div class="row" style="height: 400px;">
@@ -93,7 +93,7 @@ if (isset($_POST["submitChange"])) {
                     <div class="row">
                         <div class="col-md-12">
                             <div class="author"><img src="https://via.placeholder.com/25" />
-                                <div style="padding-top: 2px;padding-left: 4em;">
+                                <div style="padding-top: 6px;padding-left: 3em;margin: 7%;">
                                     <?= $myConn->GetUser($song["Submited_by"])?>
                                 </div>
                             </div>
