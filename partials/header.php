@@ -17,50 +17,7 @@ function addsong() {
 }
 </script>
 </head>
-<style>
-.fab-ctr {
-    z-index: 999;
-    width: 100%;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    -webkit-transform-origin: center center;
-    -moz-transform-origin: center center;
-    -ms-transform-origin: center center;
-    -o-transform-origin: center center;
-    transform-origin: center center;
-    -webkit-transform: rotate(0) translateX(0) translateY(0);
-    -moz-transform: rotate(0) translateX(0) translateY(0);
-    -ms-transform: rotate(0) translateX(0) translateY(0);
-    -o-transform: rotate(0) translateX(0) translateY(0);
-    transform: rotate(0) translateX(0) translateY(0);
-    padding: 10px;
-    will-change: transform;
-    transition: 0.25s all ease-in-out;
-}
 
-.fab {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #4285F4;
-    float: right;
-    will-change: transform;
-    transition: 0.25s all ease-in-out;
-    cursor: pointer;
-    font-size: 20px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
-    text-align: center;
-    vertical-align: bottom;
-    line-height: 60px;
-}
-
-.fab:hover {
-    background: #5a95f5;
-    width: 65px;
-    height: 65px;
-}
-</style>
 
 <body class="bg-dark text-white">
     <nav class="navbar nav-fill navbar-expand-lg navbar-light bg-warning">
