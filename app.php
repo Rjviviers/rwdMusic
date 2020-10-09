@@ -22,8 +22,9 @@ $results  = $api->search("vagabond polaris", "track");
 foreach ($results->tracks->items as $key => $value) {
     echo $value->name;
     echo "  type: ". $value->type;
-    echo " uri: ". $value->uri;
     echo " artist:" . $value->artists->name;
+    echo " uri: ". $value->uri;
+
     echo "</br>";
 }
 ?>
