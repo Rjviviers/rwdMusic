@@ -21,7 +21,7 @@ $api->setAccessToken($_COOKIE['spotify']);
 $uris = array();
 $all = $myConn->allSongs();
 foreach ($all as $value) {
-    $results  = $api->search($value->GetSpotifySearch(), "track");
+    $results  = $api->search($value->GetSongName()." ".$value->GetBandName(), "track");
     foreach ($results->tracks->items as $key => $value) {
         $uris[] = $value->uri;
     }
