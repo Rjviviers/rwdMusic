@@ -23,7 +23,7 @@ foreach ($results->tracks->items as $key => $value) {
     echo $value->name;
     echo "  type: ". $value->type;
     echo " uri: ". $value->uri;
-    echo " artist:" . $value->artist;
+    echo " artist:" . $value->artists->name;
     echo "</br>";
 }
 ?>
