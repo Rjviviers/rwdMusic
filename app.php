@@ -18,7 +18,7 @@ $api->setAccessToken($_COOKIE['spotify']);
 // It's now possible to request data about the currently authenticated user
 $track  = $api->search("hyochondria dragged under", "track");
 echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
-var_dump($song);
+var_dump($track);
 ?>
 
 
