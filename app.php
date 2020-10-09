@@ -28,7 +28,7 @@ foreach ($all as $value) {
 }
 
 
-var_dump($uris);
+var_dump($all);
 ?>
 
 <table class="">
