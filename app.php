@@ -16,9 +16,11 @@ $api->setAccessToken($_COOKIE['spotify']);
 //     echo "<img src= '$imgsrc' height='150'>  ";
 // }
 // It's now possible to request data about the currently authenticated user
-$track  = $api->search("hyochondria dragged under", "track");
-echo '<b>' . $track->name . '</b> by <b>' . $track->artists[0]->name . '</b>';
-var_dump($track);
+$results  = $api->search("hyochondria dragged under", "track");
+// var_dump($track);
+foreach ($results as $key => $value) {
+    echo var_dump($value) , '<br>';
+}
 ?>
 
 
