@@ -16,26 +16,35 @@ $api->setAccessToken($_COOKIE['spotify']);
 //     echo "<img src= '$imgsrc' height='150'>  ";
 // }
 // It's now possible to request data about the currently authenticated user
-$results  = $api->search("vagabond polaris", "track");
+
 // var_dump($track);
-
-foreach ($results->tracks->items as $key => $value) {
-    echo $value->name;
-    echo "  type: ". $value->type;
-    echo " artist:" . $value->artists->name;
-    echo " uri: ". $value->uri;
-
-    echo "</br>";
+$uris = array();
+$all = $myConn->allSongs();
+foreach ($all as $value) {
+    $results  = $api->search($value->GetSpotifySearch(), "track");
+    foreach ($results->tracks->items as $key => $value) {
+        $uris[] = $value->uri;
+    }
 }
+
+
+var_dump($uris);
 ?>
 
-
-<!-- <form method="get">
-    <input type="text" name="song">
-    <input type="submit" value="go">
-</form> -->
-
-
+<table class="">
+    <thead>
+        <tr>
+            <th>original</th>
+            <th>spotify<br></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ori</td>
+            <td>spo</td>
+        </tr>
+    </tbody>
+</table>
 <?php
 
 // echo "</br> images atr";

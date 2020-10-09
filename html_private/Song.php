@@ -79,6 +79,9 @@ class Song
         return $this->songName ;
     }
 
+    public function GetSpotifySearch(){
+        return $this->songName ." ". $this->bandName;
+    }
 
     public function GetBandName()
     {
