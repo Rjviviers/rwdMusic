@@ -20,7 +20,8 @@ $results  = $api->search("vagabond polaris", "track");
 // var_dump($track);
 var_dump();
 foreach ($results->tracks->items as $key => $value) {
-    echo $key . " : " . var_dump($value);
+    echo $value->name ;
+    echo "  ". $value->type;
 }
 ?>
 
