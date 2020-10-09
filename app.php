@@ -16,7 +16,7 @@ if (isset($_GET['song']) && $_GET['song'] != "") {
     echo "<img src= '$imgsrc' height='150'>  ";
 }
 // It's now possible to request data about the currently authenticated user
-
+$api->search("hyochondria dragged under", "track");
 ?>
 
 

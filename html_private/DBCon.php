@@ -339,18 +339,20 @@ class DBCon
         $q = "SELECT * from `song`";
         $result = mysqli_query($this->link, $q);
         $all = mysqli_fetch_all($result, 1);
+        foreach ($all as $value) {
+            $allSongs[] = new Song($value["SongID"], $value["SongName"], $value["BandName"], $value["Submited_by"], $value["WeekGroup"], $value["DatePosted"]);
+        }
         return $all;
     }
 
     public function geturi($id)
     {
-        $uri = array();
-        $q = "SELECT `spotifyUri` from `spotify_uris` where `songFKey` = $id ";
+        $q = "SELECT * FROM `spotify_uris` WHERE `songFKey` = $id";
         $result = mysqli_query($this->link, $q);
-        $row = mysqli_fetch_all($result, 1);
-        vardump($row);
-        return $row;
+        $row = mysqli_fetch_all($result);
+        return $row[0][1];
     }
+
     public function GetLatestSongs()
     {
         $songlist = array();
