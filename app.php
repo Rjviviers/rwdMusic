@@ -18,7 +18,7 @@ $api->setAccessToken($_COOKIE['spotify']);
 // It's now possible to request data about the currently authenticated user
 $results  = $api->search("vagabond polaris", "track");
 // var_dump($track);
-var_dump();
+
 foreach ($results->tracks->items as $key => $value) {
     echo $value->name ;
     echo "  ". $value->type;
