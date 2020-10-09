@@ -1,5 +1,5 @@
 <?php
-
+include 'head.php';
 
 class Song
 {
@@ -101,5 +101,9 @@ class Song
     public function GetPostedByUser()
     {
         return $this->postedByUser;
+    }
+
+    public function getUri(){
+        $myConn
     }
 }

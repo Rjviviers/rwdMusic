@@ -248,24 +248,24 @@ $rank = 1;
 
         // $playlistConverterUrl = "http://www.playlist-converter.net/#/?text=";
 
-        $text = "";
+        // $text = "";
 
         // ;
 
-        if ($userIDnew == 2) {
-            foreach (array_unique($plain) as $val) {
+        // if ($userIDnew == 2) {
+        //     foreach (array_unique($plain) as $val) {
 
-                //     $text .= str_replace(" ", "%20", $val) . "%0A";
+        //         //     $text .= str_replace(" ", "%20", $val) . "%0A";
 
-                echo "<p>";
+        //         echo "<p>";
 
-                echo $val;
+        //         echo $val;
 
-                echo "<br>";
+        //         echo "<br>";
 
-                echo "</p>";
-            }
-        }
+        //         echo "</p>";
+        //     }
+        // }
 
          
 
@@ -277,7 +277,7 @@ $rank = 1;
 
         ?>
 
-            <a class="btn btn-warning" href="<?php echo $url;?>">Make Playlist</a>
+            <!-- <a class="btn btn-warning" href="<?php //echo $url;?>">Make Playlist</a> -->
 
         </div>
 

@@ -168,7 +168,10 @@ if (isset($_POST["submitChange"])) {
             </div>
         </div>
     </div>
-    <footer class="footer"></footer>
+    <footer class="footer">
+    <?=  ?>
+    
+    </footer>
     </body>
 
     <script src="js/app.js"></script>

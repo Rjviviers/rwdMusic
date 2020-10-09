@@ -38,8 +38,6 @@ class DBCon
         }
     }
 
-    
-
     public function Connect()
     {
         $this->link = mysqli_connect($this->host, $this->username, $this->password, $this->database);
@@ -61,8 +59,11 @@ class DBCon
         }
     }
 
+
+
     public function checkLatestVotes()
     {
+        //checks db.view for new votes returns obj array
         $sql = "SELECT * FROM `Song_User_rating2` ORDER BY `Song_User_rating2`.`RateID` DESC LIMIT 3";
 
         $result  = mysqli_query($this->link, $sql);
@@ -74,9 +75,6 @@ class DBCon
 
     public function checkMonthTop($month)
     {
-
-        // $query = "SELECT * FROM `Song_and_Score` WHERE `weekgroup` LIKE `%$month%`";
-
         $query = "SELECT *  FROM `Song_and_Score` WHERE `weekgroup` LIKE '%$month%' ORDER BY `Song_and_Score`.`Total`  DESC  LIMIT 3";
 
         $result = mysqli_query($this->link, $query);
@@ -335,6 +333,24 @@ class DBCon
         return $listOfSongs;
     }
 
+    public function allSongs()
+    {
+        $allSongs = array();
+        $q = "SELECT * from `song`";
+        $result = mysqli_query($this->link, $q);
+        $all = mysqli_fetch_all($result, 1);
+        return $all;
+    }
+
+    public function geturi($id)
+    {
+        $uri = array();
+        $q = "SELECT `spotifyUri` from `spotify_uris` where `songFKey` = $id ";
+        $result = mysqli_query($this->link, $q);
+        $row = mysqli_fetch_all($result, 1);
+        vardump($row);
+        return $row;
+    }
     public function GetLatestSongs()
     {
         $songlist = array();
@@ -459,7 +475,6 @@ class DBCon
             mysqli_query($this->link, $inQuery);
         }
     }
-
 
 
     public function getUserStats($userID)
