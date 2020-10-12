@@ -206,4 +206,4 @@ $uris = array(['spotify:track:3MIbTPWQAWoMd4mZSEbXZy',
 'spotify:track:0rkGzISxVaqpRad7NAe7G5',
 'spotify:track:6PqmuXpV3uGglVIFMHXS0M',]);
 
-$api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', $uris);
+$api->addPlaylistTracks('spotify:playlist:1vOimaoGmDRWT1eGDmdP7R', $uris, "");

@@ -13,6 +13,9 @@ $options = [
     'scope' => [
         'playlist-read-private',
         'user-read-private',
+        'playlist-modify-public',
+        'playlist-modify-private',
+        'playlist-read-collaborative'
     ],
 ];
 
