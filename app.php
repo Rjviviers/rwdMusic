@@ -28,7 +28,7 @@ for ($i=0; $i < 100 ; $i++) {
 }
 
 foreach ($newSongs as $v) {
-    $results  = $api->search($v, "track");
+    $results  = $api->search($v["name"], "track");
     $uris[]['id'] = $v['id'];
     foreach ($results->tracks->items as $key => $value) {
         $uris[]['uri'] = $value->uri;
