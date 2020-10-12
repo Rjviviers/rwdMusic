@@ -37,7 +37,7 @@ foreach ($newSongs as $v) {
 }
 
 foreach ($uris as $v) {
-    // $myConn->addUri($v['id']);
+    $myConn->addUri($v['id'], $v['uri']);
 }
 
 
@@ -51,7 +51,7 @@ foreach ($uris as $v) {
 
 
 // var_dump($all);
-var_dump($uris);
+//var_dump($uris);
 ?>
 
 <table class="">
