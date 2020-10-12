@@ -150,11 +150,8 @@ if (isset($_POST["submitChange"])) {
                             </p>
                         </div>
                     </div>
-
-
                     <div class="row">
-                        <div class="col-md-12">
-                            <?php
+                        <?php
                             if (!empty($_COOKIE['spotify'])) {
                                 $api = new SpotifyWebAPI\SpotifyWebAPI();
                                 $api->setAccessToken($_COOKIE['spotify']);
@@ -164,25 +161,33 @@ if (isset($_POST["submitChange"])) {
                                 $artistname = $track->artists[0]->name;
                                 $full = $songname . " - " . $artistname;
                                 $imgsrc = $track->album->images[0]->url; ?>
-                            <h3>Spotify area</h3>
-                            <img src="<?= $imgsrc?>" alt="<?=$full?>">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <h5><?= $songname ?></h5>
-                                    </div>
+                        <div class="col-md-12">
+                            spotify area
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img width="50%" src="<?= $imgsrc?>" alt="<?=$full?>">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5><?= $songname ?></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
                                     <h5><?= $artistname ?></h5>
                                 </div>
                             </div>
-                            <?php
+                        </div>
+                    </div>
+                    <?php
                             }
                            
 
                             ?>
 
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
