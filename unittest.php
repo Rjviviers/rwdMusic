@@ -6,7 +6,8 @@
     $all = $myConn->allSongs();
     foreach ($all as $value) {
         // $results  = $api->search($value->GetSpotifySearch(), "track");
-        echo $value->GetSpotifySearch();
+        //echo $value->GetSpotifySearch();
+        var_dump($all);
     }
     // $ss->getUri();
     // $var = $myConn->geturi($IDp);
