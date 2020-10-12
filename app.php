@@ -33,6 +33,9 @@ foreach ($newSongs as $v) {
         $uris[] = $value->uri;
     }
 }
+$tracks = $api->getTracks($uris);
+
+
 
 
 // var_dump($all);
@@ -47,18 +50,14 @@ foreach ($newSongs as $v) {
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <?php
+        <?php
             foreach ($newSongs as $v) {
-                echo "<td> $v </td>";
+                echo "<tr><td> $v </td></tr>";
             }
-            foreach ($uris as $v) {
-                echo "<td> $v </td>";
+            foreach ($tracks->tracks as $tracks) {
+                echo '<tr><td><b>' . $track->name . '</b> <b>' . $track->artists[0]->name . '</b> <br></td></tr>';
             }
             ?>
-
-
-        </tr>
     </tbody>
 </table>
 <?php
