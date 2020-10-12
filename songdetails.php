@@ -161,13 +161,19 @@ if (isset($_POST["submitChange"])) {
                                 $artistname = $track->artists[0]->name;
                                 $full = $songname . " - " . $artistname;
                                 $imgsrc = $track->album->images[0]->url; ?>
+                        <div style="display: none;">
+                            <?php var_dump($track); ?>
+                        </div>
                         <div class="col-md-12">
                             spotify area
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <img width="50%" src="<?= $imgsrc?>" alt="<?=$full?>">
+                            <a href="http://">
+                                <img width="50%" src="<?= $imgsrc?>" alt="<?=$full?>">
+                            </a>
+
                         </div>
                         <div class="col-md-6">
                             <div class="row">
