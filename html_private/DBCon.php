@@ -180,18 +180,10 @@ class DBCon
             $weeks[] =  $monthAndYear;
         }
 
-        
-
-           
-
-        
-
+    
         $weeksUnique = array_unique($weeks);
-
         rsort($weeksUnique);
-
         $count = 0 ;
-
         foreach ($weeksUnique as $value) {
             if ($count<10) {
                 $month = explode('.', $value);

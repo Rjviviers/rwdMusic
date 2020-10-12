@@ -152,15 +152,17 @@ if (isset($_POST["submitChange"])) {
                     </div>
                     <div class="row">
                         <?php
+ 
                             if (!empty($_COOKIE['spotify'])) {
                                 $api = new SpotifyWebAPI\SpotifyWebAPI();
                                 $api->setAccessToken($_COOKIE['spotify']);
                                 $song = $myConn->geturi($id);
-                                $track = $api->getTrack($song);
-                                $songname = $track->name ;
-                                $artistname = $track->artists[0]->name;
-                                $full = $songname . " - " . $artistname;
-                                $imgsrc = $track->album->images[0]->url; ?>
+                                if ($song != null) {
+                                    $track = $api->getTrack($song);
+                                    $songname = $track->name ;
+                                    $artistname = $track->artists[0]->name;
+                                    $full = $songname . " - " . $artistname;
+                                    $imgsrc = $track->album->images[0]->url; ?>
                         <div style="display: none;">
                             <?php var_dump($track); ?>
                         </div>
@@ -189,8 +191,8 @@ if (isset($_POST["submitChange"])) {
                         </div>
                     </div>
                     <?php
+                                }
                             }
-                           
 
                             ?>
 
