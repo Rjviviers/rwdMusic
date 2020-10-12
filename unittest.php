@@ -1,5 +1,5 @@
 <?php
-     include __DIR__ . '\html_private\head.php';
+     include __DIR__ . '/html_private/head.php';
      require 'vendor/autoload.php';
 
     // // include __DIR__ . '\html_private\Song.php';
