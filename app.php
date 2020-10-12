@@ -20,7 +20,7 @@ $api->setAccessToken($_COOKIE['spotify']);
 // var_dump($track);
 $uris = array();
 $newSongs = array();
-
+$tracks = array();
 $count = 1;
 $all = $myConn->allSongs();
 for ($i=518; $i < count($all) ; $i++) {
@@ -33,7 +33,8 @@ for ($i=518; $i < count($all) ; $i++) {
 //         $uris[] = $value->uri;
 //     }
 // }
-$tracks = $api->getTracks(['3MIbTPWQAWoMd4mZSEbXZy',
+
+$uris = array(['3MIbTPWQAWoMd4mZSEbXZy',
 '6FRceeuFgcgbc1cxNrO0Uv',
 '3JWjgoNMtpIe8nvE3lwVGq',
 '6tRowT2pnZTuCrEfugmRAz',
@@ -75,9 +76,8 @@ $tracks = $api->getTracks(['3MIbTPWQAWoMd4mZSEbXZy',
 '2pKCG9n6lszQw8yABVhUIG',
 '3qnXMhTy7TCVXNN8jf29t5',
 '6mGQXpf6ESEb0qVHpuA5Kg',
-'6wQ8Kf2vDas39vKmkQbCUz',]);
-
-$tracks2 = $api->getTracks(['2H6txWVNy08LZYGmkHU511',
+'6wQ8Kf2vDas39vKmkQbCUz',
+'2H6txWVNy08LZYGmkHU511',
 '0sSaGJ6KOJC6MR3yFTq5J8',
 '4ceI4eX2s0u2a6reHbp5Zi',
 '1n8086m9YRhM03VV1YrIBz',
@@ -133,6 +133,12 @@ $tracks2 = $api->getTracks(['2H6txWVNy08LZYGmkHU511',
 '0rkGzISxVaqpRad7NAe7G5',
 '6PqmuXpV3uGglVIFMHXS0M',]);
 
+foreach ($uris as $value) {
+    $track = $api->getTrack($value);
+    $tracks = $track->name . " " . $track->artists[0]->name ;
+}
+
+
 
 
 
@@ -153,14 +159,14 @@ $tracks2 = $api->getTracks(['2H6txWVNy08LZYGmkHU511',
                 ?>
         <tr>
             <?php
-                echo "<tr><td> $v </td>";
+                echo "<td> $v </td>";
             }
-            foreach ($tracks->tracks as $tracks) {
-                echo '<td><b>' . $track->name . '</b> <b>' . $track->artists[0]->name . '</b> <br></td>';
+            foreach ($tracks as $v) {
+                echo "<td> $v </td>";
             }
-            foreach ($tracks2->tracks as $tracks) {
-                echo '<td><b>' . $track->name . '</b> <b>' . $track->artists[0]->name . '</b> <br></td>';
-            }
+            // foreach ($tracks2->tracks as $tracks) {
+            //     echo '<td><b>' . $track->name . '</b> <b>' . $track->artists[0]->name . '</b> <br></td>';
+            // }
 
             ?>
         </tr>
