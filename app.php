@@ -24,18 +24,21 @@ $tracks = array();
 $count = 1;
 $all = $myConn->allSongs();
 for ($i=0; $i < 100 ; $i++) {
-    $newSongs[] = array("id" => $all["SongID"] ,"name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
+    $newSongs[] = array("id" => $all[$i]["SongID"] ,"name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
 }
 
 foreach ($newSongs as $v) {
     $results  = $api->search($v["name"], "track");
-    $uris[]['id'] = $v['id'];
+    $id =  $v['id'];
     foreach ($results->tracks->items as $key => $value) {
-        $uris[]['uri'] = $value->uri;
+        $uris[] = array("id"=>$id,"uri" => $value->uri);
+        break;
     }
 }
 
-var_dump($uris);
+foreach ($uris as $v) {
+    // $myConn->addUri($v['id']);
+}
 
 
 // foreach ($uris as $value) {
@@ -60,15 +63,15 @@ var_dump($uris);
     </thead>
     <tbody>
         <?php
-            foreach ($newSongs as $v) {
+            // foreach ($newSongs as $v) {
                 ?>
         <tr>
             <?php
-                echo "<td> $v </td>";
-            }
-            foreach ($tracks as $v) {
-                echo "<td> $v </td>";
-            }
+                // echo "<td> $v </td>";
+            // }
+            // foreach ($tracks as $v) {
+                // echo "<td> $v </td>";
+            // }
             // foreach ($tracks2->tracks as $tracks) {
             //     echo '<td><b>' . $track->name . '</b> <b>' . $track->artists[0]->name . '</b> <br></td>';
             // }
