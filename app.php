@@ -29,17 +29,19 @@ for ($i=0; $i < 100 ; $i++) {
 
 foreach ($newSongs as $v) {
     $results  = $api->search($v, "track");
+    $uris[]['id'] = $v['id'];
     foreach ($results->tracks->items as $key => $value) {
-        $uris[] = $value->uri;
+        $uris[]['uri'] = $value->uri;
     }
 }
 
+var_dump($uris);
 
 
-foreach ($uris as $value) {
-    $track = $api->getTrack($value);
-    $tracks = $track->name . " " . $track->artists[0]->name ;
-}
+// foreach ($uris as $value) {
+//     $track = $api->getTrack($value);
+//     $tracks = $track->name . " " . $track->artists[0]->name ;
+// }
 
 
 

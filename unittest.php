@@ -62,7 +62,7 @@ $all = $myConn->allSongs();
 for ($i=0; $i <= 100 ; $i++) {
     $newSongs[] = array("id" => $all[$i]["SongID"] ,"name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
 }
-foreach ($newSongs as $key => $value) {
+foreach ($newSongs as $value) {
     echo $value['id'] . " : " . $value["name"];
     echo "</br>";
 }
