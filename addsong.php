@@ -60,7 +60,6 @@ if (isset($_POST["okspot"])) {
         $myConn->InsertQuery($query);
         $myConn->redirect("display.php");
     }
-    //
 }
 function valid($data)
 {

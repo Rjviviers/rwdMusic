@@ -23,21 +23,21 @@ $newSongs = array();
 $tracks = array();
 $count = 1;
 $all = $myConn->allSongs();
-for ($i=399; $i < count($all) ; $i++) {
-    $newSongs[] = array("id" => $all[$i]["SongID"] ,"name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
-}
+// for ($i=399; $i < count($all) ; $i++) {
+//     $newSongs[] = array("id" => $all[$i]["SongID"] ,"name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
+// }
 
-foreach ($newSongs as $v) {
-    $results  = $api->search($v["name"], "track");
-    $id =  $v['id'];
-    foreach ($results->tracks->items as $key => $value) {
-        $uris[] = array("id"=>$id,"uri" => $value->uri);
-        break;
-    }
-}
+// foreach ($newSongs as $v) {
+//     $results  = $api->search($v["name"], "track");
+//     $id =  $v['id'];
+//     foreach ($results->tracks->items as $key => $value) {
+//         $uris[] = array("id"=>$id,"uri" => $value->uri);
+//         break;
+//     }
+// }
 
 foreach ($uris as $v) {
-    $myConn->addUri($v['id'], $v['uri']);
+    // $myConn->addUri($v['id'], $v['uri']);
 }
 
 
