@@ -33,7 +33,7 @@ foreach ($newSongs as $v) {
         $uris[] = $value->uri;
     }
 }
-$tracks = $api->getTracks($uris);
+$tracks = $api->getTracks($newSongs);
 
 
 
@@ -46,7 +46,7 @@ $tracks = $api->getTracks($uris);
     <thead>
         <tr>
             <th>original</th>
-            <th>spotify<br></th>
+            <th>spotify</th>
         </tr>
     </thead>
     <tbody>
