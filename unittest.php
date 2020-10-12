@@ -3,11 +3,18 @@
      require 'vendor/autoload.php';
 
     // // include __DIR__ . '\html_private\Song.php';
+    $str = "";
     $all = $myConn->allSongs();
-    foreach ($all as $value) {
-        // $results  = $api->search($value->GetSpotifySearch(), "track");
-        //echo $value->GetSpotifySearch();
-        var_dump($all);
+    foreach ($all as $k => $v) {
+        //
+        // var_dump($value);
+        $str = $v["SongName"]. " " . $v["BandName"] ;
+        $results  = $api->search($value->GetSpotifySearch(), "track");
+        // foreach ($value as $key => $v) {
+        echo $str;
+        // }
+        //
+        echo "</br>";
     }
     // $ss->getUri();
     // $var = $myConn->geturi($IDp);
