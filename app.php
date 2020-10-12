@@ -30,7 +30,7 @@ foreach ($all as $k => $v) {
 
 
 // var_dump($all);
-var_dump($uris);
+//var_dump($uris);
 ?>
 
 <table class="">
