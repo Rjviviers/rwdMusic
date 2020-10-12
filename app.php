@@ -48,8 +48,16 @@ foreach ($newSongs as $v) {
     </thead>
     <tbody>
         <tr>
-            <td>ori</td>
-            <td>spo</td>
+            <?php
+            foreach ($newSongs as $v) {
+                echo "<td> $v </td>";
+            }
+            foreach ($uris as $v) {
+                echo "<td> $v </td>";
+            }
+            ?>
+
+
         </tr>
     </tbody>
 </table>
