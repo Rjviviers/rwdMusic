@@ -107,7 +107,9 @@ $api->setAccessToken($_COOKIE['spotify']);
 // var_dump($_GET);
 // echo "</br>sesh dump  </br>";
 // var_dump($_SESSION);
-$uris = array(['spotify:track:3MIbTPWQAWoMd4mZSEbXZy',
+$uris = array();
+
+$api->addPlaylistTracks('spotify:playlist:1vOimaoGmDRWT1eGDmdP7R', ['spotify:track:3MIbTPWQAWoMd4mZSEbXZy',
 'spotify:track:6FRceeuFgcgbc1cxNrO0Uv',
 'spotify:track:3JWjgoNMtpIe8nvE3lwVGq',
 'spotify:track:6tRowT2pnZTuCrEfugmRAz',
@@ -204,6 +206,4 @@ $uris = array(['spotify:track:3MIbTPWQAWoMd4mZSEbXZy',
 'spotify:track:63YuzHg9Remycw6rXxF4Pn',
 'spotify:track:4QQ51iHnMPxt2g2P472JS2',
 'spotify:track:0rkGzISxVaqpRad7NAe7G5',
-'spotify:track:6PqmuXpV3uGglVIFMHXS0M',]);
-
-$api->addPlaylistTracks('spotify:playlist:1vOimaoGmDRWT1eGDmdP7R', $uris, "");
+'spotify:track:6PqmuXpV3uGglVIFMHXS0M',], "");
