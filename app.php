@@ -23,7 +23,7 @@ $newSongs = array();
 $tracks = array();
 $count = 1;
 $all = $myConn->allSongs();
-for ($i=249; $i < 400 ; $i++) {
+for ($i=399; $i < count($all) ; $i++) {
     $newSongs[] = array("id" => $all[$i]["SongID"] ,"name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
 }
 
