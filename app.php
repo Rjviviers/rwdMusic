@@ -109,7 +109,7 @@ $api->setAccessToken($_COOKIE['spotify']);
 // var_dump($_SESSION);
 $uris = array();
 
-$api->addPlaylistTracks('spotify:playlist:1vOimaoGmDRWT1eGDmdP7R', ['spotify:track:3MIbTPWQAWoMd4mZSEbXZy',
+$api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', ['spotify:track:3MIbTPWQAWoMd4mZSEbXZy',
 'spotify:track:6FRceeuFgcgbc1cxNrO0Uv',
 'spotify:track:3JWjgoNMtpIe8nvE3lwVGq',
 'spotify:track:6tRowT2pnZTuCrEfugmRAz',
