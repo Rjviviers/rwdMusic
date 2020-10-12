@@ -172,7 +172,7 @@ if (isset($_POST["submitChange"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="http://">
+                            <a href="<?= $track->external_urls->spotify ?>">
                                 <img width="50%" src="<?= $imgsrc?>" alt="<?=$full?>">
                             </a>
 
