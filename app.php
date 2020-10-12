@@ -19,10 +19,16 @@ $api->setAccessToken($_COOKIE['spotify']);
 
 // var_dump($track);
 $uris = array();
+$newSongs = array();
+
+$count = 1;
 $all = $myConn->allSongs();
-foreach ($all as $k => $v) {
-    $str = $v["SongName"]. " " . $v["BandName"] ;
-    $results  = $api->search($str, "track");
+for ($i=518; $i < count($all) ; $i++) {
+    $newSongs[] = $all[$i]["SongName"] . " " . $all[$i]["BandName"];
+}
+
+foreach ($newSongs as $v) {
+    $results  = $api->search($v, "track");
     foreach ($results->tracks->items as $key => $value) {
         $uris[] = $value->uri;
     }
