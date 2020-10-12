@@ -51,7 +51,7 @@ foreach ($uris as $v) {
 
 
 // var_dump($all);
-//var_dump($uris);
+var_dump($uris);
 ?>
 
 <table class="">
