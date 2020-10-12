@@ -3,9 +3,9 @@
      require 'vendor/autoload.php';
 
     // // include __DIR__ . '\html_private\Song.php';
-    $uris = array();
-$count = 1;
-$all = $myConn->allSongs();
+//     $uris = array();
+// $count = 1;
+// $all = $myConn->allSongs();
 // foreach ($all as $k => $v) {
 //     $str = $v["SongName"]. " " . $v["BandName"] ;
 //     echo $count ." : ".$str;
@@ -16,18 +16,18 @@ $all = $myConn->allSongs();
 //     //     $uris[] = $value->uri;
 //     // }
 // }
-$uris = array();
-$newSongs = array();
+// $uris = array();
+// $newSongs = array();
 
 // $count = 1;
 // $all = $myConn->allSongs();
-for ($i=518; $i < count($all) ; $i++) {
-    $newSongs[] = $all[$i]["SongName"] . " " . $all[$i]["BandName"];
-}
-//var_dump($newSongs);
-foreach ($newSongs as $v) {
-    echo $v . " </br>";
-}
+// for ($i=518; $i < count($all) ; $i++) {
+//     $newSongs[] = $all[$i]["SongName"] . " " . $all[$i]["BandName"];
+// }
+// //var_dump($newSongs);
+// foreach ($newSongs as $v) {
+//     echo $v . " </br>";
+// }
 
     // $ss->getUri();
     // $var = $myConn->geturi($IDp);
@@ -53,3 +53,16 @@ foreach ($newSongs as $v) {
 //        }
 //        echo "</br>";
 //    }
+
+$uris = array();
+$newSongs = array();
+$tracks = array();
+$count = 1;
+$all = $myConn->allSongs();
+for ($i=0; $i <= 100 ; $i++) {
+    $newSongs[] = array("id" => $all[$i]["SongID"] ,"name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
+}
+foreach ($newSongs as $key => $value) {
+    echo $value['id'] . " : " . $value["name"];
+    echo "</br>";
+}

@@ -344,7 +344,11 @@ class DBCon
         }
         return $all;
     }
-
+    public function addUri($songID, $uri)
+    {
+        $q = "INSERT INTO `spotify_uris` (`id`, `spotifyUri`, `songFKey`) VALUES (NULL, '$uri', '$songID');";
+        mysqli_query($this->link, $q);
+    }
     public function geturi($id)
     {
         $q = "SELECT * FROM `spotify_uris` WHERE `songFKey` = $id";
