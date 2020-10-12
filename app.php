@@ -33,7 +33,7 @@ foreach ($newSongs as $v) {
         $uris[] = $value->uri;
     }
 }
-$tracks = $api->getTracks($newSongs);
+$tracks = $api->getTracks($uris);
 
 
 
