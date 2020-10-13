@@ -4,10 +4,10 @@ require('html_private/head.php');
 include __DIR__ . '/partials/header.php';
 include __DIR__ . '/html_private/lgc.php';
 
-// $api = new SpotifyWebAPI\SpotifyWebAPI();
+$api = new SpotifyWebAPI\SpotifyWebAPI();
 
 // Fetch the saved access token from somewhere. A database for example.
-// $api->setAccessToken($_COOKIE['spotify']);
+$api->setAccessToken($_COOKIE['spotify']);
 // if (isset($_GET['song']) && $_GET['song'] != "") {
 //     $song = $_GET['song'];
 //     $track = $api->getTrack($song);
