@@ -117,11 +117,18 @@ $api->setAccessToken($_COOKIE['spotify']);
 // }
 
 $playlistTracks = $api->getPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R');
+?>
+<div class="container">
 
+
+
+    <?php
 foreach ($playlistTracks->items as $track) {
     $track = $track->track;
 
     echo '<a href="' . $track->uri . '">' . $track->name . $track->artists[0]->name . '</a> <br>';
 }
+?>
+</div>
 // var_dump($newSongs);
 // $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [], "");
