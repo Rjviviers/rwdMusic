@@ -346,6 +346,7 @@ class DBCon
         $q = "SELECT * FROM `spotify_uris` WHERE `songFKey` = $id";
         $result = mysqli_query($this->link, $q);
         $row = mysqli_fetch_all($result);
+        // var_dump($row);
         return $row[0][1];
     }
 
