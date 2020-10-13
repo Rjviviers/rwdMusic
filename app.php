@@ -110,7 +110,7 @@ $api->setAccessToken($_COOKIE['spotify']);
 // $uris = array();
  $all =$myConn->allSongs();
 // // var_dump($all);
-$songsRemain = [6,14,39,77,130,134,150,184,293,315,382,404,426,430,432,445,448,456,465,481,536,565,567,569,571,573,575,577,587,588];
+// $songsRemain = [6,14,39,77,130,134,150,184,293,315,382,404,426,430,432,445,448,456,465,481,536,565,567,569,571,573,575,577,587,588];
 
 
 // foreach ($songsRemain as $v) {
@@ -132,7 +132,7 @@ $songsRemain = [6,14,39,77,130,134,150,184,293,315,382,404,426,430,432,445,448,4
     for ($i=0; $i < count($all) ; $i++) {
         if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
         } else {
-            echo $all[$i]['SongID'] . ",";
+            $songsRemain[] = $all[$i]['SongID'];
         }
     }
     for ($i=0; $i < count($all) ; $i++) {
@@ -142,6 +142,7 @@ $songsRemain = [6,14,39,77,130,134,150,184,293,315,382,404,426,430,432,445,448,4
             $results  = $api->search($name, "track");
             foreach ($results->tracks->items as $key => $value) {
                 $myConn->addUri($all[$i]['SongID'], $value->uri);
+                echo "added ". $all[$i]['SongID'] . ": " . $value->uri;
                 break;
             }
         }
