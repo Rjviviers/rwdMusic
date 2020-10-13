@@ -349,7 +349,20 @@ class DBCon
         // var_dump($row);
         return $row[0][1];
     }
-
+    public function checkIfHasUri($id)
+    {
+        $q = "SELECT * FROM `spotify_uris` WHERE `songFKey` = $id";
+        $result = mysqli_query($this->link, $q);
+        $row = mysqli_fetch_all($result);
+        
+        if ($row == null) {
+            // var_dump($row);
+            return false;
+        } else {
+            //var_dump($row[0]);
+            return true;
+        }
+    }
     public function GetLatestSongs()
     {
         $songlist = array();

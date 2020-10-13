@@ -4,10 +4,10 @@ require('html_private/head.php');
 include __DIR__ . '/partials/header.php';
 include __DIR__ . '/html_private/lgc.php';
 
-$api = new SpotifyWebAPI\SpotifyWebAPI();
+// $api = new SpotifyWebAPI\SpotifyWebAPI();
 
 // Fetch the saved access token from somewhere. A database for example.
-$api->setAccessToken($_COOKIE['spotify']);
+// $api->setAccessToken($_COOKIE['spotify']);
 // if (isset($_GET['song']) && $_GET['song'] != "") {
 //     $song = $_GET['song'];
 //     $track = $api->getTrack($song);
@@ -108,27 +108,52 @@ $api->setAccessToken($_COOKIE['spotify']);
 // echo "</br>sesh dump  </br>";
 // var_dump($_SESSION);
 // $uris = array();
-// $all =$myConn->allSongs();
+ $all =$myConn->allSongs();
 // // var_dump($all);
-// for ($i=518; $i < count($all) ; $i++) {
-//     $newSongs[] = $myConn->geturi($all[$i]['SongID']);
-//     // var_dump($newSongs);
-//     echo "<br>";
-// }
+$songsRemain = [6,14,39,77,130,134,150,184,293,315,382,404,426,430,432,445,448,456,465,481,536,565,567,569,571,573,575,577,587,588];
 
-$playlistTracks = $api->getPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R');
+
+// foreach ($songsRemain as $v) {
+//     $results  = $api->search($v["name"], "track");
+//     $id =  $v['id'];
+//     foreach ($results->tracks->items as $key => $value) {
+//         $uris[] = array("id"=>$id,"uri" => $value->uri);
+//         break;
+//     }
+// }
+// $playlistTracks = $api->getPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R');
 ?>
+
 <div class="container">
 
 
 
     <?php
-foreach ($playlistTracks->items as $track) {
-    $track = $track->track;
+    for ($i=0; $i < count($all) ; $i++) {
+        if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
+        } else {
+            echo $all[$i]['SongID'] . ",";
+        }
+    }
+    for ($i=0; $i < count($all) ; $i++) {
+        //echo var_dump($all[$i]);
+        if (in_array($all[$i]['SongID'], $songsRemain)) {
+            $name =  $all[$i]["SongName"] . " " . $all[$i]["BandName"];
+            $results  = $api->search($name, "track");
+            foreach ($results->tracks->items as $key => $value) {
+                $myConn->addUri($all[$i]['SongID'], $value->uri);
+                break;
+            }
+        }
+        //
+    }
+    
+// foreach ($playlistTracks->items as $track) {
+//     $track = $track->track;
 
-    echo '<a href="' . $track->uri . '">' . $track->name . $track->artists[0]->name . '</a> <br>';
-}
-?>
-</div>
+//     echo '<a href="' . $track->uri . '">' . $track->name . $track->artists[0]->name . '</a> <br>';
+// }
 // var_dump($newSongs);
 // $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [], "");
+?>
+</div>
