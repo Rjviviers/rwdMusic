@@ -51,13 +51,16 @@ if (isset($_POST["okspot"])) {
         $_SESSION['song'][] = array($songname,$artistname,$imgsrc);
         
         $user = $_COOKIE['User'];
-        $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [$song], "");
+        // $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [$song], "");
         $weekgroup = "week.".date('m.y');
         $timestamp = getdate();
         $outputDate = $timestamp["year"] .'-'. $timestamp["mon"] .'-'. $timestamp["mday"];
 
         $query = "INSERT INTO `song` (`SongID`, `SongName`, `BandName`, `Submited_by`, `WeekGroup`, `DatePosted`) VALUES (NULL, '$songname', '$artistname', '$user', '$weekgroup', '$outputDate')";
         $myConn->InsertQuery($query);
+        //UPDATE `spotify` SET `uri` = 'uri' WHERE `spotify`.`SongID` = 600;
+        $songIDinDB  = $myConn->getDBSongID();
+        $uriQuery = "UPDATE `spotify` SET `uri` = '$song' WHERE `spotify`.`SongID` = $songIDinDB";
         $myConn->redirect("display.php");
     }
 }

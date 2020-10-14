@@ -273,6 +273,13 @@ class DBCon
         $data2 = mysqli_real_escape_string($this->link, $data);
         return $data2;
     }
+    public function getDBSongID()
+    {
+        $q = "SELECT * FROM `idview`";
+        $result = mysqli_query($this->link, $q);
+        $r = mysqli_fetch_all($result);
+        return $r[0][0];
+    }
     public function GetSingleSongTotal($id)
     {
         $query = "SELECT `Total` FROM `scoretotals` WHERE `SongID` = $id";
