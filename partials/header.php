@@ -9,13 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 
 <script src="js/bootstrap.min.js"></script>
-<script>
-function addsong() {
-    var noofsongs = document.getElementById('nu').value;
-    var url = "https://www.rwdmusic.co.za/addsong.php?NoOfSongs=".concat(noofsongs);
-    window.location.href = url;
-}
-</script>
+<?php include "views\addsong.html"?>
 </head>
 
 
