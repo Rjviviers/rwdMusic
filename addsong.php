@@ -51,7 +51,7 @@ if (isset($_POST["okspot"])) {
         $_SESSION['song'][] = array($songname,$artistname,$imgsrc);
         
         $user = $_COOKIE['User'];
-
+        $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [$song], "");
         $weekgroup = "week.".date('m.y');
         $timestamp = getdate();
         $outputDate = $timestamp["year"] .'-'. $timestamp["mon"] .'-'. $timestamp["mday"];
