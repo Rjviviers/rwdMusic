@@ -355,11 +355,15 @@ class DBCon
     }
     public function geturi($id)
     {
-        $q = "SELECT * FROM `spotify_uris` WHERE `songFKey` = $id";
+        $q = "SELECT * FROM `spotdata` WHERE `sngID` = $id";
         $result = mysqli_query($this->link, $q);
         $row = mysqli_fetch_all($result);
-        // var_dump($row);
-        return $row[0][1];
+        //var_dump($row[0][2]);
+        if ($row[0][2]== null) {
+            return "na";
+        } else {
+            return $row[0][2];
+        }
     }
     public function checkIfHasUri($id)
     {

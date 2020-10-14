@@ -130,16 +130,16 @@ include __DIR__ . '/html_private/lgc.php';
 
     <?php
 
-    $dis  = $myConn->transferTable();
-    //dis[i][0] = uri
-    //dis[i][1] = id
-    for ($i=0; $i < count($dis); $i++) {
-        $uri = $dis[$i][0];
-        $songID = $dis[$i][1];
-        $q = "UPDATE `spotdata` SET `uri` = '$uri' WHERE `spotdata`.`sngID` = $songID";
-        $myConn->InsertQuery($q);
-    }
-
+    // $dis  = $myConn->transferTable();
+    // //dis[i][0] = uri
+    // //dis[i][1] = id
+    // for ($i=0; $i < count($dis); $i++) {
+    //     $uri = $dis[$i][0];
+    //     $songID = $dis[$i][1];
+    //     $q = "UPDATE `spotdata` SET `uri` = '$uri' WHERE `spotdata`.`sngID` = $songID";
+    //     $myConn->InsertQuery($q);
+    // }
+        $myConn->geturi(6);
 
     // for ($i=0; $i < count($all) ; $i++) {
     //     if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
