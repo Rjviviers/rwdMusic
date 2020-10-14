@@ -17,9 +17,9 @@ $_SESSION['song'] = array();
 if (isset($_POST["Add"])) {
     for ($i=0; $i < $noofsongs; $i++) {
         $songname = $_POST["song,$i"];
-        $songname = valid($songname);
+        $songname = $myConn->sanie($songname);
         $bandname = $_POST["band,$i"];
-        $bandname = valid($bandname);
+        $bandname = $myConn->sanie($bandname);
         $_SESSION['song'][] = array($songname,$bandname);
 
         $user = $_POST["user,$i"];
@@ -44,9 +44,9 @@ if (isset($_POST["okspot"])) {
         $song = $_POST['uri'];
         $track = $api->getTrack($song);
         $songname = $track->name ;
-        $songname = valid($songname);
+        $songname = $myConn->sanie($songname);
         $artistname = $track->artists[0]->name;
-        $artistname = valid($artistname);
+        $artistname = $myConn->sanie($artistname);
         $imgsrc = $track->album->images[0]->url;
         $_SESSION['song'][] = array($songname,$artistname,$imgsrc);
         
@@ -61,11 +61,7 @@ if (isset($_POST["okspot"])) {
         $myConn->redirect("display.php");
     }
 }
-function valid($data)
-{
-    mysqli_real_escape_string($myConn, $data);
-    return $data;
-}
+
 
 ?>
 

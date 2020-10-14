@@ -268,7 +268,11 @@ class DBCon
             return "no rating yet";
         }
     }
-
+    public function sanie($data)
+    {
+        $data2 = mysqli_real_escape_string($this->link, $data);
+        return $data2;
+    }
     public function GetSingleSongTotal($id)
     {
         $query = "SELECT `Total` FROM `scoretotals` WHERE `SongID` = $id";

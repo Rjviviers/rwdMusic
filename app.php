@@ -108,7 +108,7 @@ include __DIR__ . '/html_private/lgc.php';
 // echo "</br>sesh dump  </br>";
 // var_dump($_SESSION);
 // $uris = array();
- $all =$myConn->allSongs();
+//  $all =$myConn->allSongs();
 // // var_dump($all);
 // $songsRemain = [6,14,39,77,130,134,150,184,293,315,382,404,426,430,432,445,448,456,465,481,536,565,567,569,571,573,575,577,587,588];
 
@@ -129,7 +129,11 @@ include __DIR__ . '/html_private/lgc.php';
 
 
     <?php
-
+    echo "adfasfsafa'a'fafsafasf'afsf";
+    echo "</br>";
+     echo $myConn->sanie("adfasfsafa'a'fafsafasf'afsf");
+   
+    echo "</br>";
     // $dis  = $myConn->transferTable();
     // //dis[i][0] = uri
     // //dis[i][1] = id
@@ -139,7 +143,7 @@ include __DIR__ . '/html_private/lgc.php';
     //     $q = "UPDATE `spotdata` SET `uri` = '$uri' WHERE `spotdata`.`sngID` = $songID";
     //     $myConn->InsertQuery($q);
     // }
-        $myConn->geturi(6);
+        // $myConn->geturi(6);
 
     // for ($i=0; $i < count($all) ; $i++) {
     //     if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
