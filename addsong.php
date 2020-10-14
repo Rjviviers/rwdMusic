@@ -63,7 +63,7 @@ if (isset($_POST["okspot"])) {
 }
 function valid($data)
 {
-    $myConn->real_escape_string($data);
+    mysqli_real_escape_string($myConn, $data);
     return $data;
 }
 
