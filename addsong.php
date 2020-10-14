@@ -61,6 +61,7 @@ if (isset($_POST["okspot"])) {
         //UPDATE `spotify` SET `uri` = 'uri' WHERE `spotify`.`SongID` = 600;
         $songIDinDB  = $myConn->getDBSongID();
         $uriQuery = "UPDATE `spotify` SET `uri` = '$song' WHERE `spotify`.`SongID` = $songIDinDB";
+        $myConn->updateQuery($uriQuery);
         $myConn->redirect("display.php");
     }
 }

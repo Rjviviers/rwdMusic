@@ -108,7 +108,10 @@ class DBCon
 
         mysqli_query($this->link, $qry);
     }
-
+    public function updateQuery($q)
+    {
+        mysqli_query($this->link, $q);
+    }
     public function updatePassword($user, $password)
     {
         $passHassed = hash("sha512", trim($password));
