@@ -4,10 +4,10 @@ require('html_private/head.php');
 include __DIR__ . '/partials/header.php';
 include __DIR__ . '/html_private/lgc.php';
 
-$api = new SpotifyWebAPI\SpotifyWebAPI();
+// $api = new SpotifyWebAPI\SpotifyWebAPI();
 
 // Fetch the saved access token from somewhere. A database for example.
-$api->setAccessToken($_COOKIE['spotify']);
+// $api->setAccessToken($_COOKIE['spotify']);
 // if (isset($_GET['song']) && $_GET['song'] != "") {
 //     $song = $_GET['song'];
 //     $track = $api->getTrack($song);
@@ -129,25 +129,38 @@ $api->setAccessToken($_COOKIE['spotify']);
 
 
     <?php
-    for ($i=0; $i < count($all) ; $i++) {
-        if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
-        } else {
-            $songsRemain[] = $all[$i]['SongID'];
-        }
+
+    $dis  = $myConn->transferTable();
+    //dis[i][0] = uri
+    //dis[i][1] = id
+    for ($i=0; $i < count($dis); $i++) {
+        $uri = $dis[$i][0];
+        $songID = $dis[$i][1];
+        $q = "UPDATE `spotdata` SET `uri` = '$uri' WHERE `spotdata`.`sngID` = $songID";
+        $myConn->InsertQuery($q);
     }
-    for ($i=0; $i < count($all) ; $i++) {
-        //echo var_dump($all[$i]);
-        if (in_array($all[$i]['SongID'], $songsRemain)) {
-            $name =  $all[$i]["SongName"] . " " . $all[$i]["BandName"];
-            $results  = $api->search($name, "track");
-            foreach ($results->tracks->items as $key => $value) {
-                $myConn->addUri($all[$i]['SongID'], $value->uri);
-                echo "added ". $all[$i]['SongID'] . ": " . $value->uri;
-                break;
-            }
-        }
-        //
-    }
+
+
+    // for ($i=0; $i < count($all) ; $i++) {
+    //     if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
+    //     } else {
+    //         $songsRemain[] = $all[$i]['SongID'];
+    //     }
+    // }
+    // for ($i=0; $i < count($all) ; $i++) {
+    //     //echo var_dump($all[$i]);
+    //     $myConn->addSongID($all[$i]['SongID']);
+    //     // if (in_array($all[$i]['SongID'], $songsRemain)) {
+    //     //     $name =  $all[$i]["SongName"] . " " . $all[$i]["BandName"];
+    //     //     // $results  = $api->search($name, "track");
+    //     //     // foreach ($results->tracks->items as $key => $value) {
+    //     //     //     $myConn->addUri($all[$i]['SongID'], $value->uri);
+    //     //     //     echo "added ". $all[$i]['SongID'] . ": " . $value->uri;
+    //     //     //     break;
+    //     //     // }
+    //     // }
+    //     //
+    // }
     
 // foreach ($playlistTracks->items as $track) {
 //     $track = $track->track;

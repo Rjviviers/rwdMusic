@@ -341,6 +341,18 @@ class DBCon
         $q = "INSERT INTO `spotify_uris` (`id`, `spotifyUri`, `songFKey`) VALUES (NULL, '$uri', '$songID');";
         mysqli_query($this->link, $q);
     }
+    public function addSongID($songID)
+    {
+        $q = "INSERT INTO `spotData` (`id`,  `sngID`,`uri`) VALUES (NULL,'$songID', NULL);";
+        mysqli_query($this->link, $q);
+    }
+    public function transferTable()
+    {
+        $q = "SELECT `spotifyUri`, `songFKey` FROM `spotify_uris`";
+        $result = mysqli_query($this->link, $q);
+        $all = mysqli_fetch_all($result);
+        return $all ;
+    }
     public function geturi($id)
     {
         $q = "SELECT * FROM `spotify_uris` WHERE `songFKey` = $id";
