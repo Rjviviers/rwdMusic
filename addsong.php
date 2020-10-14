@@ -63,9 +63,7 @@ if (isset($_POST["okspot"])) {
 }
 function valid($data)
 {
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    $data = preg_replace('/[^a-zA-Z0-9_ -]/s', '', $data);
+    $myConn->real_escape_string($data);
     return $data;
 }
 
