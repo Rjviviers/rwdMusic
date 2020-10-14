@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 
 <script src="js/bootstrap.min.js"></script>
-<?php include "views\addsong.html"?>
+<?php include "addsong.html"?>
 </head>
 
 
