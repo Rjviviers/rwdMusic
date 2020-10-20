@@ -373,7 +373,7 @@ class DBCon
         $result = mysqli_query($this->link, $q);
         $row = mysqli_fetch_all($result);
         //var_dump($row[0][2]);
-        if ($row[0][2] == null) {
+        if ($row == null) {
             return "na";
         } else {
             return $row[0][2];

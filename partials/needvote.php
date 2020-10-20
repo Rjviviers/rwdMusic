@@ -1,6 +1,3 @@
-<?php
-
-?>
 <div class="modal" tabindex="-1" role="dialog" id="songsneedvote">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -26,9 +23,9 @@
                 ?>
             </div>
             <div class="modal-footer">
-                <?php if (!empty($_COOKIE['spotify'])) { ?>
+                <?php if (empty($_COOKIE['spotify'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Make Playlist</a>
+                    <a class="nav-link" href="makeplaylist.php">Make Playlist</a>
                 </li>
                 <?php } else { ?>
                 <li class="">
@@ -39,3 +36,6 @@
         </div>
     </div>
 </div>
+<?php
+$_SESSION['list'] = $i;
+?>
