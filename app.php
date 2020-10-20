@@ -30,8 +30,8 @@ include __DIR__ . '/html_private/lgc.php';
 // foreach ($newSongs as $v) {
 //     $results  = $api->search($v["name"], "track");
 //     $id =  $v['id'];
-//     foreach ($results->tracks->items as $key => $value) {
-//         $uris[] = array("id"=>$id,"uri" => $value->uri);
+//     foreach ($results->tracks->items as $key => $v) {
+//         $uris[] = array("id"=>$id,"uri" => $v->uri);
 //         break;
 //     }
 // }
@@ -41,8 +41,8 @@ include __DIR__ . '/html_private/lgc.php';
 // }
 
 
-// foreach ($uris as $value) {
-//     $track = $api->getTrack($value);
+// foreach ($uris as $v) {
+//     $track = $api->getTrack($v);
 //     $tracks = $track->name . " " . $track->artists[0]->name ;
 // }
 
@@ -63,14 +63,14 @@ include __DIR__ . '/html_private/lgc.php';
     </thead>
     <tbody>
         <?php
-            // foreach ($newSongs as $v) {
-                ?>
+        // foreach ($newSongs as $v) {
+        ?>
         <tr>
             <?php
-                // echo "<td> $v </td>";
+            // echo "<td> $v </td>";
             // }
             // foreach ($tracks as $v) {
-                // echo "<td> $v </td>";
+            // echo "<td> $v </td>";
             // }
             // foreach ($tracks2->tracks as $tracks) {
             //     echo '<td><b>' . $track->name . '</b> <b>' . $track->artists[0]->name . '</b> <br></td>';
@@ -79,23 +79,23 @@ include __DIR__ . '/html_private/lgc.php';
             ?>
         </tr>
         <?php
-            ?>
+        ?>
     </tbody>
 </table>-->
 <?php
 
 // echo "</br> images atr";
-// foreach ($track->album->images as $key => $value) {
-//     echo "<br> ". $key . " : " . print_r($value) . "</br>";
+// foreach ($track->album->images as $key => $v) {
+//     echo "<br> ". $key . " : " . print_r($v) . "</br>";
 // }
 
 // echo "</br> trac atr";
-// foreach ($track as $key => $value) {
+// foreach ($track as $key => $v) {
 //     echo "<br> ". $key . "</br>";
 // }
 
-// foreach ($api->me() as $key => $value) {
-//     echo $key . " : " . print_r($value) ."</br>";
+// foreach ($api->me() as $key => $v) {
+//     echo $key . " : " . print_r($v) ."</br>";
 // }
 // Getting Spotify catalog data is of course also possible
 // print_r(
@@ -116,8 +116,8 @@ include __DIR__ . '/html_private/lgc.php';
 // foreach ($songsRemain as $v) {
 //     $results  = $api->search($v["name"], "track");
 //     $id =  $v['id'];
-//     foreach ($results->tracks->items as $key => $value) {
-//         $uris[] = array("id"=>$id,"uri" => $value->uri);
+//     foreach ($results->tracks->items as $key => $v) {
+//         $uris[] = array("id"=>$id,"uri" => $v->uri);
 //         break;
 //     }
 // }
@@ -129,11 +129,17 @@ include __DIR__ . '/html_private/lgc.php';
 
 
     <?php
-    echo "adfasfsafa'a'fafsafasf'afsf";
-    echo "</br>";
-     echo $myConn->sanie("adfasfsafa'a'fafsafasf'afsf");
-   
-    echo "</br>";
+
+    $i = $myConn->needVoteUserList(3);
+    foreach ($i as $v) {
+        $id =  $v["SongID"];
+        $songname =   $v["SongName"] . " - " . $v["BandName"];
+    ?>
+    <a href="songdetails.php?ID=<?= $id ?>"><?= $songname ?></a>
+    <?php
+
+        echo "<br>";
+    }
     // $dis  = $myConn->transferTable();
     // //dis[i][0] = uri
     // //dis[i][1] = id
@@ -143,7 +149,7 @@ include __DIR__ . '/html_private/lgc.php';
     //     $q = "UPDATE `spotdata` SET `uri` = '$uri' WHERE `spotdata`.`sngID` = $songID";
     //     $myConn->InsertQuery($q);
     // }
-        // $myConn->geturi(6);
+    // $myConn->geturi(6);
 
     // for ($i=0; $i < count($all) ; $i++) {
     //     if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
@@ -157,21 +163,21 @@ include __DIR__ . '/html_private/lgc.php';
     //     // if (in_array($all[$i]['SongID'], $songsRemain)) {
     //     //     $name =  $all[$i]["SongName"] . " " . $all[$i]["BandName"];
     //     //     // $results  = $api->search($name, "track");
-    //     //     // foreach ($results->tracks->items as $key => $value) {
-    //     //     //     $myConn->addUri($all[$i]['SongID'], $value->uri);
-    //     //     //     echo "added ". $all[$i]['SongID'] . ": " . $value->uri;
+    //     //     // foreach ($results->tracks->items as $key => $v) {
+    //     //     //     $myConn->addUri($all[$i]['SongID'], $v->uri);
+    //     //     //     echo "added ". $all[$i]['SongID'] . ": " . $v->uri;
     //     //     //     break;
     //     //     // }
     //     // }
     //     //
     // }
-    
-// foreach ($playlistTracks->items as $track) {
-//     $track = $track->track;
 
-//     echo '<a href="' . $track->uri . '">' . $track->name . $track->artists[0]->name . '</a> <br>';
-// }
-// var_dump($newSongs);
-// $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [], "");
-?>
+    // foreach ($playlistTracks->items as $track) {
+    //     $track = $track->track;
+
+    //     echo '<a href="' . $track->uri . '">' . $track->name . $track->artists[0]->name . '</a> <br>';
+    // }
+    // var_dump($newSongs);
+    // $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [], "");
+    ?>
 </div>

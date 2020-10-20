@@ -18,7 +18,7 @@ class DBCon
 
     private $link;
 
-    
+
 
     public function __construct($host, $database, $username, $password)
     {
@@ -49,7 +49,7 @@ class DBCon
             //set Error Var parse error var to session[error]
 
             //send error var with url param e.g ?error=$eror
-            printf("Connect failed: %s\n", $this->link->connect_error);
+            printf("Connect failed: ");
             exit();
             // $error = mysqli_error($this->link);
             // echo $error;
@@ -178,24 +178,24 @@ class DBCon
         foreach ($row as $value) {
             $tempStor =  explode('.', $value["weekGroup"]);
 
-            $monthAndYear =$tempStor[2].".". $tempStor[1];
+            $monthAndYear = $tempStor[2] . "." . $tempStor[1];
 
             $weeks[] =  $monthAndYear;
         }
 
-    
+
         $weeksUnique = array_unique($weeks);
         rsort($weeksUnique);
-        $count = 0 ;
+        $count = 0;
         foreach ($weeksUnique as $value) {
-            if ($count<10) {
+            if ($count < 10) {
                 $month = explode('.', $value);
 
                 $monthText = date('F', strtotime("20$month[0]-$month[1]-01"));
 
                 $yearText = $month[0];
 
-                $monthAndYearText = $monthText." ".$yearText;
+                $monthAndYearText = $monthText . " " . $yearText;
 
                 echo "<tr>";
 
@@ -260,11 +260,11 @@ class DBCon
         $rating = mysqli_query($this->link, $query);
 
         while ($rate = mysqli_fetch_array($rating, 1)) {
-            $scores[]= $rate["Rating"];
+            $scores[] = $rate["Rating"];
         }
 
         if (array_sum($scores) != 0) {
-            $avg = array_sum($scores)/count($scores);
+            $avg = array_sum($scores) / count($scores);
 
             return $avg;
         } else {
@@ -298,7 +298,7 @@ class DBCon
     {
         ob_start();
 
-        header('Location: '.$url);
+        header('Location: ' . $url);
 
         ob_get_clean();
     }
@@ -312,7 +312,7 @@ class DBCon
         $row = mysqli_fetch_array($result, 1);
 
         if (is_array($row)) {
-            if (count($row)!= 0) {
+            if (count($row) != 0) {
                 return true;
             } else {
                 return false;
@@ -365,7 +365,7 @@ class DBCon
         $q = "SELECT `spotifyUri`, `songFKey` FROM `spotify_uris`";
         $result = mysqli_query($this->link, $q);
         $all = mysqli_fetch_all($result);
-        return $all ;
+        return $all;
     }
     public function geturi($id)
     {
@@ -373,7 +373,7 @@ class DBCon
         $result = mysqli_query($this->link, $q);
         $row = mysqli_fetch_all($result);
         //var_dump($row[0][2]);
-        if ($row[0][2]== null) {
+        if ($row[0][2] == null) {
             return "na";
         } else {
             return $row[0][2];
@@ -384,7 +384,7 @@ class DBCon
         $q = "SELECT * FROM `spotify_uris` WHERE `songFKey` = $id";
         $result = mysqli_query($this->link, $q);
         $row = mysqli_fetch_all($result);
-        
+
         if ($row == null) {
             // var_dump($row);
             return false;
@@ -431,7 +431,7 @@ class DBCon
 
         $all = mysqli_fetch_all($result, 1);
 
-        if (count($all)==1) {
+        if (count($all) == 1) {
             return true;
         } else {
             return false;
@@ -441,17 +441,11 @@ class DBCon
     public function NeedToVote($SongID)
     {
         $query = "SELECT * FROM `songrate` WHERE `SongID` = $SongID";
-
         $result = mysqli_query($this->link, $query);
-
         $all = mysqli_fetch_all($result, 1);
-
         $notvotedNumbers = array();
-
         $notvotedNames = array();
-
-        $users = array("2","3","4");
-
+        $users = array("2", "3", "4");
         $votedUsers = array();
 
         foreach ($all as $value) {
@@ -469,26 +463,64 @@ class DBCon
                 $notvotedNames[] = $this->GetUser($value);
             }
         }
-
         return $notvotedNames;
     }
 
+    function needVoteUserList($userID)
+    {
+        $all = $this->allSongs();
+        $listIDs = array();
+
+        foreach ($all as $value) {
+            $listIDs[] = $value['SongID'];
+        }
+        $votesNeeded = array();
+        foreach ($listIDs as $value) {
+            $q = "SELECT * FROM `Song_User_rating` WHERE SongID = $value";
+            $result = mysqli_query($this->link, $q);
+            $rows = mysqli_fetch_all($result);
+            foreach ($rows as $value) {
+                if ($value[3] == $userID) {
+                    $voted[] = $value[0];
+                }
+            }
+        }
+
+        foreach ($listIDs as $value) {
+            if (!in_array($value, $voted)) {
+                $votesNeeded[] = $this->getSongDetails($value);
+            }
+        }
+
+        return $votesNeeded;
+    }
+    function getSongDetails($id)
+    {
+        $q = "SELECT * FROM `song` WHERE SongID = $id";
+        $result = mysqli_query($this->link, $q);
+        $song = mysqli_fetch_assoc($result);
+        if ($song == null) {
+            return "Song Does not exist";
+        } else {
+            return $song;
+        }
+    }
     public function RateSong($songID, $userID, $score)
     {
         $query = "INSERT INTO `songrate` (`SongID`,`UserID`,`Rating`) VALUES($songID,$userID,$score)";
 
         mysqli_query($this->link, $query);
 
-        if ($this->CountVotes($songID)=="3") {
+        if ($this->CountVotes($songID) == "3") {
             $query  = "SELECT * FROM `songrate` WHERE `SongID` = '$songID' ";
 
             $result = mysqli_query($this->link, $query);
 
             $all    = mysqli_fetch_all($result, 1);
 
-            $ratings = array($all[0]['Rating'] , $all[1]['Rating'], $all[2]['Rating']);
+            $ratings = array($all[0]['Rating'], $all[1]['Rating'], $all[2]['Rating']);
 
-            $avg    = array_sum($ratings)/3 ;
+            $avg    = array_sum($ratings) / 3;
 
             $avgR = round($avg, 2);
 
@@ -521,11 +553,11 @@ class DBCon
 
     public function getUserStats($userID)
     {
-        $users = array(2,3,4);
+        $users = array(2, 3, 4);
 
         $avgScoreOnSongs = array();
 
-        
+
 
         if (in_array($userID, $users)) {
             if ($userID == 2) {
@@ -550,9 +582,9 @@ class DBCon
                 $avgScoreOnSongs[] =  $key['total'];
             }
 
-            $avgScore = array_sum($avgScoreOnSongs)/count($avgScoreOnSongs);
+            $avgScore = array_sum($avgScoreOnSongs) / count($avgScoreOnSongs);
 
-            $UserStats = array( "Number Of Songs Submitted" =>$numberOfSubmited ,"Avarege Score On Songs" => $avgScore );
+            $UserStats = array("Number Of Songs Submitted" => $numberOfSubmited, "Avarege Score On Songs" => $avgScore);
 
             return $UserStats;
         } else {
@@ -576,7 +608,7 @@ class DBCon
 
             //SongID	SongName	BandName	Total
 
-            $topSongs[] = array("songid"=> $key['SongID'],"Song"=>$key['SongName'] . " - " . $key['BandName'],"Total" => $key['Total']);
+            $topSongs[] = array("songid" => $key['SongID'], "Song" => $key['SongName'] . " - " . $key['BandName'], "Total" => $key['Total']);
         }
 
         return $topSongs;

@@ -9,13 +9,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 
 <script src="js/bootstrap.min.js"></script>
-<?php include "addsong.html"?>
+<?php include "addsong.html" ?>
+<?php include_once "needvote.php"; ?>
 </head>
 
 
 <body class="bg-dark text-white">
     <nav class="navbar nav-fill navbar-expand-lg navbar-light bg-warning">
-        <a class="navbar-brand capt" href="userprofile.php"><?php echo "Welcome, " . $_COOKIE['Uname']?></a>
+        <a class="navbar-brand capt" href="userprofile.php"><?php echo "Welcome, " . $_COOKIE['Uname'] ?></a>
         <div class=" navbar" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
@@ -26,14 +27,19 @@
                     <button type="button" class="nav-link btn" data-toggle="modal" data-target="#sngForm">Add
                         Song</button>
                 </li>
+                <li class="nav-item">
+                    <!-- <button class="nav-link btn" onclick="toggle()" href="">Add Song</button> -->
+                    <button type="button" class="nav-link btn" data-toggle="modal" data-target="#songsneedvote">missing
+                        votes</button>
+                </li>
                 <?php if (!empty($_COOKIE['spotify'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link " href="#">Spotify logged in</a>
                 </li>
-                <?php } else {?>
+                <?php } else { ?>
                 <li class="nav-item">
                     <a class="nav-link " href="api.php">Get Spotify Access</a>
-                </li><?php }?>
+                </li><?php } ?>
                 <li class="nav-item">
                     <a class="nav-link " href="logout.php">Log out</a>
                 </li>
