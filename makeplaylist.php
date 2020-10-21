@@ -43,9 +43,8 @@ $uris = array();
                     $api = new SpotifyWebAPI\SpotifyWebAPI();
                     $api->setAccessToken($_COOKIE['spotify']);
                     $pName = $_POST["playlist"];
-                    $api->createPlaylist([
-                        'name' => $name,
-                    ]);
+                    $x = array('name' => $name);
+                    $api->createPlaylist($x);
                     $me = $api->me();
 
                     var_dump($me);
