@@ -82,6 +82,12 @@ $rank = 1;
 
             $needsVotes[] = array($name,$id);
         }
+        $uris = array();
+        
+        $id = $value->GetID();
+        $uris[] = $myConn->geturi($id);
+        
+        $_SESSION['list'] = $uris;
     }
 
     if (!empty($needsVotes)) {
@@ -241,16 +247,8 @@ $rank = 1;
 
             <?php
     }
-    $month = explode('.', $_GET['month']);
-    $mt = $month[1].'.'.$month[0];
+    
 
-    $dies = $myConn->GetSongList($monthText);
-            $uris = array();
-            foreach ($dies as $v) {
-                $id = $value->GetID();
-                $uris[] = $myConn->geturi($id);
-            }
-            $_SESSION['list'] = $uris;
            ?>
 
             <a class="btn btn-warning" href="makeplaylist.php">Make Playlist</a>
