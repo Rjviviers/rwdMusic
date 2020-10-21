@@ -157,7 +157,8 @@ if (isset($_POST["submitChange"])) {
                             $api = new SpotifyWebAPI\SpotifyWebAPI();
                             $api->setAccessToken($_COOKIE['spotify']);
                             $spotSong = $myConn->geturi($id);
-                            if ($spotSong != "na") {
+                            if ($spotSong == "na") {
+
                                 // $results  = $api->search($v["name"], "track");
                                 $results = $api->search($song["SongName"] . " " . $song["BandName"], "track");
                                 foreach ($results->tracks->items as $key => $v) {
