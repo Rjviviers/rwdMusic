@@ -52,27 +52,30 @@ $uris = array();
                     $api = new SpotifyWebAPI\SpotifyWebAPI();
                     $api->setAccessToken($_COOKIE['spotify']);
                     $pName = $_POST["playlist"];
-                    $api->createPlaylist([
+                    $playlist = $api->createPlaylist([
                         'name' => $pName,
                     ]);
                     $me = $api->me()->id;
+                    $playlistID = $playlist->id;
 
+                    // $playlists = $api->getUserPlaylists($me, [
+                    //     'limit' => 1
+                    // ]);
 
-                    $playlists = $api->getUserPlaylists($me, [
-                        'limit' => 1
-                    ]);
+                    // foreach ($playlists->items as $playlist) {
+                    //     if ($playlist->name != $pName) {
+                    //         echo "could not find correct list";
+                    //     }
 
-                    foreach ($playlists->items as $playlist) {
-                        if ($playlist->name != $pName) {
-                            echo "could not find correct list";
-                        }
-
-                        $playlisturl = $playlist->external_urls->spotify;
-                        $playlistUri = $playlist->uri;
-                        $playlistID = $playlist->id;
-                    }
+                    //     $playlisturl = $playlist->external_urls->spotify;
+                    //     $playlistUri = $playlist->uri;
+                    //     $playlistID = $playlist->id;
+                    // }
                     var_dump($uris);
-                    $api->addPlaylistTracks($playlistID, $uris, "");
+                    foreach ($uris as $v) {
+                        $api->addPlaylistTracks($playlistID, [$v]);
+                    }
+                    
                 }
             }
 
