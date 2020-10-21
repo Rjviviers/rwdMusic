@@ -55,9 +55,11 @@ $rank = 1;
     $hasvotes = array();
 
     $needsVotes = array();
-
+    $list = array();
     $plain = array();
-
+    // foreach ($listOfsongsOBJ as $v) {
+    //     $list[] = $v->GetID();
+    // }
     foreach ($listOfsongsOBJ as $value) {
         $id = $value->GetID();
 
@@ -82,7 +84,7 @@ $rank = 1;
 
             $needsVotes[] = array($name,$id);
         }
-        $uris = array();
+       
         
         $id = $value->GetID();
         $uris[] = $id;
