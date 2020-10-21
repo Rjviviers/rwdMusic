@@ -10,7 +10,7 @@ if($_GET['s'] == 1){
 else{
     $list = $_SESSION['list'];
 }
-
+var_dump($list);
 $songIDs = array();
 $uris = array();
 
