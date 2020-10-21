@@ -34,7 +34,7 @@ $uris = array();
                     $notWorking[] = $v['SongName'] . " " . $v['BandName'] . " <span style='color:red;'>has no uri </span> </br>";
                 }
             }
-            if (count($notWorking) > 0) {
+            if ($notWorking != null) {
                 echo "<h4> songs with error </h4>";
                 foreach ($notWorking as $v) {
                     echo $v;
