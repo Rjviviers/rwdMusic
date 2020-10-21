@@ -52,20 +52,20 @@ $uris = array();
                     $api = new SpotifyWebAPI\SpotifyWebAPI();
                     $api->setAccessToken($_COOKIE['spotify']);
                     $pName = $_POST["playlist"];
-                    $x = array('name' => $name);
+                    $x = array('name' => $pName);
                     $api->createPlaylist([
-                        'name' => 'My shiny playlist'
+                        'name' => $pName,
                     ]);
-                    $me = $api->me();
+                    $me = $api->me()->id;
 
                     var_dump($me);
-                    // $playlists = $api->getUserPlaylists('USER_ID', [
-                    //     'limit' => 5
-                    // ]);
+                    $playlists = $api->getUserPlaylists($me, [
+                        'limit' => 5
+                    ]);
 
-                    // foreach ($playlists->items as $playlist) {
-                    //     echo '<a href="' . $playlist->external_urls->spotify . '">' . $playlist->name . '</a> <br>';
-                    // }
+                    foreach ($playlists->items as $playlist) {
+                        echo '<a href="' . $playlist->external_urls->spotify . '">' . $playlist->name . '</a> <br>';
+                    }
                 }
             }
 
