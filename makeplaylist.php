@@ -53,7 +53,9 @@ $uris = array();
                     $api->setAccessToken($_COOKIE['spotify']);
                     $pName = $_POST["playlist"];
                     $x = array('name' => $name);
-                    $api->createPlaylist($x);
+                    $api->createPlaylist([
+                        'name' => 'My shiny playlist'
+                    ]);
                     $me = $api->me();
 
                     var_dump($me);
