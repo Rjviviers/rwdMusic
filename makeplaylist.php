@@ -60,11 +60,16 @@ $uris = array();
 
                     var_dump($me);
                     $playlists = $api->getUserPlaylists($me, [
-                        'limit' => 5
+                        'limit' => 1
                     ]);
 
                     foreach ($playlists->items as $playlist) {
-                        echo '<a href="' . $playlist->external_urls->spotify . '">' . $playlist->name . '</a> <br>';
+                        if ($playlist->name != $pName) {
+                            echo "could not find correct list";
+                        }
+
+                        echo $playlist->external_urls->spotify;
+                        var_dump($playlist);
                     }
                 }
             }
