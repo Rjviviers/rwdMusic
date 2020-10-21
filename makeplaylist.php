@@ -44,7 +44,7 @@ $uris = array();
                     $api->setAccessToken($_COOKIE['spotify']);
                     $pName = $_POST["playlist"];
                     $api->createPlaylist([
-                        'name' => "$name"
+                        'name' => $name,
                     ]);
                     $me = $api->me();
 
