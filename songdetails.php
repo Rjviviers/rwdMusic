@@ -114,12 +114,15 @@ if (isset($_POST["submitChange"])) {
                                         echo "<h4 class='capt'> no votes needed</h4> ";
                                     } else {
                                         echo "<h4 class='capt'> ";
-
-                                        foreach ($needtovote as  $value) {
-                                            echo $value . " ";
+                                        $x = count($needtovote);
+                                        if ($x == 1) {
+                                            echo $needtovote[0];
+                                        } elseif ($x == 2) {
+                                            echo $needtovote[0] . " and " . $needtovote[1];
+                                        } elseif ($x == 3) {
+                                            echo $needtovote[0] . ", " . $needtovote[1] . " and " . $needtovote[2];
                                         }
-
-                                        echo " Still needs to vote</h4>";
+                                        echo " Still needs to vote on this song</h4>";
                                     }
 
                                     if ($myConn->UserVotedOnSong($song['SongID'], $userID)) {
