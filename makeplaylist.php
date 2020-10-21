@@ -58,7 +58,7 @@ $uris = array();
                     ]);
                     $me = $api->me()->id;
 
-                    var_dump($me);
+                    // var_dump($me);
                     $playlists = $api->getUserPlaylists($me, [
                         'limit' => 1
                     ]);
