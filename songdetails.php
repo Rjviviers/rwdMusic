@@ -175,6 +175,7 @@ if (isset($_POST["submitChange"])) {
                                     $full = $songname . " - " . $artistname;
                                     $imgsrc = $v->album->images[0]->url;
                                     $spotSong = $v->uri;
+                                    $myConn->addUri($song['SongID'], $spotSong);
                                     break;
                                 }
                                 echo "nie een gehaad";
