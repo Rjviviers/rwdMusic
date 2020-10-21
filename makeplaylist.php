@@ -71,9 +71,7 @@ $uris = array();
                         $playlistUri = $playlist->uri;
                         $playlistID = $playlist->id;
                     }
-                    $api->addPlaylistTracks($playlistID, [
-                        $uris,
-                    ]);
+                    $api->addPlaylistTracks($playlistID, $uris, "");
                 }
             }
 
