@@ -87,7 +87,7 @@ $rank = 1;
         $id = $value->GetID();
         $uris[] = $myConn->geturi($id);
         
-        $_SESSION['list'] = $uris;
+        $_SESSION['list2'] = $uris;
     }
 
     if (!empty($needsVotes)) {
@@ -251,7 +251,7 @@ $rank = 1;
 
            ?>
 
-            <a class="btn btn-warning" href="makeplaylist.php">Make Playlist</a>
+            <a class="btn btn-warning" href="makeplaylist.php?s=1">Make Playlist</a>
 
         </div>
 

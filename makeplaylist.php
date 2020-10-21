@@ -4,9 +4,16 @@ require('html_private/head.php');
 include __DIR__ . '/partials/header.php';
 include __DIR__ . '/html_private/lgc.php';
 
-$list = $_SESSION['list'];
+if($_GET['s'] == 1){
+    $list = $_SESSION['list2'];
+}
+else{
+    $list = $_SESSION['list'];
+}
+
 $songIDs = array();
 $uris = array();
+
 ?>
 <div class="container">
     <div class="row">
