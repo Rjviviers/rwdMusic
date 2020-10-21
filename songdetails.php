@@ -159,12 +159,12 @@ if (isset($_POST["submitChange"])) {
                             $songIDForSpotCall = $_GET['ID'];
                             $spotSong = $myConn->geturi($songIDForSpotCall);
                             if ($spotSong == "na") {
-
                                 // $results  = $api->search($v["name"], "track");
                                 $results = $api->search($song["SongName"] . " " . $song["BandName"], "track");
                                 foreach ($results->tracks->items as $key => $v) {
-                                    $songname = $v->name;
-                                    $artistname = $v->artists[0]->name;
+                                    echo "hie? ";
+                                    $spotSongname = $v->name;
+                                    $spotArtistname = $v->artists[0]->name;
                                     $full = $songname . " - " . $artistname;
                                     $imgsrc = $v->album->images[0]->url;
                                     $spotSong = $v->uri;
@@ -173,14 +173,27 @@ if (isset($_POST["submitChange"])) {
                                 echo "nie een gehaad";
                             } else {
                                 $track = $api->getTrack($spotSong);
-                                $songname = $track->name;
-                                $artistname = $track->artists[0]->name;
-                                $full = $songname . " - " . $artistname;
+                                $spotSongname = $track->name;
+                                $spotArtistname = $track->artists[0]->name;
+                                $full = $spotSongname . " - " . $spotArtistname;
                                 $imgsrc = $track->album->images[0]->url;
                                 echo "uri gehaad ";
                             } ?>
                         <div style="display: none;">
-                            <?php var_dump($track); ?>
+                            <?php
+                                echo " track ";
+                                var_dump($track);
+                                echo " song string in api call ";
+                                var_dump($song["SongName"] . " " . $song["BandName"]);
+                                echo " spotsong name var ";
+                                var_dump($spotSongname);
+                                echo " spotsong artist var ";
+                                var_dump($spotArtistname);
+
+                                echo " should be a uri or null ";
+                                var_dump($spotSong);
+
+                                ?>
                         </div>
                         <div class="col-md-12">
                             spotify area
@@ -196,12 +209,12 @@ if (isset($_POST["submitChange"])) {
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h5><?= $songname ?></h5>
+                                    <h5><?= $spotSongname ?></h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h5><?= $artistname ?></h5>
+                                    <h5><?= $spotArtistname ?></h5>
                                 </div>
                             </div>
                         </div>
