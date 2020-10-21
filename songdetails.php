@@ -159,11 +159,14 @@ if (isset($_POST["submitChange"])) {
                             $spotSong = $myConn->geturi($id);
                             if ($spotSong != "na") {
                                 // $results  = $api->search($v["name"], "track");
-                                $track = $api->search($song["SongName"] . " " . $song["BandName"], "track");
-                                $songname = $track->items[0]->name;
-                                $artistname = $track->items[0]->artists[0]->name;
-                                $full = $songname . " - " . $artistname;
-                                $imgsrc = $track->items[0]->album->images[0]->url;
+                                $results = $api->search($song["SongName"] . " " . $song["BandName"], "track");
+                                foreach ($results->tracks->items as $key => $v) {
+                                    $songname = $v->name;
+                                    $artistname = $v->artists[0]->name;
+                                    $full = $songname . " - " . $artistname;
+                                    $imgsrc = $v->album->images[0]->url;
+                                    break;
+                                }
                             } else {
                                 $track = $api->getTrack($spotSong);
                                 $songname = $track->name;
