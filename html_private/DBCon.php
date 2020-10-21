@@ -367,9 +367,9 @@ class DBCon
         $all = mysqli_fetch_all($result);
         return $all;
     }
-    public function geturi($id)
+    public function geturi($id_p)
     {
-        $q = "SELECT * FROM `spotdata` WHERE `sngID` = $id";
+        $q = "SELECT * FROM `spotdata` WHERE sngID = $id_p";
         $result = mysqli_query($this->link, $q);
         $row = mysqli_fetch_assoc($result);
         // var_dump($row);
