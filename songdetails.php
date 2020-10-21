@@ -160,10 +160,10 @@ if (isset($_POST["submitChange"])) {
                             if ($spotSong != "na") {
                                 // $results  = $api->search($v["name"], "track");
                                 $track = $api->search($song["SongName"] . " " . $song["BandName"], "track");
-                                $songname = $track->name;
-                                $artistname = $track->artists[0]->name;
+                                $songname = $track->items[0]->name;
+                                $artistname = $track->items[0]->artists[0]->name;
                                 $full = $songname . " - " . $artistname;
-                                $imgsrc = $track->album->images[0]->url;
+                                $imgsrc = $track->items[0]->album->images[0]->url;
                             } else {
                                 $track = $api->getTrack($spotSong);
                                 $songname = $track->name;
