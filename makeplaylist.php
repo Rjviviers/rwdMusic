@@ -6,11 +6,12 @@ include __DIR__ . '/html_private/lgc.php';
 
 if($_GET['s'] == 1){
     $list = $_SESSION['list2'];
+    $x = "HoH month 2020" ;
 }
 else{
     $list = $_SESSION['list'];
+    $x = $myConn->GetUser($_COOKIE['User']) . " Catchup Playlist" ;
 }
-var_dump($list);
 $songIDs = array();
 $uris = array();
 
@@ -22,7 +23,7 @@ $uris = array();
             <form action="" method="post" class="pt-5">
                 <label for="playlist">name for the playlist</label>
                 <input type="text" name="playlist" placeholder="playlist name"
-                    value="<?= $myConn->GetUser($_COOKIE['User']) . " Catchup Playlist" ?>">
+                    value="<?= $x ?>">
                 <input type="submit" name="go" value="Make Playlist">
             </form>
         </div>
