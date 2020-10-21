@@ -129,7 +129,7 @@ include __DIR__ . '/html_private/lgc.php';
 
 
     <?php
-
+    var_dump($myConn->geturi(1));
     $i = $myConn->needVoteUserList(3);
     foreach ($i as $v) {
         $id =  $v["SongID"];
