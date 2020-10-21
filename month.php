@@ -57,9 +57,7 @@ $rank = 1;
     $needsVotes = array();
     $list = array();
     $plain = array();
-    // foreach ($listOfsongsOBJ as $v) {
-    //     $list[] = $v->GetID();
-    // }
+   
     foreach ($listOfsongsOBJ as $value) {
         $id = $value->GetID();
 
@@ -87,11 +85,11 @@ $rank = 1;
        
         
         $id = $value->GetID();
-        $uris[] = $id;
+        $uris[] = $myConn->getSongDetails($id);
         
         
     }
-$_SESSION['list2'] = $listOfsongsOBJ;
+$_SESSION['list2'] = $uri;
     if (!empty($needsVotes)) {
         ?>
 
