@@ -52,13 +52,12 @@ $uris = array();
                     $api = new SpotifyWebAPI\SpotifyWebAPI();
                     $api->setAccessToken($_COOKIE['spotify']);
                     $pName = $_POST["playlist"];
-                    $x = array('name' => $pName);
                     $api->createPlaylist([
                         'name' => $pName,
                     ]);
                     $me = $api->me()->id;
 
-                    // var_dump($me);
+
                     $playlists = $api->getUserPlaylists($me, [
                         'limit' => 1
                     ]);
@@ -68,9 +67,13 @@ $uris = array();
                             echo "could not find correct list";
                         }
 
-                        echo $playlist->external_urls->spotify;
-                        var_dump($playlist);
+                        $playlisturl = $playlist->external_urls->spotify;
+                        $playlistUri = $playlist->uri;
+                        $playlistID = $playlist->id;
                     }
+                    $api->addPlaylistTracks($playlistID, [
+                        $uris,
+                    ]);
                 }
             }
 
