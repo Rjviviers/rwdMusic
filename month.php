@@ -89,7 +89,7 @@ $rank = 1;
         
         
     }
-$_SESSION['list2'] = $uri;
+$_SESSION['list2'] = $uris;
     if (!empty($needsVotes)) {
         ?>
 
