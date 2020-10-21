@@ -91,7 +91,7 @@ $rank = 1;
         
         
     }
-$_SESSION['list2'] = $uris;
+$_SESSION['list2'] = $listOfsongsOBJ;
     if (!empty($needsVotes)) {
         ?>
 
