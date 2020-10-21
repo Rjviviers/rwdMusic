@@ -347,12 +347,12 @@ class DBCon
     }
     public function addUri($songID, $uri)
     {
-        $q = "INSERT INTO `spotify_uris` (`id`, `spotifyUri`, `songFKey`) VALUES (NULL, '$uri', '$songID');";
-        mysqli_query($this->link, $q);
+        $uriQuery = "UPDATE `spotify` SET `uri` = '$uri' WHERE `spotify`.`SongID` = $songID";
+        $this->updateQuery($uriQuery);
     }
     public function addSongID($songID)
     {
-        $q = "INSERT INTO `spotData` (`id`,  `sngID`,`uri`) VALUES (NULL,'$songID', NULL);";
+        $q = "INSERT INTO `spotdata` (`id`,  `sngID`,`uri`) VALUES (NULL,'$songID', NULL);";
         mysqli_query($this->link, $q);
     }
     public function transferTable()

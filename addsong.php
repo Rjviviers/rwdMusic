@@ -15,20 +15,20 @@ if (!empty($_GET["NoOfSongs"])) {
 $_SESSION['song'] = array();
 
 if (isset($_POST["Add"])) {
-    for ($i=0; $i < $noofsongs; $i++) {
+    for ($i = 0; $i < $noofsongs; $i++) {
         $songname = $_POST["song,$i"];
         $songname = $myConn->sanie($songname);
         $bandname = $_POST["band,$i"];
         $bandname = $myConn->sanie($bandname);
-        $_SESSION['song'][] = array($songname,$bandname);
+        $_SESSION['song'][] = array($songname, $bandname);
 
         $user = $_POST["user,$i"];
 
-        $weekgroup = "week.".date('m.y');
+        $weekgroup = "week." . date('m.y');
 
         $timestamp = getdate();
 
-        $outputDate = $timestamp["year"] .'-'. $timestamp["mon"] .'-'. $timestamp["mday"];
+        $outputDate = $timestamp["year"] . '-' . $timestamp["mon"] . '-' . $timestamp["mday"];
 
         $query = "INSERT INTO `song` (`SongID`, `SongName`, `BandName`, `Submited_by`, `WeekGroup`, `DatePosted`) VALUES (NULL, '$songname', '$bandname', '$user', '$weekgroup', '$outputDate')";
 
@@ -43,25 +43,26 @@ if (isset($_POST["okspot"])) {
         $api->setAccessToken($_COOKIE['spotify']);
         $song = $_POST['uri'];
         $track = $api->getTrack($song);
-        $songname = $track->name ;
+        $songname = $track->name;
         $songname = $myConn->sanie($songname);
         $artistname = $track->artists[0]->name;
         $artistname = $myConn->sanie($artistname);
         $imgsrc = $track->album->images[0]->url;
-        $_SESSION['song'][] = array($songname,$artistname,$imgsrc);
-        
+        $_SESSION['song'][] = array($songname, $artistname, $imgsrc);
+
         $user = $_COOKIE['User'];
         // $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [$song], "");
-        $weekgroup = "week.".date('m.y');
+        $weekgroup = "week." . date('m.y');
         $timestamp = getdate();
-        $outputDate = $timestamp["year"] .'-'. $timestamp["mon"] .'-'. $timestamp["mday"];
+        $outputDate = $timestamp["year"] . '-' . $timestamp["mon"] . '-' . $timestamp["mday"];
 
         $query = "INSERT INTO `song` (`SongID`, `SongName`, `BandName`, `Submited_by`, `WeekGroup`, `DatePosted`) VALUES (NULL, '$songname', '$artistname', '$user', '$weekgroup', '$outputDate')";
         $myConn->InsertQuery($query);
         //UPDATE `spotify` SET `uri` = 'uri' WHERE `spotify`.`SongID` = 600;
         $songIDinDB  = $myConn->getDBSongID();
-        $uriQuery = "UPDATE `spotify` SET `uri` = '$song' WHERE `spotify`.`SongID` = $songIDinDB";
-        $myConn->updateQuery($uriQuery);
+        // $uriQuery = "UPDATE `spotify` SET `uri` = '$song' WHERE `spotify`.`SongID` = $songIDinDB";
+        // $myConn->updateQuery($uriQuery);
+        $myConn->addUri($song, $songIDinDB);
         $myConn->redirect("display.php");
     }
 }
@@ -106,9 +107,9 @@ if (isset($_POST["okspot"])) {
     <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet" />
     <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
-    <?php if ($_GET['s']=="yes") {
+    <?php if ($_GET['s'] == "yes") {
         if (!empty($_COOKIE['spotify'])) {
-            ?>
+    ?>
     <div class="container">
         <div class="row row-cols-1">
             <form action="" method="post">
@@ -121,7 +122,7 @@ if (isset($_POST["okspot"])) {
 
     <?php
         } else {
-            ?>
+        ?>
     <div class="container">
         <div class="row row-cols-1">
             <h2 class="col">log in with spotify first</h2>
@@ -140,33 +141,33 @@ if (isset($_POST["okspot"])) {
         </div>
         <form action="" method="post">
             <?php
-                for ($i=0; $i < $noofsongs ; $i++) {
-                    ?>
+                for ($i = 0; $i < $noofsongs; $i++) {
+                ?>
             <div class="form-group">
 
-                <label for="songname <?php echo $i?>">Song Name</label>
+                <label for="songname <?php echo $i ?>">Song Name</label>
 
-                <input type="text" class="form-control" name="song,<?php echo $i?>"
-                    placeholder="songname <?php echo $i?>" name="song,<?php echo $i?>" id="">
+                <input type="text" class="form-control" name="song,<?php echo $i ?>"
+                    placeholder="songname <?php echo $i ?>" name="song,<?php echo $i ?>" id="">
 
             </div>
             <div class="form-group">
 
-                <label for="band,<?php echo $i?>" name="band,<?php echo $i?>">Band Name</label>
+                <label for="band,<?php echo $i ?>" name="band,<?php echo $i ?>">Band Name</label>
 
-                <input id="band" type="text" class="form-control" placeholder="bandname <?php echo $i?>"
-                    name="band,<?php echo $i?>" id="">
+                <input id="band" type="text" class="form-control" placeholder="bandname <?php echo $i ?>"
+                    name="band,<?php echo $i ?>" id="">
 
             </div>
             <div>
 
                 <label for="user">Submited by</label> <br>
 
-                <input type="radio" name="user,<?php echo $i?>" value="2"> Ruan <br>
+                <input type="radio" name="user,<?php echo $i ?>" value="2"> Ruan <br>
 
-                <input type="radio" name="user,<?php echo $i?>" value="3"> Werner <br>
+                <input type="radio" name="user,<?php echo $i ?>" value="3"> Werner <br>
 
-                <input type="radio" name="user,<?php echo $i?>" value="4"> Danie
+                <input type="radio" name="user,<?php echo $i ?>" value="4"> Danie
 
             </div>
             <br>
@@ -176,7 +177,7 @@ if (isset($_POST["okspot"])) {
         </form>
     </div>
     <?php
-    }?>
+    } ?>
     </body>
 
 </html>
