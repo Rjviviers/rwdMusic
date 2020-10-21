@@ -29,7 +29,7 @@
                 </li>
                 <?php } else { ?>
                 <li class="">
-                    <a class=" " href="api.php">To make Playlist login with spotify</a>
+                    <a class=" " href="makeplaylist.php">To make Playlist login with spotify</a>
                 </li><?php } ?>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
