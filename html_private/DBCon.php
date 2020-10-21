@@ -371,13 +371,13 @@ class DBCon
     {
         $q = "SELECT * FROM `spotdata` WHERE `sngID` = $id";
         $result = mysqli_query($this->link, $q);
-        $row = mysqli_fetch_all($result);
-        //var_dump($row[0][2]);
-        if ($row == null) {
+        $row = mysqli_fetch_assoc($result);
+        var_dump($row);
+
+        if ($row['uri'] == null) {
             return "na";
-        } else {
-            return $row[0][2];
         }
+        return $row["uri"];
     }
     public function checkIfHasUri($id)
     {
