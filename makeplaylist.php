@@ -58,20 +58,6 @@ $uris = array();
                     $me = $api->me()->id;
                     $playlistID = $playlist->id;
 
-                    // $playlists = $api->getUserPlaylists($me, [
-                    //     'limit' => 1
-                    // ]);
-
-                    // foreach ($playlists->items as $playlist) {
-                    //     if ($playlist->name != $pName) {
-                    //         echo "could not find correct list";
-                    //     }
-
-                    //     $playlisturl = $playlist->external_urls->spotify;
-                    //     $playlistUri = $playlist->uri;
-                    //     $playlistID = $playlist->id;
-                    // }
-                    var_dump($uris);
                     foreach ($uris as $v) {
                         $api->addPlaylistTracks($playlistID, [$v]);
                     }
