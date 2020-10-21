@@ -241,49 +241,13 @@ $rank = 1;
 
             <?php
     }
-
-                ?>
-
-            <?php
             $uris = array();
             foreach ($listOfsongsOBJ as $v) {
                 $id = $value->GetID();
                 $uris[] = $myConn->geturi($id);
             }
             $_SESSION['list'] = $uris;
-            echo
-
-
-        // $playlistConverterUrl = "http://www.playlist-converter.net/#/?text=";
-
-        // $text = "";
-
-        // ;
-
-        // if ($userIDnew == 2) {
-        //     foreach (array_unique($plain) as $val) {
-
-        //         //     $text .= str_replace(" ", "%20", $val) . "%0A";
-
-        //         echo "<p>";
-
-        //         echo $val;
-
-        //         echo "<br>";
-
-        //         echo "</p>";
-        //     }
-        // }
-
-         
-
-        // // var_dump($text);
-
-        // $url = $playlistConverterUrl . $text;
-
-        
-
-        ?>
+           ?>
 
             <a class="btn btn-warning" href="makeplaylist.php">Make Playlist</a>
 
