@@ -9,10 +9,10 @@ $userID = $_COOKIE["User"];
 $song = $myConn->SelectQuery("SELECT * FROM `song` WHERE `SongID` = $id");
 //$month = $song['WeekGroup'];
 $tempStor =  explode('.', $song['WeekGroup']);
-$month = $tempStor[2].".". $tempStor[1];
+$month = $tempStor[2] . "." . $tempStor[1];
 
 $dateArr = explode("-", $song["DatePosted"]);
-$dateVal = "20.".$dateArr[1];
+$dateVal = "20." . $dateArr[1];
 if (isset($_POST["submit"])) {
     $score = ($_POST["sc1"] * 20) / 100;
     $myConn->RateSong($id, $userID, $score);
@@ -34,7 +34,7 @@ if (isset($_POST["submitChange"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo  $song["SongName"]?> </title>
+    <title><?= $song["SongName"] ?> </title>
     </script>
     <?php
     include __DIR__ . '/partials/header.php';
@@ -69,7 +69,7 @@ if (isset($_POST["submitChange"])) {
                     <div class="row" style="height: 400px;">
                         <div class="col-md-12 ">
                             <iframe width="100%" height="100%"
-                                src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"].'+-+'.$song["BandName"]; ?>'&autoplay=1"
+                                src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"] . '+-+' . $song["BandName"]; ?>'&autoplay=1"
                                 frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ if (isset($_POST["submitChange"])) {
                         <div class="col-md-12">
                             <div class="author"><img src="https://via.placeholder.com/25" />
                                 <div style="padding-top: 6px;padding-left: 3em;margin: 7%;">
-                                    <?= $myConn->GetUser($song["Submited_by"])?>
+                                    <?= $myConn->GetUser($song["Submited_by"]) ?>
                                 </div>
                             </div>
                         </div>
@@ -104,26 +104,26 @@ if (isset($_POST["submitChange"])) {
                     <div class="row">
                         <div class="col-md-12">
                             <p><?php
-                        $hasScore = $myConn->HasScore($id);
-                        if ($hasScore) {
-                            $songScore = $myConn->GetSingleSongTotal($id);
+                                $hasScore = $myConn->HasScore($id);
+                                if ($hasScore) {
+                                    $songScore = $myConn->GetSingleSongTotal($id);
 
-                            echo "<h3> Total : " . $songScore["Total"] . "</h3>";
-                        } else {
-                            $needtovote = $myConn->NeedToVote($id);
+                                    echo "<h3> Total : " . $songScore["Total"] . "</h3>";
+                                } else {
+                                    $needtovote = $myConn->NeedToVote($id);
 
-                            if (count($needtovote) > 0) {
-                                echo "<h4 class='capt'> song still needs to be voted on by: ";
+                                    if (count($needtovote) > 0) {
+                                        echo "<h4 class='capt'> song still needs to be voted on by: ";
 
-                                foreach ($needtovote as  $value) {
-                                    echo $value . ",";
-                                }
+                                        foreach ($needtovote as  $value) {
+                                            echo $value . ",";
+                                        }
 
-                                echo "</h4>";
-                            }
-                    
-                            if ($myConn->UserVotedOnSong($id, $userID)) {
-                                echo "<h4> you have already voted on this song </h4>"; ?>
+                                        echo "</h4>";
+                                    }
+
+                                    if ($myConn->UserVotedOnSong($id, $userID)) {
+                                        echo "<h4> you have already voted on this song </h4>"; ?>
                                 <input type="button" class="btn btn-warning form-control" id="btnChang"
                                     onclick='ChangeVote()' value="Change Vote">
 
@@ -136,33 +136,41 @@ if (isset($_POST["submitChange"])) {
                                 </form>
                             </div>
                             <?php
-                            } else {
-                                ?>
+                                    } else {
+                                    ?>
                             <form method="post" class="mt-3">
                                 <?php include __DIR__ . "/views/sliderView.html"; ?>
                                 <button name="submit" type="submit" value="" class="cardbuttondeets"><i
                                         class="fas fa-check"></i></button>
                             </form>
                             <?php
-                            }
-                        }
-                        ?>
+                                    }
+                                }
+                                ?>
                             </p>
                         </div>
                     </div>
                     <div class="row">
                         <?php
- 
-                            if (!empty($_COOKIE['spotify'])) {
-                                $api = new SpotifyWebAPI\SpotifyWebAPI();
-                                $api->setAccessToken($_COOKIE['spotify']);
-                                $song = $myConn->geturi($id);
-                                if ($song != "na") {
-                                    $track = $api->getTrack($song);
-                                    $songname = $track->name ;
-                                    $artistname = $track->artists[0]->name;
-                                    $full = $songname . " - " . $artistname;
-                                    $imgsrc = $track->album->images[0]->url; ?>
+
+                        if (!empty($_COOKIE['spotify'])) {
+                            $api = new SpotifyWebAPI\SpotifyWebAPI();
+                            $api->setAccessToken($_COOKIE['spotify']);
+                            $spotSong = $myConn->geturi($id);
+                            if ($spotSong != "na") {
+                                // $results  = $api->search($v["name"], "track");
+                                $track = $api->search($song["SongName"] . " " . $song["BandName"], "track");
+                                $songname = $track->name;
+                                $artistname = $track->artists[0]->name;
+                                $full = $songname . " - " . $artistname;
+                                $imgsrc = $track->album->images[0]->url;
+                            } else {
+                                $track = $api->getTrack($spotSong);
+                                $songname = $track->name;
+                                $artistname = $track->artists[0]->name;
+                                $full = $songname . " - " . $artistname;
+                                $imgsrc = $track->album->images[0]->url;
+                            } ?>
                         <div style="display: none;">
                             <?php var_dump($track); ?>
                         </div>
@@ -172,8 +180,8 @@ if (isset($_POST["submitChange"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="<?=$song?>">
-                                <img width="50%" src="<?= $imgsrc?>" alt="<?=$full?>">
+                            <a href="<?= $song ?>">
+                                <img width="50%" src="<?= $imgsrc ?>" alt="<?= $full ?>">
                             </a>
 
                         </div>
@@ -191,10 +199,10 @@ if (isset($_POST["submitChange"])) {
                         </div>
                     </div>
                     <?php
-                                }
-                            }
 
-                            ?>
+                        }
+
+                ?>
 
                 </div>
             </div>

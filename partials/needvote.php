@@ -23,7 +23,7 @@
                 ?>
             </div>
             <div class="modal-footer">
-                <?php if (empty($_COOKIE['spotify'])) { ?>
+                <?php if (!empty($_COOKIE['spotify'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="makeplaylist.php">Make Playlist</a>
                 </li>
