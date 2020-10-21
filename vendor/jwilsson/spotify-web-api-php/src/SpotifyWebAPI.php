@@ -232,7 +232,7 @@ class SpotifyWebAPI
      * @return bool Whether the tracks was successfully added.
      */
     public function addPlaylistTracks($playlistId, $tracks, $options = [])
-    {
+    { 
         $options = (array) $options;
         $options['uris'] = (array) $this->idToUri($tracks, 'track');
         $options = json_encode($options);
