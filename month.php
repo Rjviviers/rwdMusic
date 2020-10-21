@@ -85,11 +85,11 @@ $rank = 1;
         $uris = array();
         
         $id = $value->GetID();
-        $uris[] = $myConn->geturi($id);
+        $uris[] = $id;
         
-        $_SESSION['list2'] = $uris;
+        
     }
-
+$_SESSION['list2'] = $uris;
     if (!empty($needsVotes)) {
         ?>
 
