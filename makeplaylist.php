@@ -29,10 +29,19 @@ $uris = array();
                 $uri = $myConn->geturi($v['SongID']);
                 if ($uri != "na") {
                     $uris[] = $uri;
-                    echo $v['SongName'] . " " . $v['BandName'] . " added to playlist  </br>";
+                    $working[] = $v['SongName'] . " " . $v['BandName'] . " added to playlist  </br>";
                 } else {
-                    echo $v['SongName'] . " " . $v['BandName'] . " <span style='color:red;'>has no uri </span> </br>";
+                    $notWorking[] = $v['SongName'] . " " . $v['BandName'] . " <span style='color:red;'>has no uri </span> </br>";
                 }
+            }
+            if (count($notWorking) > 0) {
+                echo "<h4> songs with error </h4>";
+                foreach ($notWorking as $v) {
+                    echo $v;
+                }
+            }
+            foreach ($working as $v) {
+                echo $v;
             }
             ?>
         </div>
