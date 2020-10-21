@@ -121,6 +121,10 @@ if (isset($_POST["submitChange"])) {
                                             echo $needtovote[0] . " and " . $needtovote[1];
                                         } elseif ($x == 3) {
                                             echo $needtovote[0] . ", " . $needtovote[1] . " and " . $needtovote[2];
+                                        } else {
+                                            foreach ($needtovote as $v) {
+                                                echo $v . ", ";
+                                            }
                                         }
                                         echo " Still needs to vote on this song</h4>";
                                     }
