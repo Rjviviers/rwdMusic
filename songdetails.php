@@ -168,12 +168,14 @@ if (isset($_POST["submitChange"])) {
                                     $spotSong = $v->uri;
                                     break;
                                 }
+                                echo "nie een gehaad";
                             } else {
                                 $track = $api->getTrack($spotSong);
                                 $songname = $track->name;
                                 $artistname = $track->artists[0]->name;
                                 $full = $songname . " - " . $artistname;
                                 $imgsrc = $track->album->images[0]->url;
+                                echo "uri gehaad ";
                             } ?>
                         <div style="display: none;">
                             <?php var_dump($track); ?>
