@@ -129,17 +129,28 @@ include __DIR__ . '/html_private/lgc.php';
 
 
     <?php
-    var_dump($myConn->geturi(1));
-    $i = $myConn->needVoteUserList(3);
-    foreach ($i as $v) {
-        $id =  $v["SongID"];
-        $songname =   $v["SongName"] . " - " . $v["BandName"];
+    if ($myConn->HasScore(547)) {
+        echo "true";
+    } else {
+        echo "false";
+    }
+
+    // var_dump($myConn->NeedToVote(547));
+    // var_dump($myConn->geturi(1));
+
+
+
+
+    // $i = $myConn->needVoteUserList(3);
+    // foreach ($i as $v) {
+    //     $id =  $v["SongID"];
+    //     $songname =   $v["SongName"] . " - " . $v["BandName"];
     ?>
-    <a href="songdetails.php?ID=<?= $id ?>"><?= $songname ?></a>
+
     <?php
 
-        echo "<br>";
-    }
+    echo "<br>";
+    // }
     // $dis  = $myConn->transferTable();
     // //dis[i][0] = uri
     // //dis[i][1] = id

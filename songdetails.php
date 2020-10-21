@@ -104,25 +104,25 @@ if (isset($_POST["submitChange"])) {
                     <div class="row">
                         <div class="col-md-12">
                             <p><?php
-                                $hasScore = $myConn->HasScore($id);
-                                if ($hasScore) {
-                                    $songScore = $myConn->GetSingleSongTotal($id);
-
+                                if ($myConn->HasScore($song['SongID'])) {
+                                    $songScore = $myConn->GetSingleSongTotal($song['SongID']);
                                     echo "<h3> Total : " . $songScore["Total"] . "</h3>";
                                 } else {
-                                    $needtovote = $myConn->NeedToVote($id);
-
-                                    if (count($needtovote) > 0) {
-                                        echo "<h4 class='capt'> song still needs to be voted on by: ";
+                                    $needtovote = $myConn->NeedToVote($song['SongID']);
+                                    // var_dump($needtovote);
+                                    if ($needtovote == false) {
+                                        echo "<h4 class='capt'> no votes needed</h4> ";
+                                    } else {
+                                        echo "<h4 class='capt'> ";
 
                                         foreach ($needtovote as  $value) {
-                                            echo $value . ",";
+                                            echo $value . " ";
                                         }
 
-                                        echo "</h4>";
+                                        echo " Still needs to vote</h4>";
                                     }
 
-                                    if ($myConn->UserVotedOnSong($id, $userID)) {
+                                    if ($myConn->UserVotedOnSong($song['SongID'], $userID)) {
                                         echo "<h4> you have already voted on this song </h4>"; ?>
                                 <input type="button" class="btn btn-warning form-control" id="btnChang"
                                     onclick='ChangeVote()' value="Change Vote">
@@ -156,7 +156,7 @@ if (isset($_POST["submitChange"])) {
                         if (!empty($_COOKIE['spotify'])) {
                             $api = new SpotifyWebAPI\SpotifyWebAPI();
                             $api->setAccessToken($_COOKIE['spotify']);
-                            $songIDForSpotCall = $_GET['ID'];
+                            $songIDForSpotCall = $song['SongID'];
                             $spotSong = $myConn->geturi($songIDForSpotCall);
                             if ($spotSong == "na") {
                                 // $results  = $api->search($v["name"], "track");

@@ -311,15 +311,10 @@ class DBCon
 
         $row = mysqli_fetch_array($result, 1);
 
-        if (is_array($row)) {
-            if (count($row) != 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
+        if ($row == null) {
             return false;
         }
+        return true;
     }
 
     public function GetSongList($month)
@@ -440,30 +435,35 @@ class DBCon
 
     public function NeedToVote($SongID)
     {
-        $query = "SELECT * FROM `songrate` WHERE `SongID` = $SongID";
-        $result = mysqli_query($this->link, $query);
+        $q = "SELECT * FROM `songrate` WHERE `SongID` = $SongID";
+        $result = mysqli_query($this->link, $q);
         $all = mysqli_fetch_all($result, 1);
-        $notvotedNumbers = array();
-        $notvotedNames = array();
+
+        $numOfVotes = count($all);
+
         $users = array("2", "3", "4");
-        $votedUsers = array();
+        $numOfUsers = count($users);
+        // var_dump($numOfUsers, $numOfVotes);
+        if ($numOfUsers == $numOfVotes) {
+            return false;
+        }
+
+        if ($numOfVotes == 0) {
+            return ['ruan', 'werner', 'danie'];
+        }
+
+        $hasNotVoted = array();
+        $hasVoted = array();
 
         foreach ($all as $value) {
-            $votedUsers[] =  $value["UserID"];
+            $hasVoted[] = $value['UserID'];
         }
-
-        foreach ($users as $value) {
-            if (!in_array($value, $votedUsers)) {
-                $notvotedNumbers[] = $value;
+        foreach ($users as $v) {
+            if (!in_array($v, $hasVoted)) {
+                $hasNotVoted[] = $this->GetUser($v);
             }
         }
-
-        if (count($notvotedNumbers) != 0) {
-            foreach ($notvotedNumbers as $value) {
-                $notvotedNames[] = $this->GetUser($value);
-            }
-        }
-        return $notvotedNames;
+        return $hasNotVoted;
     }
 
     function needVoteUserList($userID)
