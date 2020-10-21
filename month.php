@@ -241,8 +241,12 @@ $rank = 1;
 
             <?php
     }
+    $month = explode('.', $_GET['month']);
+    $mt = $month[1].'.'.$month[0];
+
+    $dies = $myConn->GetSongList($monthText);
             $uris = array();
-            foreach ($listOfsongsOBJ as $v) {
+            foreach ($dies as $v) {
                 $id = $value->GetID();
                 $uris[] = $myConn->geturi($id);
             }
