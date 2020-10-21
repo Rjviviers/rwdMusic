@@ -165,6 +165,7 @@ if (isset($_POST["submitChange"])) {
                                     $artistname = $v->artists[0]->name;
                                     $full = $songname . " - " . $artistname;
                                     $imgsrc = $v->album->images[0]->url;
+                                    $spotSong = $v->uri;
                                     break;
                                 }
                             } else {
@@ -183,7 +184,7 @@ if (isset($_POST["submitChange"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="<?= $song ?>">
+                            <a href="<?= $spotSong ?>">
                                 <img width="50%" src="<?= $imgsrc ?>" alt="<?= $full ?>">
                             </a>
 
