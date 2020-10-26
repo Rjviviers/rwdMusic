@@ -46,6 +46,23 @@ if (isset($_POST["submitChange"])) {
     }
     </style>
     <script>
+    function copytext() {
+        /* Get the text field */
+        var copyText = document.getElementById("copyt");
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+        /* Alert the copied text */
+        alert("Songs Copied To clip board");
+    }
+
+    function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+    }
+
     function ChangeVote() {
         document.getElementById("changevote").classList.toggle("hide");
         var btnC = document.getElementById("btnChang");
@@ -88,7 +105,9 @@ if (isset($_POST["submitChange"])) {
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h3>
+                            <a href="javascript:void(0);" onclick="copytext()">
+                                <h3 id="copyt"><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h3>
+                            </a>
                         </div>
                     </div>
                     <div class="row">
