@@ -18,7 +18,11 @@ if (isset($_POST["submit"])) {
     $myConn->RateSong($id, $userID, $score);
     $myConn->redirect("month.php?month=$month");
 }
+if ($_GET['c'] == "y") {
+?>
 
+<?php
+}
 if (isset($_POST["submitChange"])) {
     $score = ($_POST["sc1"] * 20) / 100;
     $myConn->changeVote($id, $userID, $score);
@@ -41,26 +45,26 @@ if (isset($_POST["submitChange"])) {
     ?>
     <link rel="stylesheet" href="css\card.css">
     <style>
-    .mt-3 label {
-        margin-bottom: 0px !important;
-    }
+        .mt-3 label {
+            margin-bottom: 0px !important;
+        }
     </style>
     <script>
-    function ChangeVote() {
-        document.getElementById("changevote").classList.toggle("hide");
-        var btnC = document.getElementById("btnChang");
-        if (btnC.value == "Change Vote") {
-            btnC.value = "Hide";
-        } else {
-            btnC.value = "Change Vote";
+        function ChangeVote() {
+            document.getElementById("changevote").classList.toggle("hide");
+            var btnC = document.getElementById("btnChang");
+            if (btnC.value == "Change Vote") {
+                btnC.value = "Hide";
+            } else {
+                btnC.value = "Change Vote";
+            }
+            var changeSlideOld = document.getElementById("myRange2");
+            var output = document.getElementById("demo2");
+            output.innerHTML = changeSlideOld.value;
+            changeSlideOld.oninput = function() {
+                output.innerHTML = this.value;
+            }
         }
-        var changeSlideOld = document.getElementById("myRange2");
-        var output = document.getElementById("demo2");
-        output.innerHTML = changeSlideOld.value;
-        changeSlideOld.oninput = function() {
-            output.innerHTML = this.value;
-        }
-    }
     </script>
     <div class="container-fluid pt-5">
         <div class="p-sm-0">
@@ -68,9 +72,7 @@ if (isset($_POST["submitChange"])) {
                 <div class="col-md-8">
                     <div class="row" style="height: 400px;">
                         <div class="col-md-12 ">
-                            <iframe width="100%" height="100%"
-                                src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"] . '+-+' . $song["BandName"]; ?>'&autoplay=1"
-                                frameborder="0" allowfullscreen></iframe>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/?listType=search&list='<?= $song["SongName"] . '+-+' . $song["BandName"]; ?>'&autoplay=1" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="row">
@@ -131,26 +133,23 @@ if (isset($_POST["submitChange"])) {
 
                                     if ($myConn->UserVotedOnSong($song['SongID'], $userID)) {
                                         echo "<h4> you have already voted on this song </h4>"; ?>
-                                <input type="button" class="btn btn-warning form-control" id="btnChang"
-                                    onclick='ChangeVote()' value="Change Vote">
+                                        <input type="button" class="btn btn-warning form-control" id="btnChang" onclick='ChangeVote()' value="Change Vote">
 
 
-                            <div id="changevote" class="hide">
-                                <form method="post" class="mt-3">
-                                    <?php include __DIR__ . "/views/sliderView.html"; ?>
-                                    <button name="submitChange" type="submit" value="" class="cardbuttondeets"><i
-                                            class="fas fa-check"></i></button>
-                                </form>
-                            </div>
-                            <?php
+                                        <div id="changevote" class="hide">
+                                            <form method="post" class="mt-3">
+                                                <?php include __DIR__ . "/views/sliderView.html"; ?>
+                                                <button name="submitChange" type="submit" value="" class="cardbuttondeets"><i class="fas fa-check"></i></button>
+                                            </form>
+                                        </div>
+                                    <?php
                                     } else {
                                     ?>
-                            <form method="post" class="mt-3">
-                                <?php include __DIR__ . "/views/sliderView.html"; ?>
-                                <button name="submit" type="submit" value="" class="cardbuttondeets"><i
-                                        class="fas fa-check"></i></button>
-                            </form>
-                            <?php
+                                        <form method="post" class="mt-3">
+                                            <?php include __DIR__ . "/views/sliderView.html"; ?>
+                                            <button name="submit" type="submit" value="" class="cardbuttondeets"><i class="fas fa-check"></i></button>
+                                        </form>
+                                <?php
                                     }
                                 }
                                 ?>
@@ -187,8 +186,8 @@ if (isset($_POST["submitChange"])) {
                                 $imgsrc = $track->album->images[0]->url;
                                 echo "uri gehaad ";
                             } ?>
-                        <div style="display: none;">
-                            <?php
+                            <div style="display: none;">
+                                <?php
                                 echo " track ";
                                 var_dump($track);
                                 echo " song string in api call ";
@@ -202,10 +201,10 @@ if (isset($_POST["submitChange"])) {
                                 var_dump($spotSong);
 
                                 ?>
-                        </div>
-                        <div class="col-md-12">
-                            spotify area
-                        </div>
+                            </div>
+                            <div class="col-md-12">
+                                spotify area
+                            </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -227,7 +226,7 @@ if (isset($_POST["submitChange"])) {
                             </div>
                         </div>
                     </div>
-                    <?php
+                <?php
 
                         }
 
