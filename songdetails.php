@@ -50,11 +50,20 @@ if (isset($_POST["submitChange"])) {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        alert("song name copied");
+    }
+
     function ChangeVote() {
         document.getElementById("changevote").classList.toggle("hide");
         var btnC = document.getElementById("btnChang");
         if (btnC.value == "Change Vote") {
-            btnC.value = "Hide";
+            btnC.value = "hide";
         } else {
             btnC.value = "Change Vote";
         }
@@ -66,7 +75,8 @@ if (isset($_POST["submitChange"])) {
         }
     }
     </script>
-    <input class="hide" type="text" value="<?= $song["SongName"] ?> - <?= $song["BandName"] ?>" id="songnamed">
+    <input class="d-none d-print-block" type="text" value="<?= $song["SongName"] ?> - <?= $song["BandName"] ?>"
+        id="songnamed">
     <div class="container-fluid pt-5">
         <div class="p-sm-0">
             <div class="row ">
@@ -86,8 +96,8 @@ if (isset($_POST["submitChange"])) {
 
                         </div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-warning " onclick="copytext()" data-toggle="tooltip"
-                                data-placement="bottom" title="Copy song text for share">
+                            <button type="button" class="btn btn-warning " onclick="copyToClipboard(headingsongname)"
+                                data-toggle="tooltip" data-placement="bottom" title="Copy song text for share">
                                 SHARE
                             </button>
 
@@ -98,17 +108,17 @@ if (isset($_POST["submitChange"])) {
                     <div class="row">
                         <div class="col-md-12">
 
-                            <button class="btn btn-dark " onclick="copytext()" data-toggle="tooltip"
-                                data-placement="top" title="Copy song text for share">
-                                <h3 id="songname"><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h3>
+                            <button class="btn btn-dark " onclick="copyToClipboard(headingsongname)"
+                                data-toggle="tooltip" data-placement="top" title="Copy song text for share">
+                                <h3 id="headingsongname"><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h3>
                             </button>
                         </div>
                         <script>
                         function copytext() {
 
-                            var copyText = document.getElementById("songnamed");
-                            copyText.select();
-                            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+                            var copyTextw = document.getElementById("songnamed");
+                            copyTextw.select();
+                            copyTextw.setSelectionRange(0, 99999); /*For mobile devices*/
                             document.execCommand("copy");
                             alert("Song Name Copied To clip board");
                         }
