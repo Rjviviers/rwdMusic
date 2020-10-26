@@ -18,9 +18,7 @@ if (isset($_POST["submit"])) {
     $myConn->RateSong($id, $userID, $score);
     $myConn->redirect("month.php?month=$month");
 }
-if ($_GET['c'] == "y") {
-    include 'display.php';
-}
+
 if (isset($_POST["submitChange"])) {
     $score = ($_POST["sc1"] * 20) / 100;
     $myConn->changeVote($id, $userID, $score);
