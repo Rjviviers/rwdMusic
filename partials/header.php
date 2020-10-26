@@ -80,14 +80,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="nu">Number of songs to add</label>
-                        <div class="row m-3">
-                            <input id="nu" class="form-control col-xl" type="number" name="quantity" min="1" max="15"
-                                value="1">
-                            <button class="pt-1 pl-2 btn btn-warning col" onclick="addsong()">GO</button>
-                        </div>
-                    </div> -->
 
                     <div class="col pt-2 pl-3 row-cols-1">
 
