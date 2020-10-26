@@ -44,36 +44,12 @@ if (isset($_POST["submitChange"])) {
     .mt-3 label {
         margin-bottom: 0px !important;
     }
-
-    /* Tooltip container */
-    .tooltip {
-        position: relative;
-        display: inline-block;
-        border-bottom: 1px dotted black;
-        /* If you want dots under the hoverable text */
-    }
-
-    /* Tooltip text */
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        padding: 5px 0;
-        border-radius: 6px;
-
-        /* Position the tooltip text - see examples below! */
-        position: absolute;
-        z-index: 1;
-    }
-
-    /* Show the tooltip text when you mouse over the tooltip container */
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-    }
     </style>
     <script>
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
     function ChangeVote() {
         document.getElementById("changevote").classList.toggle("hide");
         var btnC = document.getElementById("btnChang");
@@ -110,8 +86,8 @@ if (isset($_POST["submitChange"])) {
 
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-warning tooltip" onclick="copytext()">
-                                <span class="tooltiptext">Copy song text for share</span>
+                            <button type="button" class="btn btn-warning " onclick="copytext()" data-toggle="tooltip"
+                                data-placement="bottom" title="Copy song text for share">
                                 SHARE
                             </button>
 
@@ -121,11 +97,9 @@ if (isset($_POST["submitChange"])) {
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="tooltip">Hover over me
-                                <span class="tooltiptext">Tooltip text</span>
-                            </div>
-                            <button class="btn btn-dark tooltip" onclick="copytext()">
-                                <span class="tooltiptext">Copy song text for share</span>
+
+                            <button class="btn btn-dark " onclick="copytext()" data-toggle="tooltip"
+                                data-placement="top" title="Copy song text for share">
                                 <h3 id="songname"><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h3>
                             </button>
                         </div>
