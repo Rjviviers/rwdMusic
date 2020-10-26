@@ -4,9 +4,17 @@ require('html_private/head.php');
 include __DIR__ . '/partials/header.php';
 include __DIR__ . '/html_private/lgc.php';
 
-$list = $_SESSION['list'];
+if($_GET['s'] == 1){
+    $list = $_SESSION['list2'];
+    $x = "HoH month 2020" ;
+}
+else{
+    $list = $_SESSION['list'];
+    $x = $myConn->GetUser($_COOKIE['User']) . " Catchup Playlist" ;
+}
 $songIDs = array();
 $uris = array();
+
 ?>
 <div class="container">
     <div class="row">
@@ -15,7 +23,7 @@ $uris = array();
             <form action="" method="post" class="pt-5">
                 <label for="playlist">name for the playlist</label>
                 <input type="text" name="playlist" placeholder="playlist name"
-                    value="<?= $myConn->GetUser($_COOKIE['User']) . " Catchup Playlist" ?>">
+                    value="<?= $x ?>">
                 <input type="submit" name="go" value="Make Playlist">
             </form>
         </div>
@@ -52,26 +60,16 @@ $uris = array();
                     $api = new SpotifyWebAPI\SpotifyWebAPI();
                     $api->setAccessToken($_COOKIE['spotify']);
                     $pName = $_POST["playlist"];
-                    $api->createPlaylist([
+                    $playlist = $api->createPlaylist([
                         'name' => $pName,
                     ]);
                     $me = $api->me()->id;
+                    $playlistID = $playlist->id;
 
-
-                    $playlists = $api->getUserPlaylists($me, [
-                        'limit' => 1
-                    ]);
-
-                    foreach ($playlists->items as $playlist) {
-                        if ($playlist->name != $pName) {
-                            echo "could not find correct list";
-                        }
-
-                        $playlisturl = $playlist->external_urls->spotify;
-                        $playlistUri = $playlist->uri;
-                        $playlistID = $playlist->id;
+                    foreach ($uris as $v) {
+                        $api->addPlaylistTracks($playlistID, [$v]);
                     }
-                    $api->addPlaylistTracks($playlistID, $uris, "");
+                    
                 }
             }
 

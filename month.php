@@ -55,9 +55,9 @@ $rank = 1;
     $hasvotes = array();
 
     $needsVotes = array();
-
+    $list = array();
     $plain = array();
-
+   
     foreach ($listOfsongsOBJ as $value) {
         $id = $value->GetID();
 
@@ -82,8 +82,14 @@ $rank = 1;
 
             $needsVotes[] = array($name,$id);
         }
+       
+        
+        $id = $value->GetID();
+        $uris[] = $myConn->getSongDetails($id);
+        
+        
     }
-
+$_SESSION['list2'] = $uris;
     if (!empty($needsVotes)) {
         ?>
 
@@ -241,43 +247,11 @@ $rank = 1;
 
             <?php
     }
+    
 
-                ?>
+           ?>
 
-            <?php
-
-        // $playlistConverterUrl = "http://www.playlist-converter.net/#/?text=";
-
-        // $text = "";
-
-        // ;
-
-        // if ($userIDnew == 2) {
-        //     foreach (array_unique($plain) as $val) {
-
-        //         //     $text .= str_replace(" ", "%20", $val) . "%0A";
-
-        //         echo "<p>";
-
-        //         echo $val;
-
-        //         echo "<br>";
-
-        //         echo "</p>";
-        //     }
-        // }
-
-         
-
-        // // var_dump($text);
-
-        // $url = $playlistConverterUrl . $text;
-
-        
-
-        ?>
-
-            <!-- <a class="btn btn-warning" href="<?php //echo $url;?>">Make Playlist</a> -->
+            <a class="btn btn-warning" href="makeplaylist.php?s=1">Make Playlist</a>
 
         </div>
 
