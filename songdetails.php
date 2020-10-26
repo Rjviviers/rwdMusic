@@ -1,12 +1,27 @@
 <?php
 require 'vendor/autoload.php';
 include __DIR__ . '/html_private/head.php';
-include __DIR__ . '/html_private/lgc.php';
-
 
 $id = $_GET["ID"];
-$userID = $_COOKIE["User"];
 $song = $myConn->SelectQuery("SELECT * FROM `song` WHERE `SongID` = $id");
+if (!isset($_COOKIE['User'])) {
+?>
+<title><?= $song["SongName"] . " " . $song["BandName"] ?></title>
+<meta property="og:title" content="<?= $song["SongName"] . " " . $song["BandName"] ?>" />
+<meta property="og:image" content="">
+<a href="login.php">Please log in</a>
+
+<?php
+    var_dump($song);
+    include "login.php";
+    die();
+}
+
+
+// $id = $_GET["ID"];
+
+$userID = $_COOKIE["User"];
+// $song = $myConn->SelectQuery("SELECT * FROM `song` WHERE `SongID` = $id");
 //$month = $song['WeekGroup'];
 $tempStor =  explode('.', $song['WeekGroup']);
 $month = $tempStor[2] . "." . $tempStor[1];
