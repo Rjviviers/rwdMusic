@@ -44,6 +44,34 @@ if (isset($_POST["submitChange"])) {
     .mt-3 label {
         margin-bottom: 0px !important;
     }
+
+    /* Tooltip container */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+        /* If you want dots under the hoverable text */
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
     </style>
     <script>
     function ChangeVote() {
@@ -62,6 +90,7 @@ if (isset($_POST["submitChange"])) {
         }
     }
     </script>
+    <input class="hide" type="text" value="<?= $song["SongName"] ?> - <?= $song["BandName"] ?>" id="songnamed">
     <div class="container-fluid pt-5">
         <div class="p-sm-0">
             <div class="row ">
@@ -81,27 +110,32 @@ if (isset($_POST["submitChange"])) {
 
                         </div>
                         <div class="col-md-4">
-                            SHARE
+                            <button class="btn btn-warning tooltip" onclick="copytext()">
+                                <span class="tooltiptext">Copy song text for share</span>
+                                SHARE
+                            </button>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="javascript:void(0);" onclick="copytext()">
-                                <h3 id="copyt"><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h3>
-                            </a>
+                            <div class="tooltip">Hover over me
+                                <span class="tooltiptext">Tooltip text</span>
+                            </div>
+                            <button class="btn btn-dark tooltip" onclick="copytext()">
+                                <span class="tooltiptext">Copy song text for share</span>
+                                <h3 id="songname"><?= $song["SongName"] ?> - <?= $song["BandName"] ?></h3>
+                            </button>
                         </div>
                         <script>
                         function copytext() {
-                            /* Get the text field */
-                            var copyText = document.getElementById("copyt");
-                            /* Select the text field */
+
+                            var copyText = document.getElementById("songnamed");
                             copyText.select();
                             copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-                            /* Copy the text inside the text field */
                             document.execCommand("copy");
-                            /* Alert the copied text */
                             alert("Song Name Copied To clip board");
                         }
 
