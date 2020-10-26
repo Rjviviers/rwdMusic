@@ -470,7 +470,17 @@ class DBCon
         }
         return $hasNotVoted;
     }
-
+    function getImg($song)
+    {
+        $q = "SELECT `img` FROM `songimages` WHERE `SongID` = $song";
+        $result = mysqli_query($this->link, $q);
+        $row = mysqli_fetch_row($result);
+        if ($row != null) {
+            return $row[0];
+        } else {
+            return "";
+        }
+    }
     function needVoteUserList($userID)
     {
         $all = $this->allSongs();

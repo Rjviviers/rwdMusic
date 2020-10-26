@@ -8,7 +8,7 @@ if (!isset($_COOKIE['User'])) {
 ?>
 <title><?= $song["SongName"] . " " . $song["BandName"] ?></title>
 <meta property="og:title" content="<?= $song["SongName"] . " " . $song["BandName"] ?>" />
-<meta property="og:image" content="">
+<meta property="og:image" content="<?= $myConn->getImg($song["SongID"]) ?>">
 <a href="login.php">Please log in</a>
 
 <?php
