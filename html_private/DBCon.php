@@ -362,6 +362,11 @@ class DBCon
         $all = mysqli_fetch_all($result);
         return $all;
     }
+    function addimage($id, $url)
+    {
+        $sql = "INSERT INTO `songimages` (`id`, `SongID`, `Img`) VALUES (NULL, '$id', '$url' )";
+        mysqli_query($this->link, $sql);
+    }
     public function geturi($id_p)
     {
         $q = "SELECT * FROM `spotdata` WHERE sngID = $id_p";

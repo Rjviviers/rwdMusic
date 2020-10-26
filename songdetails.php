@@ -222,23 +222,21 @@ if (isset($_POST["submitChange"])) {
                                 // $results  = $api->search($v["name"], "track");
                                 $results = $api->search($song["SongName"] . " " . $song["BandName"], "track");
                                 foreach ($results->tracks->items as $key => $v) {
-                                    echo "hie? ";
                                     $spotSongname = $v->name;
                                     $spotArtistname = $v->artists[0]->name;
                                     $full = $songname . " - " . $artistname;
                                     $imgsrc = $v->album->images[0]->url;
                                     $spotSong = $v->uri;
                                     $myConn->addUri($song['SongID'], $spotSong);
+                                    $myConn->addimage($song['SongID'], $imgsrc);
                                     break;
                                 }
-                                echo "nie een gehaad";
                             } else {
                                 $track = $api->getTrack($spotSong);
                                 $spotSongname = $track->name;
                                 $spotArtistname = $track->artists[0]->name;
                                 $full = $spotSongname . " - " . $spotArtistname;
                                 $imgsrc = $track->album->images[0]->url;
-                                echo "uri gehaad ";
                             } ?>
                         <div style="display: none;">
                             <?php
