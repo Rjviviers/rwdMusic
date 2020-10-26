@@ -12,7 +12,7 @@ if (!isset($_COOKIE['User'])) {
 <a href="login.php">Please log in</a>
 
 <?php
-    var_dump($song);
+    // var_dump($song);
     include "login.php";
     die();
 }
