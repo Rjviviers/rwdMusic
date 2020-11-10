@@ -84,7 +84,7 @@
                     <div class="col pt-2 pl-3 row-cols-1">
 
                         <?php if (!empty($_COOKIE['spotify'])) { ?>
-                        <label class="col">Spotify Beta</label>
+                        <label class="col">Spotify</label>
                         <a class="btn col btn-warning" href="addsong.php?s=yes">
                             song add
                         </a>
