@@ -109,24 +109,24 @@ if (isset($_POST["okspot"])) {
 
     <?php if ($_GET['s'] == "yes") {
         if (!empty($_COOKIE['spotify'])) {
-    ?>
+            ?>
     <div class="container">
         <div class="row row-cols-1">
             <form action="" method="post">
-                <label class="col" for="uri">right-click song on spotify->share->copy sotify uri</label>
-                <input class="col" type="text" name="uri" placeholder="Spotify URI">
-                <input class="col" type="submit" name="okspot" value="Go">
+                <label class="col" for="uri">right-click song on spotify -> share -> copy sotify uri</label>
+                <input class="col input-group" type="text" name="uri" placeholder="Spotify URI">
+                <input class="col btn btn-warning" type="submit" name="okspot" value="Go">
             </form>
         </div>
     </div>
 
     <?php
         } else {
-        ?>
+            ?>
     <div class="container">
         <div class="row row-cols-1">
             <h2 class="col">log in with spotify first</h2>
-            <a class="col" href="api.php">login</a>
+            <a class="col btn btn-warning" href="api.php">login</a>
         </div>
     </div>
     <?php
@@ -142,7 +142,7 @@ if (isset($_POST["okspot"])) {
         <form action="" method="post">
             <?php
                 for ($i = 0; $i < $noofsongs; $i++) {
-                ?>
+                    ?>
             <div class="form-group">
 
                 <label for="songname <?php echo $i ?>">Song Name</label>
