@@ -111,10 +111,18 @@ if (isset($_POST["okspot"])) {
         if (!empty($_COOKIE['spotify'])) {
             ?>
     <div class="container">
-        <div class="row row-cols-1">
+        <div class="row row-cols-1 pt-5">
             <form action="" method="post">
-                <label class="col" for="uri">right-click song on spotify -> share -> copy sotify uri</label>
-                <input class="col input-group" type="text" name="uri" placeholder="Spotify URI">
+                <!-- <label class="col" for="uri"></label> -->
+                <!-- <input class="col input-group" type="text" name="uri" placeholder="Spotify URI"> -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">share -> copy sotify uri</span>
+                    </div>
+                    <input type="text" name="uri" class="form-control"
+                        placeholder="Spotify Uri eg: spotify:track:0OZFho0a7Pvk1SlLYiDjqM" aria-label="Spotify Uri"
+                        aria-describedby="basic-addon1">
+                </div>
                 <input class="col btn btn-warning" type="submit" name="okspot" value="Go">
             </form>
         </div>
