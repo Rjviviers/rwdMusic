@@ -36,7 +36,7 @@ $uris = array();
         <div class="col-6">
             <?php
             foreach ($list as $v) {
-                var_dump($v);
+                // var_dump($v);
                 if(isset($_GET['top'])){
                     $uri = $myConn->geturi($v['songid']);
                     if ($uri != "na") {
