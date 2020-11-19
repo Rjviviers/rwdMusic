@@ -36,13 +36,25 @@ $uris = array();
         <div class="col-6">
             <?php
             foreach ($list as $v) {
-                $uri = $myConn->geturi($v['SongID']);
-                if ($uri != "na") {
+                var_dump($v);
+                if(isset($_GET['top'])){
+                    $uri = $myConn->geturi($v['songid']);
+                    if ($uri != "na") {
+                    $uris[] = $uri;
+                    $working[] = $v['Song'] . " added to playlist  </br>";
+                    } else {
+                        $notWorking[] = $v['Song'] . " <span style='color:red;'>has no uri </span> </br>";
+                    }
+                }else{
+                    $uri = $myConn->geturi($v['SongID']);
+                    if ($uri != "na") {
                     $uris[] = $uri;
                     $working[] = $v['SongName'] . " " . $v['BandName'] . " added to playlist  </br>";
                 } else {
                     $notWorking[] = $v['SongName'] . " " . $v['BandName'] . " <span style='color:red;'>has no uri </span> </br>";
                 }
+                }
+                
             }
             if ($notWorking != null) {
                 echo "<h4> songs with error </h4>";
