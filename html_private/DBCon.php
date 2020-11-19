@@ -108,6 +108,7 @@ class DBCon
 
         mysqli_query($this->link, $qry);
     }
+    
     public function updateQuery($q)
     {
         mysqli_query($this->link, $q);
@@ -469,6 +470,13 @@ class DBCon
             }
         }
         return $hasNotVoted;
+    }
+    function getSongsTotals()
+    {
+        $q = "SELECT * FROM `scoretotals`";
+        $result = mysqli_query($this->link , $q);
+        $row = mysqli_fetch_all($result,1);
+        return $row;
     }
     function getImg($song)
     {
