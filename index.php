@@ -52,7 +52,9 @@ if (isset($_GET['t'])) {
             </div>
             <div class="col-xl">
                 <div class="card bg-dark text-light neo neo-card">
-                    <h1 class="cent">Hall Of Fame</h1>
+                    <h1 class="cent">
+                        <a href="makeplaylist.php" style="text-decoration: none; color:white"> Hall Of Fame</a>
+                    </h1>
                     <table class="table table-dark capt">
                         <?php
                     $topSongs =  $myConn->getTopSongs(10);
