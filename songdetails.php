@@ -5,7 +5,7 @@ include __DIR__ . '/html_private/head.php';
 $id = $_GET["ID"];
 $song = $myConn->SelectQuery("SELECT * FROM `song` WHERE `SongID` = $id");
 if (!isset($_COOKIE['User'])) {
-?>
+    ?>
 <title><?= $song["SongName"] . " " . $song["BandName"] ?></title>
 <meta property="og:title" content="<?= $song["SongName"] . " " . $song["BandName"] ?>" />
 <meta property="og:image" content="<?= $myConn->getImg($song["SongID"]) ?>">
@@ -197,7 +197,7 @@ if (isset($_POST["submitChange"])) {
                             </div>
                             <?php
                                     } else {
-                                    ?>
+                                        ?>
                             <form method="post" class="mt-3">
                                 <?php include __DIR__ . "/views/sliderView.html"; ?>
                                 <button name="submit" type="submit" value="" class="cardbuttondeets"><i
@@ -240,19 +240,17 @@ if (isset($_POST["submitChange"])) {
                             } ?>
                         <div style="display: none;">
                             <?php
-                                echo " track ";
-                                var_dump($track);
-                                echo " song string in api call ";
-                                var_dump($song["SongName"] . " " . $song["BandName"]);
-                                echo " spotsong name var ";
-                                var_dump($spotSongname);
-                                echo " spotsong artist var ";
-                                var_dump($spotArtistname);
+                            echo " track ";
+                            var_dump($track);
+                            echo " song string in api call ";
+                            var_dump($song["SongName"] . " " . $song["BandName"]);
+                            echo " spotsong name var ";
+                            var_dump($spotSongname);
+                            echo " spotsong artist var ";
+                            var_dump($spotArtistname);
 
-                                echo " should be a uri or null ";
-                                var_dump($spotSong);
-
-                                ?>
+                            echo " should be a uri or null ";
+                            var_dump($spotSong); ?>
                         </div>
                         <div class="col-md-12">
                             spotify area
@@ -279,7 +277,6 @@ if (isset($_POST["submitChange"])) {
                         </div>
                     </div>
                     <?php
-
                         }
 
                 ?>
