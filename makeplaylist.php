@@ -7,6 +7,9 @@ include __DIR__ . '/html_private/lgc.php';
 if($_GET['s'] == 1){
     $list = $_SESSION['list2'];
     $x = "HoH month 2020" ;
+}elseif ($_GET['top']==1) {
+    $list = $_SESSION['list3'];
+    $x = "HoH top 100" ;
 }
 else{
     $list = $_SESSION['list'];
@@ -22,8 +25,7 @@ $uris = array();
         <div class="col-6">
             <form action="" method="post" class="pt-5">
                 <label for="playlist">name for the playlist</label>
-                <input type="text" name="playlist" placeholder="playlist name"
-                    value="<?= $x ?>">
+                <input type="text" name="playlist" placeholder="playlist name" value="<?= $x ?>">
                 <input type="submit" name="go" value="Make Playlist">
             </form>
         </div>
