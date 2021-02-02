@@ -9,8 +9,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 
 <script src="js/bootstrap.min.js"></script>
-<?php include "addsong.html" ?>
-<?php include_once "needvote.php"; ?>
+<?php include "addsong.html"?>
+<?php include_once "needvote.php";?>
 </head>
 
 
@@ -32,14 +32,14 @@
                     <button type="button" class="nav-link btn" data-toggle="modal" data-target="#songsneedvote">missing
                         votes</button>
                 </li>
-                <?php if (!empty($_COOKIE['spotify'])) { ?>
+                <?php if (!empty($_COOKIE['spotify'])) {?>
                 <li class="nav-item">
                     <a class="nav-link " href="#">Spotify logged in</a>
                 </li>
-                <?php } else { ?>
+                <?php } else {?>
                 <li class="nav-item">
                     <a class="nav-link " href="api.php">Get Spotify Access</a>
-                </li><?php } ?>
+                </li><?php }?>
                 <li class="nav-item">
                     <a class="nav-link " href="logout.php">Log out</a>
                 </li>
@@ -83,12 +83,12 @@
 
                     <div class="col pt-2 pl-3 row-cols-1">
 
-                        <?php if (!empty($_COOKIE['spotify'])) { ?>
+                        <?php if (!empty($_COOKIE['spotify'])) {?>
                         <label class="col">Spotify</label>
                         <a class="btn col btn-warning" href="addsong.php?s=yes">
                             song add
                         </a>
-                        <?php } ?>
+                        <?php }?>
                     </div>
                 </div>
                 <div class="modal-footer">

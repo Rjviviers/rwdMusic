@@ -1,8 +1,8 @@
 <?php
-     include __DIR__ . '/html_private/head.php';
-     require 'vendor/autoload.php';
+include __DIR__ . '/html_private/head.php';
+require 'vendor/autoload.php';
 
-    // // include __DIR__ . '\html_private\Song.php';
+// // include __DIR__ . '\html_private\Song.php';
 //     $uris = array();
 // $count = 1;
 // $all = $myConn->allSongs();
@@ -29,11 +29,9 @@
 //     echo $v . " </br>";
 // }
 
-    // $ss->getUri();
-    // $var = $myConn->geturi($IDp);
+// $ss->getUri();
+// $var = $myConn->geturi($IDp);
 //    var_dump($var);
-
-
 
 //      function createuri($id)
 //      {
@@ -54,15 +52,15 @@
 //        echo "</br>";
 //    }
 
-$uris = array();
+$uris     = array();
 $newSongs = array();
-$tracks = array();
-$count = 1;
-$all = $myConn->allSongs();
-for ($i=0; $i <= 100 ; $i++) {
-    $newSongs[] = array("id" => $all[$i]["SongID"] ,"name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
+$tracks   = array();
+$count    = 1;
+$all      = $myConn->allSongs();
+for ($i = 0; $i <= 100; $i++) {
+ $newSongs[] = array("id" => $all[$i]["SongID"], "name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
 }
 foreach ($newSongs as $value) {
-    echo $value['id'] . " : " . $value["name"];
-    echo "</br>";
+ echo $value['id'] . " : " . $value["name"];
+ echo "</br>";
 }

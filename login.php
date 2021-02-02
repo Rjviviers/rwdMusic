@@ -7,15 +7,13 @@ if (!empty($_COOKIE['User'])) {
 }
 
 if (isset($_POST["GO"])) {
-    include __DIR__ .  '/html_private/Validation.php';
+    include __DIR__ . '/html_private/Validation.php';
 
     ValidateTextField('username');
 
     ValidateTextField('pwd');
 
-
-
-    if (count($errorMessages)  > 0) {
+    if (count($errorMessages) > 0) {
         foreach ($errorMessages as $key => $value) {
             echo "<p class='error_msg'> $key: $value</p> ";
         }
@@ -105,9 +103,7 @@ if (isset($_POST["GO"])) {
 
 <?php
 
-    
-
-    ?>
+?>
 
 </body>
 

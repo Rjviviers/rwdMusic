@@ -1,6 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-require('html_private/head.php');
+require 'html_private/head.php';
 include __DIR__ . '/partials/header.php';
 include __DIR__ . '/html_private/lgc.php';
 
@@ -40,20 +40,15 @@ include __DIR__ . '/html_private/lgc.php';
 //     // $myConn->addUri($v['id'], $v['uri']);
 // }
 
-
 // foreach ($uris as $v) {
 //     $track = $api->getTrack($v);
 //     $tracks = $track->name . " " . $track->artists[0]->name ;
 // }
 
-
-
-
-
 // var_dump($all);
 //var_dump($uris);
 ?>
-<!-- 
+<!--
 <table class="">
     <thead>
         <tr>
@@ -63,23 +58,23 @@ include __DIR__ . '/html_private/lgc.php';
     </thead>
     <tbody>
         <?php
-        // foreach ($newSongs as $v) {
-        ?>
+// foreach ($newSongs as $v) {
+?>
         <tr>
             <?php
-            // echo "<td> $v </td>";
-            // }
-            // foreach ($tracks as $v) {
-            // echo "<td> $v </td>";
-            // }
-            // foreach ($tracks2->tracks as $tracks) {
-            //     echo '<td><b>' . $track->name . '</b> <b>' . $track->artists[0]->name . '</b> <br></td>';
-            // }
+// echo "<td> $v </td>";
+// }
+// foreach ($tracks as $v) {
+// echo "<td> $v </td>";
+// }
+// foreach ($tracks2->tracks as $tracks) {
+//     echo '<td><b>' . $track->name . '</b> <b>' . $track->artists[0]->name . '</b> <br></td>';
+// }
 
-            ?>
+?>
         </tr>
         <?php
-        ?>
+?>
     </tbody>
 </table>-->
 <?php
@@ -102,7 +97,6 @@ include __DIR__ . '/html_private/lgc.php';
 //     $api->getTrack('7EjyzZcbLxW7PaaLua9Ksb')
 // );
 
-
 // echo "GEt dump </br>";
 // var_dump($_GET);
 // echo "</br>sesh dump  </br>";
@@ -111,7 +105,6 @@ include __DIR__ . '/html_private/lgc.php';
 //  $all =$myConn->allSongs();
 // // var_dump($all);
 // $songsRemain = [6,14,39,77,130,134,150,184,293,315,382,404,426,430,432,445,448,456,465,481,536,565,567,569,571,573,575,577,587,588];
-
 
 // foreach ($songsRemain as $v) {
 //     $results  = $api->search($v["name"], "track");
@@ -129,66 +122,63 @@ include __DIR__ . '/html_private/lgc.php';
 
 
     <?php
-    if ($myConn->HasScore(547)) {
-        echo "true";
-    } else {
-        echo "false";
-    }
+if ($myConn->HasScore(547)) {
+ echo "true";
+} else {
+ echo "false";
+}
 
-    // var_dump($myConn->NeedToVote(547));
-    // var_dump($myConn->geturi(1));
+// var_dump($myConn->NeedToVote(547));
+// var_dump($myConn->geturi(1));
 
-
-
-
-    // $i = $myConn->needVoteUserList(3);
-    // foreach ($i as $v) {
-    //     $id =  $v["SongID"];
-    //     $songname =   $v["SongName"] . " - " . $v["BandName"];
-    ?>
+// $i = $myConn->needVoteUserList(3);
+// foreach ($i as $v) {
+//     $id =  $v["SongID"];
+//     $songname =   $v["SongName"] . " - " . $v["BandName"];
+?>
 
     <?php
 
-    echo "<br>";
-    // }
-    // $dis  = $myConn->transferTable();
-    // //dis[i][0] = uri
-    // //dis[i][1] = id
-    // for ($i=0; $i < count($dis); $i++) {
-    //     $uri = $dis[$i][0];
-    //     $songID = $dis[$i][1];
-    //     $q = "UPDATE `spotdata` SET `uri` = '$uri' WHERE `spotdata`.`sngID` = $songID";
-    //     $myConn->InsertQuery($q);
-    // }
-    // $myConn->geturi(6);
+echo "<br>";
+// }
+// $dis  = $myConn->transferTable();
+// //dis[i][0] = uri
+// //dis[i][1] = id
+// for ($i=0; $i < count($dis); $i++) {
+//     $uri = $dis[$i][0];
+//     $songID = $dis[$i][1];
+//     $q = "UPDATE `spotdata` SET `uri` = '$uri' WHERE `spotdata`.`sngID` = $songID";
+//     $myConn->InsertQuery($q);
+// }
+// $myConn->geturi(6);
 
-    // for ($i=0; $i < count($all) ; $i++) {
-    //     if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
-    //     } else {
-    //         $songsRemain[] = $all[$i]['SongID'];
-    //     }
-    // }
-    // for ($i=0; $i < count($all) ; $i++) {
-    //     //echo var_dump($all[$i]);
-    //     $myConn->addSongID($all[$i]['SongID']);
-    //     // if (in_array($all[$i]['SongID'], $songsRemain)) {
-    //     //     $name =  $all[$i]["SongName"] . " " . $all[$i]["BandName"];
-    //     //     // $results  = $api->search($name, "track");
-    //     //     // foreach ($results->tracks->items as $key => $v) {
-    //     //     //     $myConn->addUri($all[$i]['SongID'], $v->uri);
-    //     //     //     echo "added ". $all[$i]['SongID'] . ": " . $v->uri;
-    //     //     //     break;
-    //     //     // }
-    //     // }
-    //     //
-    // }
+// for ($i=0; $i < count($all) ; $i++) {
+//     if ($myConn->checkIfHasUri($all[$i]['SongID'])) {
+//     } else {
+//         $songsRemain[] = $all[$i]['SongID'];
+//     }
+// }
+// for ($i=0; $i < count($all) ; $i++) {
+//     //echo var_dump($all[$i]);
+//     $myConn->addSongID($all[$i]['SongID']);
+//     // if (in_array($all[$i]['SongID'], $songsRemain)) {
+//     //     $name =  $all[$i]["SongName"] . " " . $all[$i]["BandName"];
+//     //     // $results  = $api->search($name, "track");
+//     //     // foreach ($results->tracks->items as $key => $v) {
+//     //     //     $myConn->addUri($all[$i]['SongID'], $v->uri);
+//     //     //     echo "added ". $all[$i]['SongID'] . ": " . $v->uri;
+//     //     //     break;
+//     //     // }
+//     // }
+//     //
+// }
 
-    // foreach ($playlistTracks->items as $track) {
-    //     $track = $track->track;
+// foreach ($playlistTracks->items as $track) {
+//     $track = $track->track;
 
-    //     echo '<a href="' . $track->uri . '">' . $track->name . $track->artists[0]->name . '</a> <br>';
-    // }
-    // var_dump($newSongs);
-    // $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [], "");
-    ?>
+//     echo '<a href="' . $track->uri . '">' . $track->name . $track->artists[0]->name . '</a> <br>';
+// }
+// var_dump($newSongs);
+// $api->addPlaylistTracks('1vOimaoGmDRWT1eGDmdP7R', [], "");
+?>
 </div>

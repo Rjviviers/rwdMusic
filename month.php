@@ -3,7 +3,6 @@
 include __DIR__ . '/html_private/head.php';
 include __DIR__ . '/html_private/lgc.php';
 
-
 $userIDnew = $_COOKIE["User"];
 
 $rank = 1;
@@ -34,9 +33,9 @@ $rank = 1;
 
     <?php
 
-    include __DIR__ . '/partials/header.php';
+include __DIR__ . '/partials/header.php';
 
-    ?>
+?>
 
     <div class="container-md">
 
@@ -44,54 +43,51 @@ $rank = 1;
 
             <?php
 
-    $month = explode('.', $_GET['month']);
+$month = explode('.', $_GET['month']);
 
-    $monthText = $month[1].'.'.$month[0];
+$monthText = $month[1] . '.' . $month[0];
 
-    $listOfsongsOBJ = $myConn->GetSongList($monthText);
+$listOfsongsOBJ = $myConn->GetSongList($monthText);
 
-    // var_dump($listOfsongsOBJ);
+// var_dump($listOfsongsOBJ);
 
-    $hasvotes = array();
+$hasvotes = array();
 
-    $needsVotes = array();
-    $list = array();
-    $plain = array();
-   
-    foreach ($listOfsongsOBJ as $value) {
-        $id = $value->GetID();
+$needsVotes = array();
+$list       = array();
+$plain      = array();
 
-        if ($myConn->HasScore($id)) {
-            $name = $value->GetSongName(). " - " . $value->GetBandName();
+foreach ($listOfsongsOBJ as $value) {
+  $id = $value->GetID();
 
-            $nameText = $value->GetBandName(). " - " . $value->GetSongName();
+  if ($myConn->HasScore($id)) {
+    $name = $value->GetSongName() . " - " . $value->GetBandName();
 
-            $songtotalrow = $myConn->GetSingleSongTotal($value->GetID());
+    $nameText = $value->GetBandName() . " - " . $value->GetSongName();
 
-            $total = $songtotalrow['Total'];
+    $songtotalrow = $myConn->GetSingleSongTotal($value->GetID());
 
-            $plain[] = $nameText;
+    $total = $songtotalrow['Total'];
 
-            $hasvotes[] = array($total,$name,$id);
-        } else {
-            $name = $value->GetSongName(). " - " . $value->GetBandName();
+    $plain[] = $nameText;
 
-            $nameText = $value->GetBandName(). " - " . $value->GetSongName();
+    $hasvotes[] = array($total, $name, $id);
+  } else {
+    $name = $value->GetSongName() . " - " . $value->GetBandName();
 
-            $plain[] = $nameText;
+    $nameText = $value->GetBandName() . " - " . $value->GetSongName();
 
-            $needsVotes[] = array($name,$id);
-        }
-       
-        
-        $id = $value->GetID();
-        $uris[] = $myConn->getSongDetails($id);
-        
-        
-    }
+    $plain[] = $nameText;
+
+    $needsVotes[] = array($name, $id);
+  }
+
+  $id     = $value->GetID();
+  $uris[] = $myConn->getSongDetails($id);
+}
 $_SESSION['list2'] = $uris;
-    if (!empty($needsVotes)) {
-        ?>
+if (!empty($needsVotes)) {
+  ?>
 
             <h1> <?php echo $myConn->GetMonthText($_GET['month']) ?></h1>
 
@@ -103,28 +99,28 @@ $_SESSION['list2'] = $uris;
 
                     <?php
 
-        rsort($hasvotes);
+  rsort($hasvotes);
 
-        $songstopcount = 1;
+  $songstopcount = 1;
 
-        foreach ($needsVotes as $value) {
+  foreach ($needsVotes as $value) {
 
-            // $id = $value->GetID();
+    // $id = $value->GetID();
 
-            echo "<tr>";
+    echo "<tr>";
 
-            echo "<td><p class='capt'>".$value[0]."</p></td>";
+    echo "<td><p class='capt'>" . $value[0] . "</p></td>";
 
-            if ($myConn->UserVotedOnSong($value[1], $userIDnew)) {
-                echo "<td> <a class='btn btn-warning float-right' href='songdetails.php?ID=$value[1]'> already voted </a> </td>";
-            } else {
-                echo "<td> <a class='btn btn-warning float-right' href='songdetails.php?ID=$value[1]'> Details/vote </a> </td>";
-            }
+    if ($myConn->UserVotedOnSong($value[1], $userIDnew)) {
+      echo "<td> <a class='btn btn-warning float-right' href='songdetails.php?ID=$value[1]'> already voted </a> </td>";
+    } else {
+      echo "<td> <a class='btn btn-warning float-right' href='songdetails.php?ID=$value[1]'> Details/vote </a> </td>";
+    }
 
-            // echo "<td> <a class='btn btn-warning float-right' href='songdetails.php?ID=$value[1]'> Details </a> </td>";
+    // echo "<td> <a class='btn btn-warning float-right' href='songdetails.php?ID=$value[1]'> Details </a> </td>";
 
-            echo "</tr>";
-        } ?>
+    echo "</tr>";
+  }?>
 
                     </tr>
 
@@ -137,8 +133,8 @@ $_SESSION['list2'] = $uris;
 
 
             <?php
-    } else {
-        ?>
+} else {
+  ?>
 
             <h1 style="text-align: center;">Top songs </h1>
 
@@ -148,10 +144,10 @@ $_SESSION['list2'] = $uris;
 
                     <?php
 
-        $topThree = $myConn->checkMonthTop($monthText);
+  $topThree = $myConn->checkMonthTop($monthText);
 
-        foreach ($topThree as $value) {
-            ?>
+  foreach ($topThree as $value) {
+    ?>
 
                     <tr>
 
@@ -159,7 +155,7 @@ $_SESSION['list2'] = $uris;
 
                             <h2 class="capt">
 
-                                <?php echo $value['SongName'] . " - ". $value['BandName'] ?>
+                                <?php echo $value['SongName'] . " - " . $value['BandName'] ?>
 
                             </h2>
 
@@ -169,7 +165,7 @@ $_SESSION['list2'] = $uris;
 
                             <h2 class="rank<?php echo $rank ?> btn-4">
 
-                                <?php echo $value['Total']?>
+                                <?php echo $value['Total'] ?>
 
                             </h2>
 
@@ -177,13 +173,13 @@ $_SESSION['list2'] = $uris;
 
                         <?php
 
-            // var_dump($value);
+    // var_dump($value);
 
-            $rank++;
-        }
-    }
+    $rank++;
+  }
+}
 
-    ?>
+?>
 
                 </tbody>
 
@@ -191,8 +187,8 @@ $_SESSION['list2'] = $uris;
 
             <?php
 
-    if (!empty($hasvotes)) {
-        ?>
+if (!empty($hasvotes)) {
+  ?>
 
             <h1 class="capt">songs with votes</h1>
 
@@ -218,26 +214,26 @@ $_SESSION['list2'] = $uris;
 
                         <?php
 
-        rsort($hasvotes);
+  rsort($hasvotes);
 
-        $songstopcount = 1;
+  $songstopcount = 1;
 
-        foreach ($hasvotes as $value) {
+  foreach ($hasvotes as $value) {
 
-            // $id = $value->GetID();
+    // $id = $value->GetID();
 
-            echo "<tr>";
+    echo "<tr>";
 
-            echo "<td ><p class='capt'>".$value[1]."</a></td>";
+    echo "<td ><p class='capt'>" . $value[1] . "</a></td>";
 
-            echo "<td>".$songstopcount."</td>";
+    echo "<td>" . $songstopcount . "</td>";
 
-            echo "<td> <a class='btn btn-warning' href='songdetails.php?ID=$value[2]'> Details </a> </td>";
+    echo "<td> <a class='btn btn-warning' href='songdetails.php?ID=$value[2]'> Details </a> </td>";
 
-            echo "</tr>";
+    echo "</tr>";
 
-            $songstopcount++;
-        } ?>
+    $songstopcount++;
+  }?>
 
                     </tr>
 
@@ -246,10 +242,9 @@ $_SESSION['list2'] = $uris;
             </table>
 
             <?php
-    }
-    
+}
 
-           ?>
+?>
 
             <a class="btn btn-warning" href="makeplaylist.php?s=1">Make Playlist</a>
 
