@@ -531,8 +531,8 @@ class DBCon
   $query = "INSERT INTO `songrate` (`SongID`,`UserID`,`Rating`) VALUES($songID,$userID,$score)";
 
   mysqli_query($this->link, $query);
-  if ($_COOKIE['User'] == 2) {echo "count : " . $this->CountVotes($songID) ."  id:" . $songID ;}
-  if ($this->CountVotes($songID) == "3") {
+ 
+  if ($this->CountVotes($songID) == 3) {
 		$query = "SELECT * FROM `songrate` WHERE `SongID` = '$songID' ";
 
 		$result = mysqli_query($this->link, $query);
