@@ -306,7 +306,8 @@ class DBCon
   $result = mysqli_query($this->link, $query);
 
   $row = mysqli_fetch_array($result, 1);
-
+  if ($_COOKIE['User'] == 2) {var_dump($row);}
+	
   if ($row == null) {
    return false;
   }
