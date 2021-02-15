@@ -442,7 +442,7 @@ class DBCon
   $all    = mysqli_fetch_all($result, 1);
 
   $numOfVotes = count($all);
-  if ($_COOKIE['User'] == 2) {var_dump($all);}
+
   $users      = array("2", "3", "4");
   $numOfUsers = count($users);
   // var_dump($numOfUsers, $numOfVotes);
