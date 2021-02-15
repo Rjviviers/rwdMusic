@@ -164,6 +164,7 @@ if ($myConn->HasScore($song['SongID'])) {
  // var_dump($needtovote);
  if ($needtovote == false) {
   echo "<h4 class='capt'> no votes needed</h4> ";
+  $myConn->GenerateTotal($song['SongID']);
  } else {
   echo "<h4 class='capt'> ";
   $x = count($needtovote);

@@ -533,40 +533,44 @@ class DBCon
   mysqli_query($this->link, $query);
  
   if ($this->CountVotes($songID) == 3) {
-		$query = "SELECT * FROM `songrate` WHERE `SongID` = '$songID' ";
-
-		$result = mysqli_query($this->link, $query);
-
-		$all = mysqli_fetch_all($result, 1);
-
-		$ratings = array($all[0]['Rating'], $all[1]['Rating'], $all[2]['Rating']);
-
-		$avg = array_sum($ratings) / 3;
-
-		$avgR = round($avg, 2);
-
-		rsort($ratings);
-
-		$high = $ratings[0];
-
-		sort($ratings);
-
-		$low = $ratings[0];
-
-		$weekQuery = "SELECT * FROM `song` WHERE `SongID` = $songID";
-
-		$weekresult = mysqli_query($this->link, $weekQuery);
-
-		$weekRow = mysqli_fetch_row($weekresult);
-
-		$weekgroup = $weekRow[4];
-
-		$inQuery = "INSERT INTO `scoretotals` (`SongID`, `Total`, `weekgroup`, `lowestScore`, `highestScore` , `age`) VALUES ('$songID', '$avgR', '$weekgroup','$low','$high','0')";
-
-		mysqli_query($this->link, $inQuery);
+	$this->GenerateTotal($songID);
   }
 
  }
+
+public function GenerateTotal($songID){
+	$query = "SELECT * FROM `songrate` WHERE `SongID` = '$songID' ";
+
+	$result = mysqli_query($this->link, $query);
+
+	$all = mysqli_fetch_all($result, 1);
+
+	$ratings = array($all[0]['Rating'], $all[1]['Rating'], $all[2]['Rating']);
+
+	$avg = array_sum($ratings) / 3;
+
+	$avgR = round($avg, 2);
+
+	rsort($ratings);
+
+	$high = $ratings[0];
+
+	sort($ratings);
+
+	$low = $ratings[0];
+
+	$weekQuery = "SELECT * FROM `song` WHERE `SongID` = $songID";
+
+	$weekresult = mysqli_query($this->link, $weekQuery);
+
+	$weekRow = mysqli_fetch_row($weekresult);
+
+	$weekgroup = $weekRow[4];
+	//echo "songid: " .$songID. " \n avarage : ". $avgR ."weekg: ". $weekgroup ." low/high : ".$low . " ". $high;
+	$inQuery = "INSERT INTO `scoretotals` (`SongID`, `Total`,`currentTotal`, `weekgroup`, `lowestScore`, `highestScore` , `age`) VALUES ('$songID', '$avgR','$avgR', '$weekgroup','$low','$high','0')";
+
+	mysqli_query($this->link, $inQuery);
+}
 
  public function getUserStats($userID)
  {
