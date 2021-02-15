@@ -87,7 +87,7 @@ foreach ($listOfsongsOBJ as $value) {
 }
 $_SESSION['list2'] = $uris;
 if (!empty($needsVotes)) {
-  if ($_COOKIE['User'] == 2) {print_r($needsVotes);}
+  
   ?>
   
             <h1> <?php echo $myConn->GetMonthText($_GET['month']) ?></h1>
