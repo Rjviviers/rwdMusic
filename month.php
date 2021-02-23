@@ -22,8 +22,11 @@ $rank = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-
-    <title style="text-align: center;"><?php echo $myConn->GetMonthText($_GET['month']) ?> </title>
+<?
+    $monthParam = $$_GET['month'];
+    $outhp = $myConn->GetMonthText($monthParam);
+?>
+    <title style="text-align: center;"><?php echo filter_var($outhp,FILTER_SANITIZE_STRING); ?> </title>
 
     <style>
 
@@ -86,11 +89,8 @@ foreach ($listOfsongsOBJ as $value) {
   $uris[] = $myConn->getSongDetails($id);
 }
 $_SESSION['list2'] = $uris;
-if (!empty($needsVotes)) {
-  
-  ?>
-  
-            <h1> <?php echo $myConn->GetMonthText($_GET['month']) ?></h1>
+if (!empty($needsVotes)) {?>
+            <h1> <?php echo filter_var($outhp,FILTER_SANITIZE_STRING); ?></h1>
 
             <h1 class="capt" style="text-align: center;">songs that need votes</h1>
 

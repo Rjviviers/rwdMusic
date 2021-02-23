@@ -6,11 +6,14 @@ include __DIR__ . '/html_private/lgc.php';
 
 if ($_GET['s'] == 1) {
  $list = $_SESSION['list2'];
- $x    = "HoH month 2020";
+ $x    = "HoH month 2021";
 } elseif ($_GET['top'] == 1) {
  $list = $_SESSION['list3'];
  $x    = "HoH top 100";
-} else {
+} elseif($_GET['top'] == 2){
+$list = $_SESSION['UserList'];
+$x = "Personal Top 100 songs"; 
+}else {
  $list = $_SESSION['list'];
  $x    = $myConn->GetUser($_COOKIE['User']) . " Catchup Playlist";
 }

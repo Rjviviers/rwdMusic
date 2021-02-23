@@ -33,24 +33,31 @@ if (isset($_GET['r'])) {
                     <div class="col-md-4">
                         <h1><?= $_COOKIE['Uname'] ?></h1>
                     </div>
-                    <div class="col-md-8">
+
+                    <div class="col-md-10">
                         <div class="row">
                             <?php
                     $stats = $myConn->getUserStats($_COOKIE["User"]);
                     if ($stats != 0) {
                         foreach ($stats as $key => $value) {?>
-                            <div class="col-md-6"><strong><?= $value ?></strong> <?= $key?></div>
+                            <div class="col-md-4"><strong><?= $value ?></strong> <?= $key?></div>
                             <?php
                         }
                     }
                     ?>
+                            <div class="col-md-4">
+                            
+                            Make playlist of your<a href="https://www.rwdmusic.co.za/makeplaylist.php?s=2"> top 100 songs </a>
+                            </div>
                         </div>
+                     
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-            </div>
+          
         </div>
+
+    
         <div class="row">
             <div class="col-md-12">
                 <form action="change-pw.php" method="post">

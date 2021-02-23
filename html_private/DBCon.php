@@ -216,7 +216,10 @@ class DBCon
 
   return $monthText;
  }
-
+ public function Sanitise($var)
+ {
+  return fileter_var($var, FILTER_SANITIZE_STRING);
+ }
  public function InsertQuery($query)
  {
 
@@ -224,7 +227,7 @@ class DBCon
   try {
    mysqli_query($this->link, $query);
   } catch (exception $th) {
-   echo $th;
+   echo "Query Failed Due";
    die();
   }
  }
@@ -307,7 +310,6 @@ class DBCon
 
   $row = mysqli_fetch_array($result, 1);
 
-	
   if ($row == null) {
    return false;
   }
@@ -468,7 +470,6 @@ class DBCon
   return $hasNotVoted;
  }
 
-
  public function getSongsTotals()
  {
   $q      = "SELECT * FROM `scoretotals`";
@@ -531,46 +532,47 @@ class DBCon
   $query = "INSERT INTO `songrate` (`SongID`,`UserID`,`Rating`) VALUES($songID,$userID,$score)";
 
   mysqli_query($this->link, $query);
- 
+
   if ($this->CountVotes($songID) == 3) {
-	$this->GenerateTotal($songID);
+   $this->GenerateTotal($songID);
   }
 
  }
 
-public function GenerateTotal($songID){
-	$query = "SELECT * FROM `songrate` WHERE `SongID` = '$songID' ";
+ public function GenerateTotal($songID)
+ {
+  $query = "SELECT * FROM `songrate` WHERE `SongID` = '$songID' ";
 
-	$result = mysqli_query($this->link, $query);
+  $result = mysqli_query($this->link, $query);
 
-	$all = mysqli_fetch_all($result, 1);
+  $all = mysqli_fetch_all($result, 1);
 
-	$ratings = array($all[0]['Rating'], $all[1]['Rating'], $all[2]['Rating']);
+  $ratings = array($all[0]['Rating'], $all[1]['Rating'], $all[2]['Rating']);
 
-	$avg = array_sum($ratings) / 3;
+  $avg = array_sum($ratings) / 3;
 
-	$avgR = round($avg, 2);
+  $avgR = round($avg, 2);
 
-	rsort($ratings);
+  rsort($ratings);
 
-	$high = $ratings[0];
+  $high = $ratings[0];
 
-	sort($ratings);
+  sort($ratings);
 
-	$low = $ratings[0];
+  $low = $ratings[0];
 
-	$weekQuery = "SELECT * FROM `song` WHERE `SongID` = $songID";
+  $weekQuery = "SELECT * FROM `song` WHERE `SongID` = $songID";
 
-	$weekresult = mysqli_query($this->link, $weekQuery);
+  $weekresult = mysqli_query($this->link, $weekQuery);
 
-	$weekRow = mysqli_fetch_row($weekresult);
+  $weekRow = mysqli_fetch_row($weekresult);
 
-	$weekgroup = $weekRow[4];
-	//echo "songid: " .$songID. " \n avarage : ". $avgR ."weekg: ". $weekgroup ." low/high : ".$low . " ". $high;
-	$inQuery = "INSERT INTO `scoretotals` (`SongID`, `Total`,`currentTotal`, `weekgroup`, `lowestScore`, `highestScore` , `age`) VALUES ('$songID', '$avgR','$avgR', '$weekgroup','$low','$high','0')";
+  $weekgroup = $weekRow[4];
+  //echo "songid: " .$songID. " \n avarage : ". $avgR ."weekg: ". $weekgroup ." low/high : ".$low . " ". $high;
+  $inQuery = "INSERT INTO `scoretotals` (`SongID`, `Total`,`currentTotal`, `weekgroup`, `lowestScore`, `highestScore` , `age`) VALUES ('$songID', '$avgR','$avgR', '$weekgroup','$low','$high','0')";
 
-	mysqli_query($this->link, $inQuery);
-}
+  mysqli_query($this->link, $inQuery);
+ }
 
  public function getUserStats($userID)
  {
@@ -631,5 +633,25 @@ public function GenerateTotal($songID){
   }
 
   return $topSongs;
+ }
+
+ public function MakeUserFavList($userID)
+ {
+    $query = "SELECT * FROM `Song_User_rating` WHERE UserID = $userID ORDER BY `Rating` DESC LIMIT 100";
+
+    $result = mysqli_query($this->link, $query);
+
+    $all = mysqli_fetch_all($result, 1);
+
+    $topSongs = array();
+
+    foreach ($all as $key) {
+
+    //SongID SongName BandName Total
+
+    $userTopSongs[] = array("songid" => $key['SongID'], "Song" => $key['SongName'] . " - " . $key['BandName'], "Total" => $key['Rating']);
+  }
+
+  return $userTopSongs;
  }
 }
