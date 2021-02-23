@@ -1,6 +1,10 @@
 <?php
 include __DIR__ . '/html_private/head.php';
 require 'vendor/autoload.php';
+// var_dump( $myConn->HasScore(639));
+$var = "adsasdasfasfaqr412451515%%^^\\<E###@@$#";
+echo filter_var($var,FILTER_SANITIZE_EMAIL);
+// $myConn->GenerateTotal(537);
 
 // // include __DIR__ . '\html_private\Song.php';
 //     $uris = array();
@@ -52,15 +56,15 @@ require 'vendor/autoload.php';
 //        echo "</br>";
 //    }
 
-$uris     = array();
-$newSongs = array();
-$tracks   = array();
-$count    = 1;
-$all      = $myConn->allSongs();
-for ($i = 0; $i <= 100; $i++) {
- $newSongs[] = array("id" => $all[$i]["SongID"], "name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
-}
-foreach ($newSongs as $value) {
- echo $value['id'] . " : " . $value["name"];
- echo "</br>";
-}
+// $uris     = array();
+// $newSongs = array();
+// $tracks   = array();
+// $count    = 1;
+// $all      = $myConn->allSongs();
+// for ($i = 0; $i <= 100; $i++) {
+//  $newSongs[] = array("id" => $all[$i]["SongID"], "name" => $all[$i]["SongName"] . " " . $all[$i]["BandName"]);
+// }
+// foreach ($newSongs as $value) {
+//  echo $value['id'] . " : " . $value["name"];
+//  echo "</br>";
+// }

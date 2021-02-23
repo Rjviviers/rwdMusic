@@ -6,7 +6,7 @@ include __DIR__ . '/html_private/lgc.php';
 $userIDnew = $_COOKIE["User"];
 
 if (isset($_GET['id'])) {
-    
+
 }
 ?>
 
@@ -183,16 +183,15 @@ if (isset($_GET['id'])) {
 </style>
 <?php
 
-
 $arr = [
- array("songid" => 1, "url" => "https://via.placeholder.com/100", "songname" => "test1", "posted" => "date1", "user" => "user1"),
- array("songid" => 2, "url" => "https://via.placeholder.com/200", "songname" => "test2", "posted" => "date2", "user" => "user2"),
- array("songid" => 3, "url" => "https://via.placeholder.com/300", "songname" => "test4", "posted" => "date3", "user" => "user3"),
+    array("songid" => 1, "url" => "https://via.placeholder.com/100", "songname" => "test1", "posted" => "date1", "user" => "user1"),
+    array("songid" => 2, "url" => "https://via.placeholder.com/200", "songname" => "test2", "posted" => "date2", "user" => "user2"),
+    array("songid" => 3, "url" => "https://via.placeholder.com/300", "songname" => "test4", "posted" => "date3", "user" => "user3"),
 
 ];
 foreach ($arr as $value) {
 
- ?>
+    ?>
     <style>
       .card--<?=$value["songid"]?> .card__img, .card--<?=$value["songid"]?> .card__img--hover {
           background-image: url('<?=$value["url"]?>');

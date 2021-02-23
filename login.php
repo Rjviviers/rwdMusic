@@ -2,7 +2,7 @@
 
 include __DIR__ . '/html_private/head.php';
 
-if (!empty($_COOKIE['User'])) {
+if (isset($_COOKIE['User']) || !empty($_COOKIE['User'])) {
     $myConn->redirect('index.php');
 }
 
@@ -26,6 +26,7 @@ if (isset($_POST["GO"])) {
             setcookie("User", $obj->GetID(), time() + (86400 * 365));
             setcookie("Uname", $obj->GetUsername(), time() + (86400 * 365));
             $_SESSION['User'] = $obj;
+
         } catch (ErrorException $th) {
             $thm = $th->getMessage();
 
