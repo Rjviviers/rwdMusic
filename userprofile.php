@@ -46,8 +46,8 @@ if (isset($_GET['r'])) {
                     }
                     ?>
                             <div class="col-md-4">
-                            
-                            Make playlist of your<a href="https://www.rwdmusic.co.za/makeplaylist.php?s=2"> top 100 songs </a>
+
+                            Make playlist of your<a href="https://www.rwdmusic.co.za/userlist.php"> top 100 songs </a>
                             </div>
                         </div>
                      
