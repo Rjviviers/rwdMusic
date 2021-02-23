@@ -10,7 +10,7 @@ if ($_GET['s'] == 1) {
 } elseif ($_GET['top'] == 1) {
  $list = $_SESSION['list3'];
  $x    = "HoH top 100";
-} elseif($_GET['top'] == 2){
+} elseif($_GET['s'] == 2){
 $list = $_SESSION['UserList'];
 $x = "Personal Top 100 songs"; 
 }else {
