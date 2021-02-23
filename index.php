@@ -3,9 +3,9 @@
 include __DIR__ . '/html_private/head.php';
 // include __DIR__ . '/html_private/lgc.php';
 //poes
-if (!isset($_COOKIE['User'])) {
-    header('login.php');
-}
+// if (!isset($_COOKIE['User'])) {
+//     header('login.php');
+// }
 
 if (isset($_GET['t'])) {
  $addSongTest = $_GET['t'];
