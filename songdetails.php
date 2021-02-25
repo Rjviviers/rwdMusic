@@ -157,18 +157,13 @@ echo " track ";
     echo " should be a uri or null ";
     var_dump($spotSong); ?>
                         </div>
-                        <div class="col-md-12">
-                            spotify area
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="<?=$spotSong?>">
-                                <img width="50%" src="<?=$imgsrc?>" alt="<?=$full?>">
-                            </a>
-
-                        </div>
                         
+                    </div>
+                            <a href="<?=$spotSong?>">
+                                <img width="100%" src="<?=$imgsrc?>" alt="<?=$full?>">
+                            </a>
+                        
+                     
                     </div>
                     <?php
 }
