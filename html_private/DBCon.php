@@ -366,6 +366,13 @@ class DBCon
   $sql = "INSERT INTO `songimages` (`id`, `SongID`, `Img`) VALUES (NULL, '$id', '$url' )";
   mysqli_query($this->link, $sql);
  }
+ public function getImage($id)
+ {
+    $sql = "SELECT * FROM `songimages` WHERE `SongID` = $id";
+    $result = mysqli_query($this->link, $sql);
+    $row = mysqli_fetch_array($result, 1);
+    
+ }
  public function geturi($id_p)
  {
   $q      = "SELECT * FROM `spotdata` WHERE sngID = $id_p";
@@ -654,4 +661,5 @@ class DBCon
 
   return $userTopSongs;
  }
+
 }
