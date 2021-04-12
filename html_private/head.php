@@ -1,11 +1,8 @@
 <?php
-
-require_once 'DBCon.php';
-
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+require_once 'DBCon.php';
 
 global $errorMessages;
 

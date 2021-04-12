@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/html_private/head.php';
+include __DIR__ . '/html_private/head.php'; 
 
 if (isset($_COOKIE['User']) || !empty($_COOKIE['User'])) {
     $myConn->redirect('index.php');
